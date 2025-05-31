@@ -37,6 +37,9 @@
     <color name="circleColor4">#789196</color>
     <color name="circleColor5">#ED6D01</color>
 
+    <color name="colorBackgroundSearch">#66DADADA</color>
+    <color name="colorBackgroundBottom">#99F5F5F5</color>
+
     <color name="textSnowDrift">#F8FBF8</color>
     <color name="textColorWhite">#FAF5EF</color>
     <color name="textColorBlack">#1A1A1A</color>
