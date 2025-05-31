@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Aksan - Aplikasi Pelayanan Kantor Desa</string>
+    <string name="aplikasi_surat_kantor_desa">Aplikasi Surat Kantor Desa</string>
+    <string name="sistem_informasi_pelayanan_desa_digital">Sistem Informasi Pelayanan Desa Digital</string>
 </resources>
