@@ -1,10 +1,8 @@
-package com.abcd.aksan_aplikasipelayanankantordesa
+package com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.main
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.abcd.aksan_aplikasipelayanankantordesa.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
