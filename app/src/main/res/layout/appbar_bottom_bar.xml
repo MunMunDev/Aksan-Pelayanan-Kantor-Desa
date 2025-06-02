@@ -43,7 +43,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/btnLayanan"
+        android:id="@+id/btnBerita"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -53,19 +53,19 @@
         android:gravity="center"
         tools:ignore="UseCompoundDrawables">
         <ImageView
-            android:id="@+id/ivLayanan"
+            android:id="@+id/ivBerita"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:contentDescription="Layanan image"
+            android:contentDescription="Berita image"
             android:src="@drawable/icon_layanan"
             tools:ignore="HardcodedText" />
 
         <TextView
-            android:id="@+id/tvLayanan"
+            android:id="@+id/tvBerita"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:text="Layanan"
+            android:text="Berita"
             android:textSize="14sp"
             android:textColor="@color/textColorBlack"
             android:lines="1"
@@ -125,7 +125,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:text="Account"
+            android:text="Akun"
             android:textSize="14sp"
             android:textColor="@color/textColorBlack"
             android:lines="1"
