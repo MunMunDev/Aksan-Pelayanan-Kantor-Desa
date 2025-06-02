@@ -37,14 +37,22 @@
                 android:elevation="20dp"
                 tools:ignore="HardcodedText" />
 
-            <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <EditText
+                android:id="@+id/etSearch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginStart="4dp"
-                android:text="Cari Produk Yang Anda Inginkan"
+                android:layout_marginEnd="12dp"
+                android:autofillHints="name"
+                android:hint="Cari Berita. Misal : Judul, Kelurahan, 14 Sep"
+                android:textColorHint="@color/white"
                 android:textSize="14sp"
-                android:textColor="@color/white" />
+                android:inputType="text"
+                android:textColor="@color/white"
+                android:background="@color/colorBackgroundTransparent"
+                android:maxLines="1"
+                android:ellipsize="end"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
