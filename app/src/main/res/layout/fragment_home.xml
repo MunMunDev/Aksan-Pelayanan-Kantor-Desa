@@ -1,354 +1,363 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragment.user.home.HomeFragment">
+    tools:context=".ui.fragment.user.home.HomeFragment"
+    android:id="@+id/swipeRefresh">
 
-    <ImageView
-        android:id="@+id/ivTop"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/bg_main_top"/>
-
-    <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        app:layout_constraintBottom_toTopOf="@id/tvTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="26dp"
-        android:src="@drawable/ic_logo_sidrap"/>
-
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/llLayanan"
-        android:layout_marginBottom="26dp"
-        android:text="@string/sistem_informasi_pelayanan_kelurahan_digital"
-        android:textSize="18sp"
-        android:textColor="@color/textColorWhite"
-        android:textStyle="bold"
-        android:textAlignment="center"/>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clBerita"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/llLayanan"
-        android:layout_marginTop="-40dp"
-        android:paddingTop="60dp"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:background="@drawable/bg_main_bottom">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="4dp"
-            android:text="Berita"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/btnBerita"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="4dp"
-            android:text="Lihat Semua  >"
-            android:textSize="14sp"
-            android:textColor="@color/primaryColor"
-            android:textStyle="normal"/>
-
-        <!-- Maks 3 -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvBerita"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/btnBerita"
-            android:layout_marginTop="2dp"
-            tools:itemCount="3"
-            tools:listitem="@layout/item_list_berita"
-            android:visibility="gone"/>
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/ivTop"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/bg_main_top"/>
 
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/smBerita"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/btnBerita"
-            android:layout_marginTop="2dp"
-            android:visibility="visible">
-            <LinearLayout
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:layout_constraintBottom_toTopOf="@id/tvTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginBottom="26dp"
+                android:src="@drawable/ic_logo_sidrap"/>
+
+            <TextView
+                android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <include layout="@layout/sm_item_list_berita"/>
-                <include layout="@layout/sm_item_list_berita"/>
-                <include layout="@layout/sm_item_list_berita"/>
-                <include layout="@layout/sm_item_list_berita"/>
-            </LinearLayout>
-        </com.facebook.shimmer.ShimmerFrameLayout>
+                app:layout_constraintBottom_toTopOf="@id/llLayanan"
+                android:layout_marginBottom="26dp"
+                android:text="@string/sistem_informasi_pelayanan_kelurahan_digital"
+                android:textSize="18sp"
+                android:textColor="@color/textColorWhite"
+                android:textStyle="bold"
+                android:textAlignment="center"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        app:layout_constraintBottom_toBottomOf="@id/clBerita"
-        android:layout_marginBottom="-4dp"
-        android:layout_marginStart="-8dp"
-        android:layout_marginEnd="-8dp"
-        android:background="@color/white"/>
-
-    <LinearLayout
-        android:id="@+id/llLayanan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ivTop"
-        android:layout_marginTop="-40dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginEnd="14dp"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="16dp"
-        android:paddingTop="14dp"
-        android:background="@drawable/bg_card"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Surat Pengantar"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textAlignment="center" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:id="@+id/btnKeteranganNikah"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clBerita"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:padding="4dp"
+                app:layout_constraintTop_toBottomOf="@id/llLayanan"
+                android:layout_marginTop="-40dp"
+                android:paddingTop="60dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:background="@drawable/bg_main_bottom">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="4dp"
+                    android:text="Berita"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/btnBerita"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="4dp"
+                    android:text="Lihat Semua  >"
+                    android:textSize="14sp"
+                    android:textColor="@color/primaryColor"
+                    android:textStyle="normal"/>
+
+                <!-- Maks 3 -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvBerita"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/btnBerita"
+                    android:layout_marginTop="2dp"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_list_berita"
+                    android:visibility="gone"/>
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/smBerita"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/btnBerita"
+                    android:layout_marginTop="2dp"
+                    android:visibility="visible">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <include layout="@layout/sm_item_list_berita"/>
+                        <include layout="@layout/sm_item_list_berita"/>
+                        <include layout="@layout/sm_item_list_berita"/>
+                        <include layout="@layout/sm_item_list_berita"/>
+                    </LinearLayout>
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                app:layout_constraintBottom_toBottomOf="@id/clBerita"
+                android:layout_marginBottom="-4dp"
+                android:layout_marginStart="-8dp"
+                android:layout_marginEnd="-8dp"
+                android:background="@color/white"/>
+
+            <LinearLayout
+                android:id="@+id/llLayanan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/ivTop"
+                android:layout_marginTop="-40dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="14dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="16dp"
+                android:paddingTop="14dp"
+                android:background="@drawable/bg_card"
                 android:orientation="vertical">
-                <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:src="@drawable/icon_keterangan_nikah"
-                    android:layout_gravity="center"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Keterangan Nikah"
-                    android:textSize="12sp"
+                    android:text="Surat Pengantar"
+                    android:textSize="16sp"
                     android:textColor="@color/black"
-                    android:textStyle="normal"
-                    android:textAlignment="center"
-                    android:maxLines="2"/>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/btnKeteranganLahir"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:padding="4dp"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/icon_keterangan_lahir" />
-
-                <TextView
+                    android:textStyle="bold"
+                    android:textAlignment="center" />
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Keterangan Lahir"
-                    android:textSize="12sp"
-                    android:textColor="@color/black"
-                    android:textStyle="normal"
-                    android:textAlignment="center"
-                    android:maxLines="2"/>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/btnKeteranganUsaha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:padding="4dp"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:src="@drawable/icon_keterangan_usaha"
-                    android:layout_gravity="center"/>
-                <TextView
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:id="@+id/btnKeteranganNikah"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:padding="4dp"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:src="@drawable/icon_keterangan_nikah"
+                            android:layout_gravity="center"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Keterangan Nikah"
+                            android:textSize="12sp"
+                            android:textColor="@color/black"
+                            android:textStyle="normal"
+                            android:textAlignment="center"
+                            android:maxLines="2"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/btnKeteranganLahir"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:padding="4dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/icon_keterangan_lahir" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Keterangan Lahir"
+                            android:textSize="12sp"
+                            android:textColor="@color/black"
+                            android:textStyle="normal"
+                            android:textAlignment="center"
+                            android:maxLines="2"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/btnKeteranganUsaha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:padding="4dp"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:src="@drawable/icon_keterangan_usaha"
+                            android:layout_gravity="center"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Keterangan Usaha"
+                            android:textSize="12sp"
+                            android:textColor="@color/black"
+                            android:textStyle="normal"
+                            android:textAlignment="center"
+                            android:maxLines="2"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/btnKeteranganTidakMampu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:padding="4dp"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:src="@drawable/icon_keterangan_tidak_mampu"
+                            android:layout_gravity="center"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Keterangan Tidak Mampu"
+                            android:textSize="12sp"
+                            android:textColor="@color/black"
+                            android:textStyle="normal"
+                            android:textAlignment="center"
+                            android:maxLines="2"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Keterangan Usaha"
-                    android:textSize="12sp"
-                    android:textColor="@color/black"
-                    android:textStyle="normal"
-                    android:textAlignment="center"
-                    android:maxLines="2"/>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/btnKeteranganTidakMampu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:padding="4dp"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:src="@drawable/icon_keterangan_tidak_mampu"
-                    android:layout_gravity="center"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Keterangan Tidak Mampu"
-                    android:textSize="12sp"
-                    android:textColor="@color/black"
-                    android:textStyle="normal"
-                    android:textAlignment="center"
-                    android:maxLines="2"/>
-            </LinearLayout>
+                    android:layout_marginTop="12dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:id="@+id/btnKeteranganAkteKematian"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:padding="4dp"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:src="@drawable/icon_keterangan_akte_kematian"
+                            android:layout_gravity="center"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Keterangan Akte Kematian"
+                            android:textSize="12sp"
+                            android:textColor="@color/black"
+                            android:textStyle="normal"
+                            android:textAlignment="center"
+                            android:maxLines="2"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/btnKeteranganPindah"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:padding="4dp"
+                        android:orientation="vertical">
 
-        </LinearLayout>
+                        <ImageView
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/icon_keterangan_pindah" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:baselineAligned="false"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:id="@+id/btnKeteranganAkteKematian"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:padding="4dp"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:src="@drawable/icon_keterangan_akte_kematian"
-                    android:layout_gravity="center"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Keterangan Akte Kematian"
-                    android:textSize="12sp"
-                    android:textColor="@color/black"
-                    android:textStyle="normal"
-                    android:textAlignment="center"
-                    android:maxLines="2"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Keterangan Pindah"
+                            android:textSize="12sp"
+                            android:textColor="@color/black"
+                            android:textStyle="normal"
+                            android:textAlignment="center"
+                            android:maxLines="2"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/btnKeteranganIzinKeramaian"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:padding="4dp"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:src="@drawable/icon_keterangan_izin_keramaian"
+                            android:layout_gravity="center"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Keterangan Izin Keramaian"
+                            android:textSize="12sp"
+                            android:textColor="@color/black"
+                            android:textStyle="normal"
+                            android:textAlignment="center"
+                            android:maxLines="2"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/btnKeteranganDomisili"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:padding="4dp"
+                        android:orientation="vertical">
+                        <ImageView
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:src="@drawable/icon_keterangan_domisili"
+                            android:layout_gravity="center"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Keterangan Domisili"
+                            android:textSize="12sp"
+                            android:textColor="@color/black"
+                            android:textStyle="normal"
+                            android:textAlignment="center"
+                            android:maxLines="2"/>
+                    </LinearLayout>
+                </LinearLayout>
+
             </LinearLayout>
-            <LinearLayout
-                android:id="@+id/btnKeteranganPindah"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:padding="4dp"
-                android:orientation="vertical">
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
-                <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/icon_keterangan_pindah" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Keterangan Pindah"
-                    android:textSize="12sp"
-                    android:textColor="@color/black"
-                    android:textStyle="normal"
-                    android:textAlignment="center"
-                    android:maxLines="2"/>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/btnKeteranganIzinKeramaian"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:padding="4dp"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:src="@drawable/icon_keterangan_izin_keramaian"
-                    android:layout_gravity="center"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Keterangan Izin Keramaian"
-                    android:textSize="12sp"
-                    android:textColor="@color/black"
-                    android:textStyle="normal"
-                    android:textAlignment="center"
-                    android:maxLines="2"/>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/btnKeteranganDomisili"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:padding="4dp"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:src="@drawable/icon_keterangan_domisili"
-                    android:layout_gravity="center"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Keterangan Domisili"
-                    android:textSize="12sp"
-                    android:textColor="@color/black"
-                    android:textStyle="normal"
-                    android:textAlignment="center"
-                    android:maxLines="2"/>
-            </LinearLayout>
-        </LinearLayout>
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
