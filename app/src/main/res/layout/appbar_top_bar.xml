@@ -37,14 +37,17 @@
                 android:elevation="20dp"
                 tools:ignore="HardcodedText" />
 
-            <TextView
+            <EditText
                 android:id="@+id/tvTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginStart="4dp"
-                android:text="Cari Produk Yang Anda Inginkan"
+                android:layout_marginEnd="12dp"
+                android:hint="Cari Berita Yang Ada"
+                android:textColorHint="@color/white"
                 android:textSize="14sp"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:background="@color/colorBackgroundTransparent"/>
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
