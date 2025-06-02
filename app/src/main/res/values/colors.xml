@@ -18,9 +18,10 @@
 
     <color name="text">#101010</color>
 
-    <color name="primaryColor">#339ADB</color>
+<!--    <color name="primaryColor">#0BA184</color>-->
+    <color name="primaryColor">#0E8A73</color>
     <!--    <color name="secondaryColor">#068251</color>-->
-    <color name="secondaryColor">#5DA6D3</color>
+    <color name="secondaryColor">#0D9379</color>
     <color name="colorPickVendor">#EBF7FF</color>
     <color name="backgroundTransparent">#B3000000</color>
     <color name="textJudulTransparent">#FFFFFF</color>
@@ -36,6 +37,9 @@
     <color name="circleColor3">#008ACC</color>
     <color name="circleColor4">#789196</color>
     <color name="circleColor5">#ED6D01</color>
+
+    <color name="colorBackgroundSearch">#66DADADA</color>
+    <color name="colorBackgroundBottom">#99F5F5F5</color>
 
     <color name="textSnowDrift">#F8FBF8</color>
     <color name="textColorWhite">#FAF5EF</color>

@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Aksan - Aplikasi Pelayanan Kantor Desa</string>
     <string name="aplikasi_surat_kantor_desa">Aplikasi Surat Kantor Desa</string>
-    <string name="sistem_informasi_pelayanan_desa_digital">Sistem Informasi Pelayanan Desa Digital</string>
+    <string name="sistem_informasi_pelayanan_kelurahan_digital">Sistem Informasi Pelayanan Kelurahan Digital</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

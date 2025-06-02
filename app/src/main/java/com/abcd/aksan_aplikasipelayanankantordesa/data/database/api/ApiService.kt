@@ -1,5 +1,6 @@
 package com.abcd.aksan_aplikasipelayanankantordesa.data.database.api
 
+import com.abcd.aksan_aplikasipelayanankantordesa.data.model.BeritaModel
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.UserModel
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.ResponseModel
 import okhttp3.MultipartBody
@@ -13,22 +14,27 @@ import retrofit2.http.Part
 import retrofit2.http.Query
 
 interface ApiService {
-    @GET("surat-desa/api/get.php")
+    @GET("pelayanan-kantor-desa/api/get.php")
     suspend fun getAllUser(
         @Query("all_user") allUser: String
-    ): ArrayList<UserModel>
+    ): List<UserModel>
 
-    @GET("surat-desa/api/get.php")
+    @GET("pelayanan-kantor-desa/api/get.php")
     suspend fun getUser(
         @Query("get_user") getUser: String,
         @Query("no_ktp") no_ktp: String,
         @Query("password") password: String
     ): UserModel
 
+    @GET("pelayanan-kantor-desa/api/get.php")
+    suspend fun getBerita(
+        @Query("get_berita") get_berita: String,
+    ): List<BeritaModel>
+
 
     // POST
     @FormUrlEncoded
-    @POST("surat-desa/api/post.php")
+    @POST("pelayanan-kantor-desa/api/post.php")
     suspend fun addUser(
         @Field("add_user") addUser:String,
         @Field("nama") nama:String,
@@ -41,7 +47,7 @@ interface ApiService {
 
     //Register
     @Multipart
-    @POST("surat-desa/api/post.php")
+    @POST("pelayanan-kantor-desa/api/post.php")
     suspend fun postRegister(
         @Part("register_user") register_user: RequestBody,
         @Part("nama") nama: RequestBody,

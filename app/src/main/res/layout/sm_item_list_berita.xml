@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:layout_marginTop="12dp"
+    android:layout_marginStart="2dp"
+    android:layout_marginEnd="2dp"
+    app:cardCornerRadius="12dp"
+    android:backgroundTint="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/ivGambar"
+            android:layout_width="130dp"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@color/abuabu_muda"
+            android:scaleType="centerCrop"
+            android:elevation="1dp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivGambar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="6dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="8dp">
+            <TextView
+                android:id="@+id/tvJudul"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:lineSpacingExtra="1dp"
+                android:text="Judul Berita Terkini dan terupdate dari kelurahan setempat"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/abuabu_muda"
+                android:background="@color/abuabu_muda"
+                android:maxLines="2"
+                android:ellipsize="end"/>
+
+            <TextView
+                android:id="@+id/tvIsiSingkat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tvJudul"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="6dp"
+                android:text="Ini adalah isi dari berita tersebut. Akan berisi sebanyak 3 lines sehingga dapat dilihat isi apa saja yang ada di dalamnya"
+                android:textSize="12sp"
+                android:textColor="@color/abuabu_muda"
+                android:background="@color/abuabu_muda"
+                android:maxLines="3"
+                android:ellipsize="end"/>
+
+            <TextView
+                android:id="@+id/tvKelurahan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:text="Kel. Pangkajene Sidrap......."
+                android:textSize="12sp"
+                android:textColor="@color/abuabu_muda"
+                android:background="@color/abuabu_muda"
+                android:textStyle="normal"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+
+            <TextView
+                android:id="@+id/tvTanggal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:text="14 Septem 2025"
+                android:textSize="12sp"
+                android:textColor="@color/abuabu_muda"
+                android:background="@color/abuabu_muda"
+                android:textStyle="normal"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
