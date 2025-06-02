@@ -12,7 +12,9 @@ import com.abcd.aksan_aplikasipelayanankantordesa.R
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.ActivityMainBinding
 import com.abcd.aksan_aplikasipelayanankantordesa.ui.fragment.user.home.HomeFragment
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.SharedPreferencesLogin
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var sharedPreferences: SharedPreferencesLogin
@@ -38,8 +40,8 @@ class MainActivity : AppCompatActivity() {
             btnHome.setOnClickListener {
                 clickHome()
             }
-            btnLayanan.setOnClickListener {
-                clickLayanan()
+            btnBerita.setOnClickListener {
+                clickBerita()
             }
             btnRiwayat.setOnClickListener {
                 clickRiwayat()
@@ -54,13 +56,13 @@ class MainActivity : AppCompatActivity() {
         binding.icBottom.apply {
             // text color
             tvHome.setTextColor(resources.getColor(R.color.primaryColor))
-            tvLayanan.setTextColor(resources.getColor(R.color.textColorBlack))
+            tvBerita.setTextColor(resources.getColor(R.color.textColorBlack))
             tvRiwayat.setTextColor(resources.getColor(R.color.textColorBlack))
             tvAccount.setTextColor(resources.getColor(R.color.textColorBlack))
 
             // image view visibility
             ivHome.setImageResource(R.drawable.icon_home_active)
-            ivLayanan.setImageResource(R.drawable.icon_layanan)
+            ivBerita.setImageResource(R.drawable.icon_layanan)
             ivRiwayat.setImageResource(R.drawable.icon_riwayat)
             ivAccount.setImageResource(R.drawable.icon_akun)
 
@@ -69,17 +71,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun clickLayanan() {
+    fun clickBerita() {
         binding.icBottom.apply {
             // text color
             tvHome.setTextColor(resources.getColor(R.color.textColorBlack))
-            tvLayanan.setTextColor(resources.getColor(R.color.primaryColor))
+            tvBerita.setTextColor(resources.getColor(R.color.primaryColor))
             tvRiwayat.setTextColor(resources.getColor(R.color.textColorBlack))
             tvAccount.setTextColor(resources.getColor(R.color.textColorBlack))
 
             // image view visibility
             ivHome.setImageResource(R.drawable.icon_home)
-            ivLayanan.setImageResource(R.drawable.icon_layanan_active)
+            ivBerita.setImageResource(R.drawable.icon_layanan_active)
             ivRiwayat.setImageResource(R.drawable.icon_riwayat)
             ivAccount.setImageResource(R.drawable.icon_akun)
 
@@ -88,17 +90,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun clickRiwayat() {
+    private fun clickRiwayat() {
         binding.icBottom.apply {
             // text color
             tvHome.setTextColor(resources.getColor(R.color.textColorBlack))
-            tvLayanan.setTextColor(resources.getColor(R.color.textColorBlack))
+            tvBerita.setTextColor(resources.getColor(R.color.textColorBlack))
             tvRiwayat.setTextColor(resources.getColor(R.color.primaryColor))
             tvAccount.setTextColor(resources.getColor(R.color.textColorBlack))
 
             // image view visibility
             ivHome.setImageResource(R.drawable.icon_home)
-            ivLayanan.setImageResource(R.drawable.icon_layanan)
+            ivBerita.setImageResource(R.drawable.icon_layanan)
             ivRiwayat.setImageResource(R.drawable.icon_riwayat_active)
             ivAccount.setImageResource(R.drawable.icon_akun)
 
@@ -107,17 +109,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun clickAccount() {
+    private fun clickAccount() {
         binding.icBottom.apply {
             // text color
             tvHome.setTextColor(resources.getColor(R.color.textColorBlack))
-            tvLayanan.setTextColor(resources.getColor(R.color.textColorBlack))
+            tvBerita.setTextColor(resources.getColor(R.color.textColorBlack))
             tvRiwayat.setTextColor(resources.getColor(R.color.textColorBlack))
             tvAccount.setTextColor(resources.getColor(R.color.primaryColor))
 
             // image view visibility
             ivHome.setImageResource(R.drawable.icon_home)
-            ivLayanan.setImageResource(R.drawable.icon_layanan)
+            ivBerita.setImageResource(R.drawable.icon_layanan)
             ivRiwayat.setImageResource(R.drawable.icon_riwayat)
             ivAccount.setImageResource(R.drawable.icon_akun_active)
 
