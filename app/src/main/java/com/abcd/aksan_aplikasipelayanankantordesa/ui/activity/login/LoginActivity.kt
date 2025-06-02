@@ -13,8 +13,10 @@ import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.main.MainActi
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.LoadingAlertDialog
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.SharedPreferencesLogin
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.network.UIState
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private val viewModel: LoginViewModel by viewModels()
