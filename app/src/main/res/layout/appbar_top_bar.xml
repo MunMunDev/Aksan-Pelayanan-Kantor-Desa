@@ -38,16 +38,18 @@
                 tools:ignore="HardcodedText" />
 
             <EditText
-                android:id="@+id/tvTitle"
+                android:id="@+id/etSearch"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="12dp"
-                android:hint="Cari Berita Yang Ada"
+                android:hint="Cari Berita. Misal : Judul, Kelurahan, 14 Sep"
                 android:textColorHint="@color/white"
                 android:textSize="14sp"
                 android:textColor="@color/white"
-                android:background="@color/colorBackgroundTransparent"/>
+                android:background="@color/colorBackgroundTransparent"
+                android:maxLines="1"
+                android:ellipsize="end"/>
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
