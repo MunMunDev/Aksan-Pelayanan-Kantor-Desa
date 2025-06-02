@@ -14,7 +14,6 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.abcd.aksan_aplikasipelayanankantordesa.R
 import com.abcd.aksan_aplikasipelayanankantordesa.adapter.BeritaAdapter
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.BeritaModel
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.FragmentBeritaBinding
