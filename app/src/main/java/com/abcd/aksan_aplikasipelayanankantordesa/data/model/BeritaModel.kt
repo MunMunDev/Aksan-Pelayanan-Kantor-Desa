@@ -28,4 +28,41 @@ class BeritaModel (
 
     @SerializedName("kelurahan")
     var kelurahan: KelurahanModel? = null,
-)
+): Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readValue(Int::class.java.classLoader) as? Int,
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readParcelable(KelurahanModel::class.java.classLoader)
+    ) {
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeValue(id_berita)
+        parcel.writeString(id_kelurahan)
+        parcel.writeString(judul)
+        parcel.writeString(isi)
+        parcel.writeString(tanggal)
+        parcel.writeString(narasumber)
+        parcel.writeString(gambar)
+        parcel.writeParcelable(kelurahan, flags)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<BeritaModel> {
+        override fun createFromParcel(parcel: Parcel): BeritaModel {
+            return BeritaModel(parcel)
+        }
+
+        override fun newArray(size: Int): Array<BeritaModel?> {
+            return arrayOfNulls(size)
+        }
+    }
+}

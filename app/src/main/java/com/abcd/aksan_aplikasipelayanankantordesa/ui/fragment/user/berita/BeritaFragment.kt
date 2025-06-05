@@ -1,6 +1,7 @@
 package com.abcd.aksan_aplikasipelayanankantordesa.ui.fragment.user.berita
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.abcd.aksan_aplikasipelayanankantordesa.adapter.BeritaAdapter
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.BeritaModel
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.FragmentBeritaBinding
+import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.berita.BeritaActivity
 import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.main.MainActivity
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.OnClickItem
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.network.UIState
@@ -100,7 +102,7 @@ class BeritaFragment : Fragment() {
         setStopShimmerProduk()
     }
 
-    private fun setSuccessFetchBerita(data: List<BeritaModel>) {
+    private fun setSuccessFetchBerita(data: ArrayList<BeritaModel>) {
         if(data.isNotEmpty()){
             listBerita = data
             setAdapter(data)
@@ -108,11 +110,12 @@ class BeritaFragment : Fragment() {
         setStopShimmerProduk()
     }
 
-    private fun setAdapter(data: List<BeritaModel>) {
+    private fun setAdapter(data: ArrayList<BeritaModel>) {
         beritaAdapter = BeritaAdapter(data, object: OnClickItem.ClickBerita{
             override fun clickBerita(berita: BeritaModel) {
-//                val i = Intent(context, BeritaActivity::class.java)
-//                startActivity(i)
+                val i = Intent(context, BeritaActivity::class.java)
+                i.putExtra("berita", berita)
+                startActivity(i)
             }
         }, false)
 
