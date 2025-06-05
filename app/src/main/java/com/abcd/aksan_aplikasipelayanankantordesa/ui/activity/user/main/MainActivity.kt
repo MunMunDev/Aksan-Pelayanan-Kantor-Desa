@@ -15,6 +15,7 @@ import com.abcd.aksan_aplikasipelayanankantordesa.ui.fragment.user.home.HomeFrag
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.SharedPreferencesLogin
 import dagger.hilt.android.AndroidEntryPoint
 
+@Suppress("DEPRECATION")
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -53,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun clickHome() {
+    private fun clickHome() {
         binding.icBottom.apply {
             // text color
             tvHome.setTextColor(resources.getColor(R.color.primaryColor))
