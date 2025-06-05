@@ -29,7 +29,7 @@ interface ApiService {
     @GET("pelayanan-kantor-kelurahan/api/get.php")
     suspend fun getBerita(
         @Query("get_berita") get_berita: String,
-    ): List<BeritaModel>
+    ): ArrayList<BeritaModel>
 
 
     // POST
