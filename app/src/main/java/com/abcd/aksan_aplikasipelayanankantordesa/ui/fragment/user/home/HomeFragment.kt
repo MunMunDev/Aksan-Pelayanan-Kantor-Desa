@@ -1,12 +1,10 @@
 package com.abcd.aksan_aplikasipelayanankantordesa.ui.fragment.user.home
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,13 +13,11 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.abcd.aksan_aplikasipelayanankantordesa.R
 import com.abcd.aksan_aplikasipelayanankantordesa.adapter.BeritaAdapter
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.BeritaModel
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.FragmentHomeBinding
 import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.berita.BeritaActivity
 import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.main.MainActivity
-import com.abcd.aksan_aplikasipelayanankantordesa.utils.KonversiRupiah
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.OnClickItem
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.network.UIState
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,9 +26,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private val viewModel: HomeViewModel by viewModels()
-    lateinit var rupiah: KonversiRupiah
     private lateinit var beritaAdapter: BeritaAdapter
-    private var listBerita: ArrayList<BeritaModel> = ArrayList()
 
     private lateinit var activityContext: MainActivity
     private lateinit var context: Context
@@ -131,6 +125,7 @@ class HomeFragment : Fragment() {
         beritaAdapter = BeritaAdapter(data, object: OnClickItem.ClickBerita{
             override fun clickBerita(berita: BeritaModel) {
                 val i = Intent(context, BeritaActivity::class.java)
+                i.putExtra("berita", berita)
                 startActivity(i)
             }
         }, true)
