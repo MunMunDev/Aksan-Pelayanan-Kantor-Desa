@@ -1,12 +1,10 @@
 package com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.berita
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.abcd.aksan_aplikasipelayanankantordesa.R
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.BeritaModel
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.ActivityBeritaBinding
@@ -14,6 +12,7 @@ import com.abcd.aksan_aplikasipelayanankantordesa.utils.Constant
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.TanggalDanWaktu
 import com.bumptech.glide.Glide
 
+@Suppress("DEPRECATION")
 class BeritaActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBeritaBinding
     private lateinit var berita : BeritaModel
@@ -27,6 +26,7 @@ class BeritaActivity : AppCompatActivity() {
         setDataSebelumnya()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setNavTopBar() {
         binding.navTopBar.apply {
             tvTitle.text = "Detail Berita"
@@ -47,11 +47,12 @@ class BeritaActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setBerita(berita: BeritaModel) {
         binding.apply {
             try {
                 tvJudul.text = berita.judul
-                tvKelurahan.text = "Kel. ${berita.kelurahan!!.kelurahan}"
+                tvKelurahan.text = "Penerbit : Kel. ${berita.kelurahan!!.kelurahan}"
                 tvTanggal.text = "|  ${tanggalDanWaktu.konversiBulanSingkatan(berita.tanggal!!)}"
                 tvBerita.text = berita.isi
 
