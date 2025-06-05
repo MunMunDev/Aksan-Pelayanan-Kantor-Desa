@@ -19,6 +19,7 @@ import com.abcd.aksan_aplikasipelayanankantordesa.R
 import com.abcd.aksan_aplikasipelayanankantordesa.adapter.BeritaAdapter
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.BeritaModel
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.FragmentHomeBinding
+import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.berita.BeritaActivity
 import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.main.MainActivity
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.KonversiRupiah
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.OnClickItem
@@ -129,8 +130,8 @@ class HomeFragment : Fragment() {
     private fun setAdapter(data: List<BeritaModel>) {
         beritaAdapter = BeritaAdapter(data, object: OnClickItem.ClickBerita{
             override fun clickBerita(berita: BeritaModel) {
-//                val i = Intent(context, BeritaActivity::class.java)
-//                startActivity(i)
+                val i = Intent(context, BeritaActivity::class.java)
+                startActivity(i)
             }
         }, true)
 
