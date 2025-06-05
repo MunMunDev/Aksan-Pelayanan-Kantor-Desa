@@ -17,20 +17,20 @@ import javax.inject.Inject
 class BeritaViewModel @Inject constructor(
     private val api: ApiService
 ): ViewModel() {
-    private var _keranjangBelanja = MutableLiveData<UIState<List<BeritaModel>>>()
+    private var _berita = MutableLiveData<UIState<ArrayList<BeritaModel>>>()
 
     fun fetchBerita(){
         viewModelScope.launch(Dispatchers.IO) {
-            _keranjangBelanja.postValue(UIState.Loading)
+            _berita.postValue(UIState.Loading)
             delay(1_000)
             try {
                 val data = api.getBerita("")
-                _keranjangBelanja.postValue(UIState.Success(data))
+                _berita.postValue(UIState.Success(data))
             } catch (ex: Exception){
-                _keranjangBelanja.postValue(UIState.Failure("Gagal : ${ex.message}"))
+                _berita.postValue(UIState.Failure("Gagal : ${ex.message}"))
             }
         }
     }
 
-    fun getBerita(): LiveData<UIState<List<BeritaModel>>> = _keranjangBelanja
+    fun getBerita(): LiveData<UIState<ArrayList<BeritaModel>>> = _berita
 }
