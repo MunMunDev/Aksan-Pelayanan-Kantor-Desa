@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.user.profile.ProfileFragment"
+    android:paddingBottom="20dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:id="@+id/headerView"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="#0E8A73"
+            />
+
+        <!-- Foto Profil Bulat -->
+        <ImageView
+            android:id="@+id/ivProfile"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:layout_constraintBottom_toTopOf="@id/tvNama"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/icon_akun_home"
+            android:layout_marginBottom="16dp"
+            android:padding="2dp"
+            android:background="@drawable/bg_bulat_no_stroke"/>
+
+        <!-- Nama User -->
+        <TextView
+            android:id="@+id/tvNama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/headerView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="16dp"
+            android:text="Nama orang"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textAllCaps="true"/>
+
+        <!-- PERSONAL Section -->
+        <TextView
+            android:id="@+id/tvPersonal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PERSONAL"
+            android:textStyle="bold"
+            android:textColor="#888"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toBottomOf="@id/headerView"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <LinearLayout
+            android:id="@+id/layoutPersonal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvPersonal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical">
+
+            <!-- Data Diri -->
+            <LinearLayout
+                android:id="@+id/btnDataDiri"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:src="@drawable/icon_akun_home"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:text="Data Diri"/>
+            </LinearLayout>
+            <!-- Settings -->
+            <LinearLayout
+                android:id="@+id/btnSetting"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:src="@drawable/icon_setting"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center_vertical"
+                    android:text="Setting"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Berkas Tersimpan Section -->
+        <TextView
+            android:id="@+id/tvBerkasTersimpan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Berkas Tersimpan"
+            android:textStyle="bold"
+            android:textColor="#888"
+            android:layout_marginTop="18dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toBottomOf="@id/layoutPersonal"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <LinearLayout
+            android:id="@+id/layoutBerkasTersimpan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvBerkasTersimpan"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical">
+
+            <!-- Surat pengantar keterangan nikah -->
+            <LinearLayout
+                android:id="@+id/btnKeteranganNikah"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:src="@drawable/icon_keterangan_nikah"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center_vertical"
+                    android:text="Surat pengantar keterangan nikah"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+            <!-- Surat pengantar keterangan lahir -->
+            <LinearLayout
+                android:id="@+id/btnKeteranganLahir"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:src="@drawable/icon_keterangan_lahir"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center_vertical"
+                    android:text="Surat pengantar keterangan lahir"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+            <!-- Surat pengantar keterangan usaha -->
+            <LinearLayout
+                android:id="@+id/btnKeteranganUsaha"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:src="@drawable/icon_keterangan_usaha"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center_vertical"
+                    android:text="Surat pengantar keterangan usaha"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+            <!-- Surat pengantar keterangan tidak mampu -->
+            <LinearLayout
+                android:id="@+id/btnKeteranganTidakMampu"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:src="@drawable/icon_keterangan_tidak_mampu"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center_vertical"
+                    android:text="Surat pengantar keterangan tidak mampu"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+            <!-- Surat pengantar keterangan akte kematian -->
+            <LinearLayout
+                android:id="@+id/btnKeteranganAkteKematian"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:src="@drawable/icon_keterangan_akte_kematian"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center_vertical"
+                    android:text="Surat pengantar keterangan akte kematian"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+            <!-- Surat pengantar keterangan pindah -->
+            <LinearLayout
+                android:id="@+id/btnKeteranganPindah"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:src="@drawable/icon_keterangan_pindah"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center_vertical"
+                    android:text="Surat pengantar keterangan pindah"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+            <!-- Surat pengantar keterangan izin keramaian -->
+            <LinearLayout
+                android:id="@+id/btnKeteranganIzinKeramaian"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:src="@drawable/icon_keterangan_izin_keramaian"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center_vertical"
+                    android:text="Surat pengantar keterangan izin keramaian"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+            <!-- Surat pengantar domisili -->
+            <LinearLayout
+                android:id="@+id/btnKeteranganDomisili"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:src="@drawable/icon_keterangan_domisili"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center_vertical"
+                    android:text="Surat pengantar domisili"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
