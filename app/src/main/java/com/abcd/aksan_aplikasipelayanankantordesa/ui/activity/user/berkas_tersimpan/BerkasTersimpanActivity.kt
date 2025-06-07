@@ -1,16 +1,12 @@
 package com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.berkas_tersimpan
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.abcd.aksan_aplikasipelayanankantordesa.R
 import com.abcd.aksan_aplikasipelayanankantordesa.adapter.BerkasAdapter
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.BerkasModel
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.ActivityBerkasTersimpanBinding
@@ -26,7 +22,7 @@ class BerkasTersimpanActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBerkasTersimpanBinding
     private val viewModel : BerkasTersimpanViewModel by viewModels()
     private lateinit var sharedPreferences : SharedPreferencesLogin
-    private lateinit var dataPreviousActivity : String
+    private var dataPreviousActivity : String = ""
     private var constant = Constant
     private lateinit var adapter: BerkasAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +52,10 @@ class BerkasTersimpanActivity : AppCompatActivity() {
             ivBack.visibility = View.VISIBLE
 
             tvTitle.text = keterangan
+
+            ivBack.setOnClickListener {
+                finish()
+            }
         }
     }
 
@@ -64,13 +64,17 @@ class BerkasTersimpanActivity : AppCompatActivity() {
     }
 
     private fun fetchDataPreviousActivity() {
-        val bundle = intent.extras
-        if(bundle!=null){
-            dataPreviousActivity = bundle.getString("keterangan")!!
+        if(intent != null){
+            try {
+                dataPreviousActivity = intent.getStringExtra("keterangan")!!
 
-            val keterangan = dataPreviousActivity.split(" ").joinToString(" ") { it.replaceFirstChar { char -> char.uppercase() } }
-            setNavTopBar(keterangan)
-            fetchData(dataPreviousActivity)
+                val keterangan = dataPreviousActivity.split(" ").joinToString(" ") { it.replaceFirstChar { char -> char.uppercase() } }
+                setNavTopBar(keterangan)
+                fetchData(dataPreviousActivity)
+            } catch (ex: Exception){
+                Toast.makeText(this@BerkasTersimpanActivity, ex.message, Toast.LENGTH_SHORT).show()
+                Log.e("ErrorTAG", "fetchDataPreviousActivity: ${ex.message}", )
+            }
         }
     }
 
@@ -88,7 +92,7 @@ class BerkasTersimpanActivity : AppCompatActivity() {
     }
 
     private fun fetchKeteranganNikah(idUser: String){
-        viewModel.fetchKeteranganNikah(idUser)
+        viewModel.fetchKeteranganNikah(idUser, 1)
     }
 
     private fun getKeteranganNikah(){
@@ -117,7 +121,7 @@ class BerkasTersimpanActivity : AppCompatActivity() {
     }
 
     private fun fetchKeteranganLahir(idUser: String){
-        viewModel.fetchKeteranganLahir(idUser)
+        viewModel.fetchKeteranganLahir(idUser, 1)
     }
 
     private fun getKeteranganLahir(){
@@ -146,7 +150,7 @@ class BerkasTersimpanActivity : AppCompatActivity() {
     }
 
     private fun fetchKeteranganUsaha(idUser: String){
-        viewModel.fetchKeteranganUsaha(idUser)
+        viewModel.fetchKeteranganUsaha(idUser, 1)
     }
 
     private fun getKeteranganUsaha(){
@@ -175,7 +179,7 @@ class BerkasTersimpanActivity : AppCompatActivity() {
     }
 
     private fun fetchKeteranganTidakMampu(idUser: String){
-        viewModel.fetchKeteranganTidakMampu(idUser)
+        viewModel.fetchKeteranganTidakMampu(idUser, 1)
     }
 
     private fun getKeteranganTidakMampu(){
@@ -204,7 +208,7 @@ class BerkasTersimpanActivity : AppCompatActivity() {
     }
 
     private fun fetchKeteranganAkteKematian(idUser: String){
-        viewModel.fetchKeteranganAkteKematian(idUser)
+        viewModel.fetchKeteranganAkteKematian(idUser, 1)
     }
 
     private fun getKeteranganAkteKematian(){
@@ -233,7 +237,7 @@ class BerkasTersimpanActivity : AppCompatActivity() {
     }
 
     private fun fetchKeteranganPindah(idUser: String){
-        viewModel.fetchKeteranganPindah(idUser)
+        viewModel.fetchKeteranganPindah(idUser, 1)
     }
 
     private fun getKeteranganPindah(){
@@ -262,7 +266,7 @@ class BerkasTersimpanActivity : AppCompatActivity() {
     }
 
     private fun fetchKeteranganIzinKeramaian(idUser: String){
-        viewModel.fetchKeteranganIzinKeramaian(idUser)
+        viewModel.fetchKeteranganIzinKeramaian(idUser, 1)
     }
 
     private fun getKeteranganIzinKeramaian(){
@@ -291,7 +295,7 @@ class BerkasTersimpanActivity : AppCompatActivity() {
     }
 
     private fun fetchKeteranganDomisili(idUser: String){
-        viewModel.fetchKeteranganDomisili(idUser)
+        viewModel.fetchKeteranganDomisili(idUser, 1)
     }
 
     private fun getKeteranganDomisili(){
