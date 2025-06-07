@@ -26,7 +26,7 @@ class BerkasTersimpanActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBerkasTersimpanBinding
     private val viewModel : BerkasTersimpanViewModel by viewModels()
     private lateinit var sharedPreferences : SharedPreferencesLogin
-    private lateinit var dataPreviousActivity : String
+    private var dataPreviousActivity : String = ""
     private var constant = Constant
     private lateinit var adapter: BerkasAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,9 +64,8 @@ class BerkasTersimpanActivity : AppCompatActivity() {
     }
 
     private fun fetchDataPreviousActivity() {
-        val bundle = intent.extras
-        if(bundle!=null){
-            dataPreviousActivity = bundle.getString("keterangan")!!
+        if(intent != null){
+            dataPreviousActivity = intent.getStringExtra("keterangan")!!
 
             val keterangan = dataPreviousActivity.split(" ").joinToString(" ") { it.replaceFirstChar { char -> char.uppercase() } }
             setNavTopBar(keterangan)
