@@ -40,96 +40,96 @@ class BerkasTersimpanViewModel @Inject constructor(
     private val _keteranganDomisili = MutableLiveData<UIState<ArrayList<BerkasModel>>>()
     val getKeteranganDomisili : LiveData<UIState<ArrayList<BerkasModel>>> = _keteranganDomisili
 
-    fun fetchKeteranganNikah(idUser: String){
+    fun fetchKeteranganNikah(idUser: String, ket: Int){
         viewModelScope.launch {
             _keteranganNikah.postValue(UIState.Loading)
             delay(1_000)
             try {
-                _keteranganNikah.postValue(UIState.Success(repository.getKeteranganNikah(idUser)))
+                _keteranganNikah.postValue(UIState.Success(repository.getKeteranganNikah(idUser, ket)))
             } catch (ex: Exception){
                 _keteranganNikah.postValue(UIState.Failure(ex.message.toString()))
             }
         }
     }
 
-    fun fetchKeteranganLahir(idUser: String){
+    fun fetchKeteranganLahir(idUser: String, ket: Int){
         viewModelScope.launch {
             _keteranganLahir.postValue(UIState.Loading)
             delay(1_000)
             try {
-                _keteranganLahir.postValue(UIState.Success(repository.getKeteranganLahir(idUser)))
+                _keteranganLahir.postValue(UIState.Success(repository.getKeteranganLahir(idUser, ket)))
             } catch (ex: Exception){
                 _keteranganLahir.postValue(UIState.Failure(ex.message.toString()))
             }
         }
     }
 
-    fun fetchKeteranganUsaha(idUser: String){
+    fun fetchKeteranganUsaha(idUser: String, ket: Int){
         viewModelScope.launch {
             _keteranganUsaha.postValue(UIState.Loading)
             delay(1_000)
             try {
-                _keteranganUsaha.postValue(UIState.Success(repository.getKeteranganUsaha(idUser)))
+                _keteranganUsaha.postValue(UIState.Success(repository.getKeteranganUsaha(idUser, ket)))
             } catch (ex: Exception){
                 _keteranganUsaha.postValue(UIState.Failure(ex.message.toString()))
             }
         }
     }
 
-    fun fetchKeteranganTidakMampu(idUser: String){
+    fun fetchKeteranganTidakMampu(idUser: String, ket: Int){
         viewModelScope.launch {
             _keteranganTidakMampu.postValue(UIState.Loading)
             delay(1_000)
             try {
-                _keteranganTidakMampu.postValue(UIState.Success(repository.getKeteranganTidakMampu(idUser)))
+                _keteranganTidakMampu.postValue(UIState.Success(repository.getKeteranganTidakMampu(idUser, ket)))
             } catch (ex: Exception){
                 _keteranganTidakMampu.postValue(UIState.Failure(ex.message.toString()))
             }
         }
     }
 
-    fun fetchKeteranganAkteKematian(idUser: String){
+    fun fetchKeteranganAkteKematian(idUser: String, ket: Int){
         viewModelScope.launch {
             _keteranganAkteKematian.postValue(UIState.Loading)
             delay(1_000)
             try {
-                _keteranganAkteKematian.postValue(UIState.Success(repository.getKeteranganAkteKematian(idUser)))
+                _keteranganAkteKematian.postValue(UIState.Success(repository.getKeteranganAkteKematian(idUser, ket)))
             } catch (ex: Exception){
                 _keteranganAkteKematian.postValue(UIState.Failure(ex.message.toString()))
             }
         }
     }
 
-    fun fetchKeteranganPindah(idUser: String){
+    fun fetchKeteranganPindah(idUser: String, ket: Int){
         viewModelScope.launch {
             _keteranganPindah.postValue(UIState.Loading)
             delay(1_000)
             try {
-                _keteranganPindah.postValue(UIState.Success(repository.getKeteranganPindah(idUser)))
+                _keteranganPindah.postValue(UIState.Success(repository.getKeteranganPindah(idUser, ket)))
             } catch (ex: Exception){
                 _keteranganPindah.postValue(UIState.Failure(ex.message.toString()))
             }
         }
     }
 
-    fun fetchKeteranganIzinKeramaian(idUser: String){
+    fun fetchKeteranganIzinKeramaian(idUser: String, ket: Int){
         viewModelScope.launch {
             _keteranganIzinKeramaian.postValue(UIState.Loading)
             delay(1_000)
             try {
-                _keteranganIzinKeramaian.postValue(UIState.Success(repository.getKeteranganIzinKeramaian(idUser)))
+                _keteranganIzinKeramaian.postValue(UIState.Success(repository.getKeteranganIzinKeramaian(idUser, ket)))
             } catch (ex: Exception){
                 _keteranganIzinKeramaian.postValue(UIState.Failure(ex.message.toString()))
             }
         }
     }
 
-    fun fetchKeteranganDomisili(idUser: String){
+    fun fetchKeteranganDomisili(idUser: String, ket: Int){
         viewModelScope.launch {
             _keteranganDomisili.postValue(UIState.Loading)
             delay(1_000)
             try {
-                _keteranganDomisili.postValue(UIState.Success(repository.getKeteranganDomisili(idUser)))
+                _keteranganDomisili.postValue(UIState.Success(repository.getKeteranganDomisili(idUser, ket)))
             } catch (ex: Exception){
                 _keteranganDomisili.postValue(UIState.Failure(ex.message.toString()))
             }

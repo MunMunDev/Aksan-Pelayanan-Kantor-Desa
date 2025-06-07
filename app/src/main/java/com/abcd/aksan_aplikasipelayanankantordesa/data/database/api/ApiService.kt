@@ -37,48 +37,56 @@ interface ApiService {
     suspend fun getKeteranganNikah(
         @Query("getKeteranganNikah") getKeteranganNikah: String,
         @Query("id_user") id_user: String,
+        @Query("ket") ket: Int,
     ): ArrayList<BerkasModel>
 
     @GET("pelayanan-kantor-kelurahan/api/get.php")
     suspend fun getKeteranganLahir(
         @Query("getKeteranganLahir") getKeteranganLahir: String,
         @Query("id_user") id_user: String,
+        @Query("ket") ket: Int,
     ): ArrayList<BerkasModel>
 
     @GET("pelayanan-kantor-kelurahan/api/get.php")
     suspend fun getKeteranganUsaha(
         @Query("getKeteranganUsaha") getKeteranganUsaha: String,
         @Query("id_user") id_user: String,
+        @Query("ket") ket: Int,
     ): ArrayList<BerkasModel>
 
     @GET("pelayanan-kantor-kelurahan/api/get.php")
     suspend fun getKeteranganTidakMampu(
         @Query("getKeteranganTidakMampu") getKeteranganTidakMampu: String,
         @Query("id_user") id_user: String,
+        @Query("ket") ket: Int,
     ): ArrayList<BerkasModel>
 
     @GET("pelayanan-kantor-kelurahan/api/get.php")
     suspend fun getKeteranganAkteKematian(
         @Query("getKeteranganAkteKematian") getKeteranganAkteKematian: String,
         @Query("id_user") id_user: String,
+        @Query("ket") ket: Int,
     ): ArrayList<BerkasModel>
 
     @GET("pelayanan-kantor-kelurahan/api/get.php")
     suspend fun getKeteranganPindah(
         @Query("getKeteranganPindah") getKeteranganPindah: String,
         @Query("id_user") id_user: String,
+        @Query("ket") ket: Int,
     ): ArrayList<BerkasModel>
 
     @GET("pelayanan-kantor-kelurahan/api/get.php")
     suspend fun getKeteranganIzinKeramaian(
         @Query("getKeteranganIzinKeramaian") getKeteranganIzinKeramaian: String,
         @Query("id_user") id_user: String,
+        @Query("ket") ket: Int,
     ): ArrayList<BerkasModel>
 
     @GET("pelayanan-kantor-kelurahan/api/get.php")
     suspend fun getKeteranganDomisili(
         @Query("getKeteranganDomisili") getKeteranganDomisili: String,
         @Query("id_user") id_user: String,
+        @Query("ket") ket: Int,
     ): ArrayList<BerkasModel>
 
 
