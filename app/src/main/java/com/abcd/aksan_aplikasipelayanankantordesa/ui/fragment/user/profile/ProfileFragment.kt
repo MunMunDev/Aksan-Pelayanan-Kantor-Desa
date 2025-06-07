@@ -98,7 +98,7 @@ class ProfileFragment : Fragment() {
 
     private fun moveToActivity(keterangan: String){
         val intent = Intent(context, BerkasTersimpanActivity::class.java)
-        intent.putExtra(keterangan, "keterangan")
+        intent.putExtra("keterangan", keterangan)
         startActivity(intent)
     }
 }
