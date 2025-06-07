@@ -37,8 +37,8 @@ class TanggalDanWaktu {
         val valueBulan = "${splitBulan[2]} ${arrayBulan[(splitBulan[1].toInt()-1)]} ${splitBulan[0]}"
 
         return valueBulan
-
     }
+
     fun konversiBulanSingkatan(bulan: String): String{
         val arrayBulan = arrayOf(
             "Jan",
@@ -64,6 +64,14 @@ class TanggalDanWaktu {
     fun waktuNoSecond(waktu: String): String{
         val arrayWaktu = waktu.split(":")
         return "${arrayWaktu[0]}:${arrayWaktu[1]}"
+    }
+
+    fun fetchTanggalDanWaktu(tanggalDanWaktu: String): String{
+        val splitTanggalDanWaktu = tanggalDanWaktu.split(" ")
+        val tanggal = konversiBulan(splitTanggalDanWaktu[0])
+        val waktu = waktuNoSecond(splitTanggalDanWaktu[1])
+
+        return "$tanggal - $waktu"
     }
 
     fun tanggalSekarangZonaMakassar():String{
