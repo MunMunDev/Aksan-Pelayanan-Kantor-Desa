@@ -7,8 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.LifecycleOwner
-import com.abcd.aksan_aplikasipelayanankantordesa.R
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.FragmentProfileBinding
 import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.berkas_tersimpan.BerkasTersimpanActivity
 import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.main.MainActivity

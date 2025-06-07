@@ -16,11 +16,6 @@ import retrofit2.http.Query
 
 interface ApiService {
     @GET("pelayanan-kantor-kelurahan/api/get.php")
-    suspend fun getAllUser(
-        @Query("all_user") allUser: String
-    ): List<UserModel>
-
-    @GET("pelayanan-kantor-kelurahan/api/get.php")
     suspend fun getUser(
         @Query("get_user") getUser: String,
         @Query("no_ktp") no_ktp: String,
@@ -88,20 +83,6 @@ interface ApiService {
         @Query("id_user") id_user: String,
         @Query("ket") ket: Int,
     ): ArrayList<BerkasModel>
-
-
-    // POST
-    @FormUrlEncoded
-    @POST("pelayanan-kantor-kelurahan/api/post.php")
-    suspend fun addUser(
-        @Field("add_user") addUser:String,
-        @Field("nama") nama:String,
-        @Field("alamat") alamat:String,
-        @Field("nomor_hp") nomorHp:String,
-        @Field("username") username:String,
-        @Field("password") password:String,
-        @Field("sebagai") sebagai:String
-    ): ResponseModel
 
     //Register
     @Multipart
