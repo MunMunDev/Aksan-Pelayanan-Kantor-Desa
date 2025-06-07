@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.FragmentProfileBinding
+import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.akun.data_diri.DataDiriActivity
 import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.berkas_tersimpan.BerkasTersimpanActivity
 import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.main.MainActivity
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.Constant
@@ -57,10 +58,7 @@ class ProfileFragment : Fragment() {
     private fun setButtonPersonal() {
         binding.apply {
             btnDataDiri.setOnClickListener {
-
-            }
-            btnSetting.setOnClickListener {
-
+                startActivity(Intent(context, DataDiriActivity::class.java))
             }
         }
     }
