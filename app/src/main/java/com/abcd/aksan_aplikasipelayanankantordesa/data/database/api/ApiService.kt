@@ -1,6 +1,7 @@
 package com.abcd.aksan_aplikasipelayanankantordesa.data.database.api
 
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.BeritaModel
+import com.abcd.aksan_aplikasipelayanankantordesa.data.model.BerkasModel
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.UserModel
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.ResponseModel
 import okhttp3.MultipartBody
@@ -30,6 +31,55 @@ interface ApiService {
     suspend fun getBerita(
         @Query("get_berita") get_berita: String,
     ): ArrayList<BeritaModel>
+
+    // Surat Pengantar Keterangan
+    @GET("pelayanan-kantor-kelurahan/api/get.php")
+    suspend fun getKeteranganNikah(
+        @Query("getKeteranganNikah") getKeteranganNikah: String,
+        @Query("id_user") id_user: String,
+    ): ArrayList<BerkasModel>
+
+    @GET("pelayanan-kantor-kelurahan/api/get.php")
+    suspend fun getKeteranganLahir(
+        @Query("getKeteranganLahir") getKeteranganLahir: String,
+        @Query("id_user") id_user: String,
+    ): ArrayList<BerkasModel>
+
+    @GET("pelayanan-kantor-kelurahan/api/get.php")
+    suspend fun getKeteranganUsaha(
+        @Query("getKeteranganUsaha") getKeteranganUsaha: String,
+        @Query("id_user") id_user: String,
+    ): ArrayList<BerkasModel>
+
+    @GET("pelayanan-kantor-kelurahan/api/get.php")
+    suspend fun getKeteranganTidakMampu(
+        @Query("getKeteranganTidakMampu") getKeteranganTidakMampu: String,
+        @Query("id_user") id_user: String,
+    ): ArrayList<BerkasModel>
+
+    @GET("pelayanan-kantor-kelurahan/api/get.php")
+    suspend fun getKeteranganAkteKematian(
+        @Query("getKeteranganAkteKematian") getKeteranganAkteKematian: String,
+        @Query("id_user") id_user: String,
+    ): ArrayList<BerkasModel>
+
+    @GET("pelayanan-kantor-kelurahan/api/get.php")
+    suspend fun getKeteranganPindah(
+        @Query("getKeteranganPindah") getKeteranganPindah: String,
+        @Query("id_user") id_user: String,
+    ): ArrayList<BerkasModel>
+
+    @GET("pelayanan-kantor-kelurahan/api/get.php")
+    suspend fun getKeteranganIzinKeramaian(
+        @Query("getKeteranganIzinKeramaian") getKeteranganIzinKeramaian: String,
+        @Query("id_user") id_user: String,
+    ): ArrayList<BerkasModel>
+
+    @GET("pelayanan-kantor-kelurahan/api/get.php")
+    suspend fun getKeteranganDomisili(
+        @Query("getKeteranganDomisili") getKeteranganDomisili: String,
+        @Query("id_user") id_user: String,
+    ): ArrayList<BerkasModel>
 
 
     // POST
