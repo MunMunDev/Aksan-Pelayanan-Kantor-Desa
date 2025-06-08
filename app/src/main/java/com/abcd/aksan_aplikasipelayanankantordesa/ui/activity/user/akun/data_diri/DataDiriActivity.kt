@@ -1,5 +1,6 @@
 package com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.akun.data_diri
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -31,7 +32,6 @@ class DataDiriActivity : AppCompatActivity() {
     private val viewModel: DataDiriViewModel by viewModels()
     private lateinit var sharedPreferences : SharedPreferencesLogin
     private var kataAcak = KataAcak()
-    private var tanggalDanWaktu = TanggalDanWaktu()
     private var selectedDate: Date? = null
     private var tempUser: UserModel? = null
     private var tempDialogAkun: AlertDialog? = null
@@ -60,6 +60,7 @@ class DataDiriActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setNavTopBar() {
         binding.navTopBar.apply {
             tvTitle.text = "Data Diri"
