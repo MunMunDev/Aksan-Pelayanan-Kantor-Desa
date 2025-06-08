@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.FragmentProfileBinding
+import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.login.LoginActivity
 import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.akun.data_diri.DataDiriActivity
 import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.berkas_tersimpan.BerkasTersimpanActivity
 import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.main.MainActivity
@@ -52,7 +53,19 @@ class ProfileFragment : Fragment() {
 
     private fun setButton() {
         setButtonPersonal()
+        setButtonLogout()
         setButtonBerkasTersimpan()
+    }
+
+    private fun setButtonLogout() {
+        binding.btnLogout.setOnClickListener {
+            sharedPreferencesLogin.setLogin(
+                0, "", "", "", "", "", "",
+                "", "", "", ""
+            )
+            startActivity(Intent(context, LoginActivity::class.java))
+            activityContext.finish()
+        }
     }
 
     private fun setButtonPersonal() {
