@@ -17,4 +17,12 @@ class KataAcak {
         }
         return hurufAcak
     }
+
+    fun setPassword(jum: Int): String{
+        var huruf = ""
+        for(a in 0..jum){
+            huruf+="*"
+        }
+        return huruf
+    }
 }
