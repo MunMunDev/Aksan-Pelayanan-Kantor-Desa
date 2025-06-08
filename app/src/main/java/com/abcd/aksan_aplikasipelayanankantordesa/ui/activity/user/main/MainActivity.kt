@@ -13,6 +13,7 @@ import com.abcd.aksan_aplikasipelayanankantordesa.databinding.ActivityMainBindin
 import com.abcd.aksan_aplikasipelayanankantordesa.ui.fragment.user.berita.BeritaFragment
 import com.abcd.aksan_aplikasipelayanankantordesa.ui.fragment.user.home.HomeFragment
 import com.abcd.aksan_aplikasipelayanankantordesa.ui.fragment.user.profile.ProfileFragment
+import com.abcd.aksan_aplikasipelayanankantordesa.ui.fragment.user.proses.ProsesBerkasFragment
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.SharedPreferencesLogin
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -107,7 +108,7 @@ class MainActivity : AppCompatActivity() {
             ivProses.setImageResource(R.drawable.icon_riwayat_active)
             ivAccount.setImageResource(R.drawable.icon_akun)
 
-//            setFragment(ProsesFragment())
+            setFragment(ProsesBerkasFragment())
             checkFragmentPosition = 2
         }
     }
