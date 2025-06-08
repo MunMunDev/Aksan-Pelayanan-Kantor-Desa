@@ -6,6 +6,8 @@ import com.abcd.aksan_aplikasipelayanankantordesa.data.model.UserModel
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.ResponseModel
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
@@ -99,6 +101,23 @@ interface ApiService {
         @Part ktp: MultipartBody.Part,
         @Part kk: MultipartBody.Part,
         @Part fotoDiri: MultipartBody.Part,
+    ): ResponseModel
+
+    @FormUrlEncoded
+    @POST("pelayanan-kantor-kelurahan/api/post.php")
+    suspend fun postUpdateDataDiri(
+        @Field("post_update_data_diri") post_update_data_diri:String,
+        @Field("id_user") id_user: Int,
+        @Field("nama") nama: String,
+        @Field("alamat") alamat: String,
+        @Field("nomor_hp") nomor_hp: String,
+        @Field("no_ktp") no_ktp: String,
+        @Field("no_kk") no_kk: String,
+        @Field("tempat_lahir") tempat_lahir: String,
+        @Field("tanggal_lahir") tanggal_lahir: String,
+        @Field("jenis_kelamin") jenis_kelamin: String,
+        @Field("password") password: String,
+        @Field("no_ktp_lama") no_ktp_lama: String,
     ): ResponseModel
 
 }
