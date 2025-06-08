@@ -117,7 +117,7 @@ class DataDiriActivity : AppCompatActivity() {
                 showDatePicker(view, sharedPreferences.getTanggalLahir())
             }
 
-            var selectedGender = ""
+            var selectedGender = sharedPreferences.getJenisKelamin()
             rgGender.setOnCheckedChangeListener { _, checkedId ->
                 when (checkedId) {
                     R.id.rbLakiLaki -> selectedGender = "Laki-laki"
@@ -273,7 +273,7 @@ class DataDiriActivity : AppCompatActivity() {
 
         datePicker.addOnPositiveButtonClickListener { selection ->
             selectedDate = Date(selection)
-            val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
             view.etEditTanggalLahir.text = dateFormat.format(selectedDate!!)
         }
 
