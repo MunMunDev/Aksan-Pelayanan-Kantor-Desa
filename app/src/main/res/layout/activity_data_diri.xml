@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.user.akun.data_diri.DataDiriActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include
+            android:id="@+id/navTopBar"
+            layout="@layout/appbar_nav_drawer"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/navTopBar"
+            android:layout_marginTop="12dp"
+            android:paddingBottom="12dp"
+            android:orientation="vertical">
+
+            <!-- Nama -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:text="Nama Lengkap"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvNama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="4dp"
+                android:text="Aksan Rafi"
+                android:textSize="14sp"
+                android:textColor="@color/textColorBlack"
+                android:textStyle="normal" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/abuabu_muda"
+                android:layout_marginTop="12dp"/>
+
+            <!-- Alamat Lengkap -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:text="Alamat Lengkap"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvAlamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="4dp"
+                android:text="Sidrap Sebelah Mana"
+                android:textSize="14sp"
+                android:textColor="@color/textColorBlack"
+                android:textStyle="normal" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/abuabu_muda"
+                android:layout_marginTop="12dp"/>
+
+            <!-- Nomor HP -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:text="Nomor HP"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvNomorHp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="4dp"
+                android:text="081234567890"
+                android:textSize="14sp"
+                android:textColor="@color/textColorBlack"
+                android:textStyle="normal" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/abuabu_muda"
+                android:layout_marginTop="12dp"/>
+
+            <!-- No. KTP -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:text="No. KTP"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvNoKtp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="4dp"
+                android:text="77129389173912"
+                android:textSize="14sp"
+                android:textColor="@color/textColorBlack"
+                android:textStyle="normal" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/abuabu_muda"
+                android:layout_marginTop="12dp"/>
+
+            <!-- No. KK -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:text="No. KK"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvNoKK"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="4dp"
+                android:text="7191293719231"
+                android:textSize="14sp"
+                android:textColor="@color/textColorBlack"
+                android:textStyle="normal" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/abuabu_muda"
+                android:layout_marginTop="12dp"/>
+
+            <!-- Tempat Lahir -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:text="Tempat Lahir"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvTempatLahir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="4dp"
+                android:text="Sidrap Sebelah Mana"
+                android:textSize="14sp"
+                android:textColor="@color/textColorBlack"
+                android:textStyle="normal" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/abuabu_muda"
+                android:layout_marginTop="12dp"/>
+
+            <!-- Tanggal Lahir -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:text="Tanggal Lahir"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvTanggalLahir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="4dp"
+                android:text="20 September 2000"
+                android:textSize="14sp"
+                android:textColor="@color/textColorBlack"
+                android:textStyle="normal" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/abuabu_muda"
+                android:layout_marginTop="12dp"/>
+
+            <!-- Jenis Kelamin -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:text="Jenis Kelamin"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvJenisKelamin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="4dp"
+                android:text="Laki-laki"
+                android:textSize="14sp"
+                android:textColor="@color/textColorBlack"
+                android:textStyle="normal" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/abuabu_muda"
+                android:layout_marginTop="12dp"/>
+
+            <!-- Password -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:text="Password"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="4dp"
+                android:text="*******"
+                android:textSize="14sp"
+                android:textColor="@color/textColorBlack"
+                android:textStyle="normal" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/abuabu_muda"
+                android:layout_marginTop="12dp"/>
+
+            <Button
+                android:id="@+id/btnUbahData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:text="Ubah Data"
+                android:textSize="16sp"/>
+
+    </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</ScrollView>
