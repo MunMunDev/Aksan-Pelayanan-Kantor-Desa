@@ -2,6 +2,7 @@ package com.abcd.aksan_aplikasipelayanankantordesa.data.database.api
 
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.BeritaModel
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.BerkasModel
+import com.abcd.aksan_aplikasipelayanankantordesa.data.model.DokumenModel
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.UserModel
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.ResponseModel
 import okhttp3.MultipartBody
@@ -32,6 +33,12 @@ interface ApiService {
         @Query("get_all_proses_berkas") get_all_proses_berkas: String,
         @Query("id_user") id_user: Int,
     ): ArrayList<BerkasModel>
+
+    @GET("pelayanan-kantor-kelurahan/api/get.php")
+    suspend fun getAllProsesBerkasDetail(
+        @Query("get_proses_berkas_detail") get_proses_berkas_detail: String,
+        @Query("id_berkas") id_berkas: Int,
+    ): ArrayList<DokumenModel>
 
     // Surat Pengantar Keterangan
     @GET("pelayanan-kantor-kelurahan/api/get.php")
