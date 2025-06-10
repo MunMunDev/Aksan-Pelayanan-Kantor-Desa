@@ -2,6 +2,7 @@ package com.abcd.aksan_aplikasipelayanankantordesa.ui.fragment.user.proses
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import com.abcd.aksan_aplikasipelayanankantordesa.adapter.ProsesBerkasAdapter
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.BerkasModel
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.FragmentProsesBerkasBinding
 import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.main.MainActivity
+import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.proses.detail.ProsesBerkasDetailActivity
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.OnClickItem
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.SharedPreferencesLogin
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.network.UIState
@@ -98,9 +100,11 @@ class ProsesBerkasFragment : Fragment() {
 
     private fun setRecyclerViewSuratKeterangan(data: ArrayList<BerkasModel>) {
         adapter = ProsesBerkasAdapter(data, object: OnClickItem.ClickBerkas{
-            override fun clickBerkas(berita: BerkasModel) {
+            override fun clickBerkas(berkas: BerkasModel) {
                 // Click data
-
+                val i = Intent(context, ProsesBerkasDetailActivity::class.java)
+                i.putExtra("berkas", berkas)
+                startActivity(i)
             }
         })
 
