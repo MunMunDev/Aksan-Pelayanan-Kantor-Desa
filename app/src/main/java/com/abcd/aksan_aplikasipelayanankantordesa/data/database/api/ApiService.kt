@@ -27,6 +27,12 @@ interface ApiService {
         @Query("get_berita") get_berita: String,
     ): ArrayList<BeritaModel>
 
+    @GET("pelayanan-kantor-kelurahan/api/get.php")
+    suspend fun getAllProsesBerkas(
+        @Query("get_all_proses_berkas") get_all_proses_berkas: String,
+        @Query("id_user") id_user: Int,
+    ): ArrayList<BerkasModel>
+
     // Surat Pengantar Keterangan
     @GET("pelayanan-kantor-kelurahan/api/get.php")
     suspend fun getKeteranganNikah(

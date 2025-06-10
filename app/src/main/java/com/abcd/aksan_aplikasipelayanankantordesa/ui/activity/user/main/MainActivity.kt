@@ -13,6 +13,7 @@ import com.abcd.aksan_aplikasipelayanankantordesa.databinding.ActivityMainBindin
 import com.abcd.aksan_aplikasipelayanankantordesa.ui.fragment.user.berita.BeritaFragment
 import com.abcd.aksan_aplikasipelayanankantordesa.ui.fragment.user.home.HomeFragment
 import com.abcd.aksan_aplikasipelayanankantordesa.ui.fragment.user.profile.ProfileFragment
+import com.abcd.aksan_aplikasipelayanankantordesa.ui.fragment.user.proses.ProsesBerkasFragment
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.SharedPreferencesLogin
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,8 +47,8 @@ class MainActivity : AppCompatActivity() {
             btnBerita.setOnClickListener {
                 clickBerita()
             }
-            btnRiwayat.setOnClickListener {
-                clickRiwayat()
+            btnProses.setOnClickListener {
+                clickProses()
             }
             btnAccount.setOnClickListener {
                 clickAccount()
@@ -60,13 +61,13 @@ class MainActivity : AppCompatActivity() {
             // text color
             tvHome.setTextColor(resources.getColor(R.color.primaryColor))
             tvBerita.setTextColor(resources.getColor(R.color.textColorBlack))
-            tvRiwayat.setTextColor(resources.getColor(R.color.textColorBlack))
+            tvProses.setTextColor(resources.getColor(R.color.textColorBlack))
             tvAccount.setTextColor(resources.getColor(R.color.textColorBlack))
 
             // image view visibility
             ivHome.setImageResource(R.drawable.icon_home_active)
             ivBerita.setImageResource(R.drawable.icon_layanan)
-            ivRiwayat.setImageResource(R.drawable.icon_riwayat)
+            ivProses.setImageResource(R.drawable.icon_riwayat)
             ivAccount.setImageResource(R.drawable.icon_akun)
 
             setFragment(HomeFragment())
@@ -79,13 +80,13 @@ class MainActivity : AppCompatActivity() {
             // text color
             tvHome.setTextColor(resources.getColor(R.color.textColorBlack))
             tvBerita.setTextColor(resources.getColor(R.color.primaryColor))
-            tvRiwayat.setTextColor(resources.getColor(R.color.textColorBlack))
+            tvProses.setTextColor(resources.getColor(R.color.textColorBlack))
             tvAccount.setTextColor(resources.getColor(R.color.textColorBlack))
 
             // image view visibility
             ivHome.setImageResource(R.drawable.icon_home)
             ivBerita.setImageResource(R.drawable.icon_layanan_active)
-            ivRiwayat.setImageResource(R.drawable.icon_riwayat)
+            ivProses.setImageResource(R.drawable.icon_riwayat)
             ivAccount.setImageResource(R.drawable.icon_akun)
 
             setFragment(BeritaFragment())
@@ -93,21 +94,21 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun clickRiwayat() {
+    private fun clickProses() {
         binding.icBottom.apply {
             // text color
             tvHome.setTextColor(resources.getColor(R.color.textColorBlack))
             tvBerita.setTextColor(resources.getColor(R.color.textColorBlack))
-            tvRiwayat.setTextColor(resources.getColor(R.color.primaryColor))
+            tvProses.setTextColor(resources.getColor(R.color.primaryColor))
             tvAccount.setTextColor(resources.getColor(R.color.textColorBlack))
 
             // image view visibility
             ivHome.setImageResource(R.drawable.icon_home)
             ivBerita.setImageResource(R.drawable.icon_layanan)
-            ivRiwayat.setImageResource(R.drawable.icon_riwayat_active)
+            ivProses.setImageResource(R.drawable.icon_riwayat_active)
             ivAccount.setImageResource(R.drawable.icon_akun)
 
-//            setFragment(RiwayatFragment())
+            setFragment(ProsesBerkasFragment())
             checkFragmentPosition = 2
         }
     }
@@ -117,13 +118,13 @@ class MainActivity : AppCompatActivity() {
             // text color
             tvHome.setTextColor(resources.getColor(R.color.textColorBlack))
             tvBerita.setTextColor(resources.getColor(R.color.textColorBlack))
-            tvRiwayat.setTextColor(resources.getColor(R.color.textColorBlack))
+            tvProses.setTextColor(resources.getColor(R.color.textColorBlack))
             tvAccount.setTextColor(resources.getColor(R.color.primaryColor))
 
             // image view visibility
             ivHome.setImageResource(R.drawable.icon_home)
             ivBerita.setImageResource(R.drawable.icon_layanan)
-            ivRiwayat.setImageResource(R.drawable.icon_riwayat)
+            ivProses.setImageResource(R.drawable.icon_riwayat)
             ivAccount.setImageResource(R.drawable.icon_akun_active)
 
             setFragment(ProfileFragment())

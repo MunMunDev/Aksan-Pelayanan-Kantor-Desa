@@ -14,7 +14,7 @@ interface OnClickItem {
 
     interface ClickBerkas{
         fun clickBerkas(
-            berita: BerkasModel
+            berkas: BerkasModel
         )
     }
 
