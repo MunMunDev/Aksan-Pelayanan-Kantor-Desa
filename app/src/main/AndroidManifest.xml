@@ -24,6 +24,9 @@
         android:theme="@style/Theme.AksanAplikasiPelayananKantorDesa"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activity.user.layanan.LayananActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.user.proses.detail.ProsesBerkasDetailActivity"
             android:exported="false" />
         <activity
