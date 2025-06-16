@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:src="@color/abuabu_muda"/>
         <TextView
-            android:id="@+id/tvKelurahan"
+            android:id="@+id/tvDesa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/ivDownload"
@@ -35,7 +35,7 @@
             android:id="@+id/tvTanggal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tvKelurahan"
+            app:layout_constraintTop_toBottomOf="@id/tvDesa"
             android:layout_marginTop="6dp"
             android:background="@color/abuabu_muda"
             android:maxLines="1"

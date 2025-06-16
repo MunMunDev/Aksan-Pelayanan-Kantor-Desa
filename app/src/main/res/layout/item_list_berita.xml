@@ -42,7 +42,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:lineSpacingExtra="1dp"
-                android:text="Judul Berita Terkini dan terupdate dari kelurahan setempat"
+                android:text="Judul Berita Terkini dan terupdate dari Desa setempat"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
@@ -63,14 +63,14 @@
                 android:ellipsize="end"/>
 
             <TextView
-                android:id="@+id/tvKelurahan"
+                android:id="@+id/tvDesa"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="4dp"
-                android:text="Kel. Pangkajene Sidrap"
+                android:text="Desa Awwa"
                 android:textSize="12sp"
                 android:textColor="@color/black"
                 android:textStyle="normal"

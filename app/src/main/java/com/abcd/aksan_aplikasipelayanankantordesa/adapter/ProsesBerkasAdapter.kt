@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.abcd.aksan_aplikasipelayanankantordesa.R
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.BerkasModel
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.ItemListBerkasBinding
-import com.abcd.aksan_aplikasipelayanankantordesa.utils.Constant
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.OnClickItem
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.TanggalDanWaktu
 import com.bumptech.glide.Glide
@@ -25,7 +24,7 @@ class ProsesBerkasAdapter(
         val vKata = kata.lowercase(Locale.getDefault()).trim()
         val data = listBerkas.filter {
             (
-                it.kelurahan!!.kelurahan!!.lowercase().trim().contains(vKata)
+                it.desa!!.desa!!.lowercase().trim().contains(vKata)
                     or
                 (tanggalDanWaktu.konversiBulan(it.tanggal!!.lowercase().trim())).contains(vKata)
             )
@@ -51,7 +50,7 @@ class ProsesBerkasAdapter(
 
         holder.binding.apply {
             tvJenisBerkas.text = "Surat Pengantar ${berkas.jenis_berkas!!.jenis_berkas}"
-            tvKelurahan.text = "Kelurahan ${berkas.kelurahan!!.kelurahan}"
+            tvDesa.text = "Desa ${berkas.desa!!.desa}"
             tvTanggal.text = tanggalDanWaktu.konversiBulanSingkatan(berkas.tanggal!!)
 
             Glide.with(holder.itemView.context)

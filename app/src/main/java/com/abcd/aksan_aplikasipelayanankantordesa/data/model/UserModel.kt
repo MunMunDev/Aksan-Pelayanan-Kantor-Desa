@@ -8,6 +8,9 @@ class UserModel (
     @SerializedName("id_user")
     var idUser: Int? = null,
 
+    @SerializedName("id_desa")
+    var id_desa: String? = null,
+
     @SerializedName("nama")
     var nama: String? = null,
 

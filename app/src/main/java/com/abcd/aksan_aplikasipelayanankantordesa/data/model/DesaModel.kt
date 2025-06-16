@@ -4,9 +4,9 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
-class KelurahanModel (
-    @SerializedName("id_kelurahan")
-    var id_kelurahan: String? = null,
+class DesaModel (
+    @SerializedName("id_desa")
+    var id_desa: String? = null,
 
     @SerializedName("judul")
     var judul: String? = null,
@@ -23,8 +23,8 @@ class KelurahanModel (
     @SerializedName("gambar")
     var gambar: String? = null,
 
-    @SerializedName("kelurahan")
-    var kelurahan: String? = null,
+    @SerializedName("desa")
+    var desa: String? = null,
 ): Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
@@ -38,25 +38,25 @@ class KelurahanModel (
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(id_kelurahan)
+        parcel.writeString(id_desa)
         parcel.writeString(judul)
         parcel.writeString(isi)
         parcel.writeString(tanggal)
         parcel.writeString(narasumber)
         parcel.writeString(gambar)
-        parcel.writeString(kelurahan)
+        parcel.writeString(desa)
     }
 
     override fun describeContents(): Int {
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<KelurahanModel> {
-        override fun createFromParcel(parcel: Parcel): KelurahanModel {
-            return KelurahanModel(parcel)
+    companion object CREATOR : Parcelable.Creator<DesaModel> {
+        override fun createFromParcel(parcel: Parcel): DesaModel {
+            return DesaModel(parcel)
         }
 
-        override fun newArray(size: Int): Array<KelurahanModel?> {
+        override fun newArray(size: Int): Array<DesaModel?> {
             return arrayOfNulls(size)
         }
     }
