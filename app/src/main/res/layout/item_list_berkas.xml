@@ -36,11 +36,11 @@
             android:maxLines="2"
             android:ellipsize="end"/>
         <TextView
-            android:id="@+id/tvKelurahan"
+            android:id="@+id/tvDesa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/tvJenisBerkas"
-            android:text="Kelurahan"
+            android:text="Desa"
             android:textStyle="normal"
             android:textSize="14sp"
             android:textColor="@color/textColorBlack"
@@ -51,7 +51,7 @@
             android:id="@+id/tvTanggal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tvKelurahan"
+            app:layout_constraintTop_toBottomOf="@id/tvDesa"
             android:text="30 Desember 2025"
             android:textStyle="normal"
             android:textSize="14sp"

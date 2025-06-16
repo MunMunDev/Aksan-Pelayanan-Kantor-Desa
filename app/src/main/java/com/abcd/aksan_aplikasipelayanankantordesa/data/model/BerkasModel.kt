@@ -14,8 +14,8 @@ class BerkasModel (
     @SerializedName("id_user")
     var id_user: String? = null,
 
-    @SerializedName("id_kelurahan")
-    var id_kelurahan: String? = null,
+    @SerializedName("id_desa")
+    var id_desa: String? = null,
 
     @SerializedName("id_jenis_berkas")
     var id_jenis_berkas: String? = null,
@@ -32,8 +32,8 @@ class BerkasModel (
     @SerializedName("user")
     var user: UserModel? = null,
 
-    @SerializedName("kelurahan")
-    var kelurahan: KelurahanModel? = null,
+    @SerializedName("desa")
+    var desa: DesaModel? = null,
 
     @SerializedName("jenis_berkas")
     var jenis_berkas: JenisBerkasModel? = null,
@@ -47,7 +47,7 @@ class BerkasModel (
         parcel.readString(),
         parcel.readString(),
         parcel.readParcelable(UserModel::class.java.classLoader),
-        parcel.readParcelable(KelurahanModel::class.java.classLoader),
+        parcel.readParcelable(DesaModel::class.java.classLoader),
         parcel.readParcelable(JenisBerkasModel::class.java.classLoader)
     ) {
     }
@@ -55,13 +55,13 @@ class BerkasModel (
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeValue(id_berkas)
         parcel.writeString(id_user)
-        parcel.writeString(id_kelurahan)
+        parcel.writeString(id_desa)
         parcel.writeString(id_jenis_berkas)
         parcel.writeString(tanggal)
         parcel.writeString(waktu)
         parcel.writeString(file)
         parcel.writeParcelable(user, flags)
-        parcel.writeParcelable(kelurahan, flags)
+        parcel.writeParcelable(desa, flags)
         parcel.writeParcelable(jenis_berkas, flags)
     }
 

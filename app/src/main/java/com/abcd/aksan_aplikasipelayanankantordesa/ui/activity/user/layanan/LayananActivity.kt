@@ -441,7 +441,7 @@ class LayananActivity : AppCompatActivity() {
             if(data.status == "0"){
                 Toast.makeText(
                     this@LayananActivity,
-                    "Berhasil. Silahkan Tunggu Dokumen Anda Dari Kelurahan. Pantau Terus pada halaman progress",
+                    "Berhasil. Silahkan Tunggu Dokumen Anda Dari Kantor Desa. Pantau Terus pada halaman progress",
                     Toast.LENGTH_SHORT
                 ).show()
             } else{
