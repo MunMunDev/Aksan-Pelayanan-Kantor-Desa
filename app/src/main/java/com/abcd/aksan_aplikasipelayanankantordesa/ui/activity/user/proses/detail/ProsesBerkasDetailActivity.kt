@@ -16,8 +16,10 @@ import com.abcd.aksan_aplikasipelayanankantordesa.data.model.BerkasModel
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.DokumenModel
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.ActivityProsesBerkasDetailBinding
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.AlertDialogImageBinding
+import com.abcd.aksan_aplikasipelayanankantordesa.utils.Constant
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.LoadingAlertDialog
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.OnClickItem
+import com.abcd.aksan_aplikasipelayanankantordesa.utils.SharedPreferencesLogin
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.network.UIState
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,11 +32,13 @@ class ProsesBerkasDetailActivity : AppCompatActivity() {
     private val viewModel: ProsesBerkasDetailViewModel by viewModels()
     private lateinit var dokumenAdapter : DokumenAdapter
     private var berkas: BerkasModel? = null
+    private lateinit var sharedPreferences: SharedPreferencesLogin
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProsesBerkasDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        sharedPreferences = SharedPreferencesLogin(this@ProsesBerkasDetailActivity)
         retrievePreviousData()
         setNavTopBar()
         getDokumen()
@@ -94,8 +98,8 @@ class ProsesBerkasDetailActivity : AppCompatActivity() {
         binding.apply {
             dokumenAdapter = DokumenAdapter(data, object: OnClickItem.ClickDokumen{
                 override fun clickGambarDokumen(dokumen: DokumenModel) {
-                    if(dokumen.format == "jpg"){
-                        setShowImage(dokumen.dokumen!!, dokumen.file!!)
+                    if(dokumen.format == "jpg" || dokumen.format == "jpeg" || dokumen.format == "png"){
+                        setShowImage(dokumen.dokumen!!, "${Constant.LOCATION_FILE}/${sharedPreferences.getNoKtp()}/${berkas?.id_berkas}/${dokumen.file}")
                     } else if(dokumen.format == "pdf"){
                         // Show pdf
 
@@ -105,7 +109,7 @@ class ProsesBerkasDetailActivity : AppCompatActivity() {
                 override fun clickUploadDokumen(dokumen: DokumenModel) {
 
                 }
-            })
+            }, berkas?.id_berkas!!)
             rvDokumen.apply {
                 layoutManager = GridLayoutManager(this@ProsesBerkasDetailActivity, 2)
                 adapter = dokumenAdapter
