@@ -133,4 +133,106 @@ interface ApiService {
         @Field("no_ktp_lama") no_ktp_lama: String,
     ): ResponseModel
 
+
+    // Layanan
+    // Keterangan Nikah
+    @Multipart
+    @POST("pelayanan-kantor-kelurahan/api/post.php")
+    suspend fun postKeteranganNikah(
+        @Part("post_keterangan_nikah") post_keterangan_nikah: RequestBody,
+        @Part("id_user") id_user: RequestBody,
+        @Part ktp: MultipartBody.Part,
+        @Part kk: MultipartBody.Part,
+        @Part surat_pengantar_rt_rw: MultipartBody.Part,
+        @Part akta_kelahiran: MultipartBody.Part,
+        @Part pas_foto: MultipartBody.Part,
+    ): ResponseModel
+
+    // Keterangan Lahir
+    @Multipart
+    @POST("pelayanan-kantor-kelurahan/api/post.php")
+    suspend fun postKeteranganLahir(
+        @Part("post_keterangan_lahir") post_keterangan_lahir: RequestBody,
+        @Part("id_user") id_user: RequestBody,
+        @Part ktp_orang_tua: MultipartBody.Part,
+        @Part kk: MultipartBody.Part,
+        @Part keterangan_lahir_dari_bidan: MultipartBody.Part,
+    ): ResponseModel
+
+    // Keterangan Usaha
+    @Multipart
+    @POST("pelayanan-kantor-kelurahan/api/post.php")
+    suspend fun postKeteranganUsaha(
+        @Part("post_keterangan_usaha") post_keterangan_usaha: RequestBody,
+        @Part("id_user") id_user: RequestBody,
+        @Part ktp: MultipartBody.Part,
+        @Part kk: MultipartBody.Part,
+        @Part surat_pengantar_rt_rw: MultipartBody.Part,
+        @Part bukti_kepemelikan_usaha: MultipartBody.Part,
+        @Part pas_foto: MultipartBody.Part,
+    ): ResponseModel
+
+    // Keterangan TidakMampu
+    @Multipart
+    @POST("pelayanan-kantor-kelurahan/api/post.php")
+    suspend fun postKeteranganTidakMampu(
+        @Part("post_keterangan_tidak_mampu") post_keterangan_tidak_mampu: RequestBody,
+        @Part("id_user") id_user: RequestBody,
+        @Part ktp: MultipartBody.Part,
+        @Part kk: MultipartBody.Part,
+        @Part surat_pengantar_rt_rw: MultipartBody.Part,
+        @Part keterangan_penghasilan: MultipartBody.Part,
+        @Part pas_foto: MultipartBody.Part,
+    ): ResponseModel
+
+    // Keterangan Nikah
+    @Multipart
+    @POST("pelayanan-kantor-kelurahan/api/post.php")
+    suspend fun postKeteranganAkteKematian(
+        @Part("post_keterangan_akte_kematian") post_keterangan_akte_kematian: RequestBody,
+        @Part("id_user") id_user: RequestBody,
+        @Part ktp: MultipartBody.Part,
+        @Part kk: MultipartBody.Part,
+        @Part surat_pengantar_rt_rw: MultipartBody.Part,
+        @Part("keterangan_kematian") keterangan_kematian: MultipartBody.Part,
+        @Part("foto_almarhum") foto_almarhum: MultipartBody.Part,
+    ): ResponseModel
+
+    // Keterangan Pindah
+    @Multipart
+    @POST("pelayanan-kantor-kelurahan/api/post.php")
+    suspend fun postKeteranganPindah(
+        @Part("post_keterangan_pindah") post_keterangan_pindah: RequestBody,
+        @Part("id_user") id_user: RequestBody,
+        @Part ktp: MultipartBody.Part,
+        @Part kk: MultipartBody.Part,
+        @Part keterangan_pindah_dari_tempat_asal: MultipartBody.Part,
+        @Part pas_foto: MultipartBody.Part,
+    ): ResponseModel
+
+    // Keterangan IzinKeramaian
+    @Multipart
+    @POST("pelayanan-kantor-kelurahan/api/post.php")
+    suspend fun postKeteranganIzinKeramaian(
+        @Part("post_keterangan_izin_keramaian") post_keterangan_izin_keramaian: RequestBody,
+        @Part("id_user") id_user: RequestBody,
+        @Part ktp: MultipartBody.Part,
+        @Part kk: MultipartBody.Part,
+        @Part surat_pengantar_rt_rw: MultipartBody.Part,
+        @Part("rencana_kegiatan") rencana_kegiatan: RequestBody, //Text
+    ): ResponseModel
+
+    // Keterangan Domisili
+    @Multipart
+    @POST("pelayanan-kantor-kelurahan/api/post.php")
+    suspend fun postKeteranganDomisili(
+        @Part("post_keterangan_domisili") post_keterangan_domisili: RequestBody,
+        @Part("id_user") id_user: RequestBody,
+        @Part ktp: MultipartBody.Part,
+        @Part kk: MultipartBody.Part,
+        @Part surat_pengantar_rt_rw: MultipartBody.Part,
+        @Part bukti_kepemilikan_tempat_tinggal: MultipartBody.Part,
+        @Part pas_foto: MultipartBody.Part,
+    ): ResponseModel
+
 }
