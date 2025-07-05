@@ -12,8 +12,8 @@ class BerkasModel (
     @SerializedName("id_user")
     var id_user: String? = null,
 
-    @SerializedName("id_kelurahan")
-    var id_kelurahan: String? = null,
+    @SerializedName("id_desa")
+    var id_desa: String? = null,
 
     @SerializedName("id_jenis_berkas")
     var id_jenis_berkas: String? = null,
@@ -30,8 +30,8 @@ class BerkasModel (
     @SerializedName("user")
     var user: UserModel? = null,
 
-    @SerializedName("kelurahan")
-    var kelurahan: KelurahanModel? = null,
+    @SerializedName("desa")
+    var desa: DesaModel? = null,
 
     @SerializedName("jenis_berkas")
     var jenis_berkas: JenisBerkasModel? = null,

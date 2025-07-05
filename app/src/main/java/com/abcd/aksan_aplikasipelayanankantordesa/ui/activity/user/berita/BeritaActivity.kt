@@ -52,7 +52,7 @@ class BeritaActivity : AppCompatActivity() {
         binding.apply {
             try {
                 tvJudul.text = berita.judul
-                tvKelurahan.text = "Penerbit : Kel. ${berita.kelurahan!!.kelurahan}"
+                tvKelurahan.text = "Penerbit : Kel. ${berita.desa!!.desa}"
                 tvTanggal.text = "|  ${tanggalDanWaktu.konversiBulanSingkatan(berita.tanggal!!)}"
                 tvBerita.text = berita.isi
 

@@ -4,13 +4,10 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.abcd.aksan_aplikasipelayanankantordesa.R
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.BerkasModel
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.ItemListBerkasTersimpanBinding
-import com.abcd.aksan_aplikasipelayanankantordesa.utils.Constant
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.OnClickItem
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.TanggalDanWaktu
-import com.bumptech.glide.Glide
 import java.util.Locale
 
 class BerkasAdapter(
@@ -25,7 +22,7 @@ class BerkasAdapter(
         val vKata = kata.lowercase(Locale.getDefault()).trim()
         val data = listBerkas.filter {
             (
-                it.kelurahan!!.kelurahan!!.lowercase().trim().contains(vKata)
+                it.desa!!.desa!!.lowercase().trim().contains(vKata)
                     or
                 (tanggalDanWaktu.konversiBulan(it.tanggal!!.lowercase().trim())).contains(vKata)
             )
@@ -50,7 +47,7 @@ class BerkasAdapter(
         val berita = tempBerkas[position]
 
         holder.binding.apply {
-            tvKelurahan.text = "Kel. ${berita.kelurahan!!.kelurahan}"
+            tvKelurahan.text = "Kel. ${berita.desa!!.desa}"
             tvTanggal.text = tanggalDanWaktu.konversiBulanSingkatan(berita.tanggal!!)
 
         }

@@ -8,8 +8,8 @@ class BeritaModel (
     @SerializedName("id_berita")
     var id_berita: Int? = null,
 
-    @SerializedName("id_kelurahan")
-    var id_kelurahan: String? = null,
+    @SerializedName("id_desa")
+    var id_desa: String? = null,
 
     @SerializedName("judul")
     var judul: String? = null,
@@ -26,8 +26,8 @@ class BeritaModel (
     @SerializedName("gambar")
     var gambar: String? = null,
 
-    @SerializedName("kelurahan")
-    var kelurahan: KelurahanModel? = null,
+    @SerializedName("desa")
+    var desa: DesaModel? = null,
 ): Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readValue(Int::class.java.classLoader) as? Int,
@@ -37,19 +37,19 @@ class BeritaModel (
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.readParcelable(KelurahanModel::class.java.classLoader)
+        parcel.readParcelable(DesaModel::class.java.classLoader)
     ) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeValue(id_berita)
-        parcel.writeString(id_kelurahan)
+        parcel.writeString(id_desa)
         parcel.writeString(judul)
         parcel.writeString(isi)
         parcel.writeString(tanggal)
         parcel.writeString(narasumber)
         parcel.writeString(gambar)
-        parcel.writeParcelable(kelurahan, flags)
+        parcel.writeParcelable(desa, flags)
     }
 
     override fun describeContents(): Int {
