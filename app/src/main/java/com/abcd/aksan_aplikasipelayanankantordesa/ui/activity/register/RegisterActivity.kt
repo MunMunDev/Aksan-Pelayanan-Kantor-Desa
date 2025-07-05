@@ -11,7 +11,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.abcd.aksan_aplikasipelayanankantordesa.R
+import com.abcd.aksan_aplikasipelayanankantordesa.data.model.ResponseModel
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.ActivityRegisterBinding
+import com.abcd.aksan_aplikasipelayanankantordesa.utils.LoadingAlertDialog
+import com.abcd.aksan_aplikasipelayanankantordesa.utils.network.UIState
 import com.google.android.material.datepicker.MaterialDatePicker
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -25,46 +28,16 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private val viewModel: RegisterViewModel by viewModels()
     private var selectedDate: Date? = null
-    private var ktpUri: Uri? = null
-    private var kkUri: Uri? = null
-    private var photoUri: Uri? = null
-
-    private var nameKtpUri = ""
-    private var nameKkUri = ""
-    private var namePhotoUri = ""
-
-    private val getKtpContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        uri?.let {
-            ktpUri = it
-            nameKtpUri = getNameFile(ktpUri!!)
-            binding.btnUploadKtp.text = nameKtpUri
-        }
-    }
-
-    private val getKkContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        uri?.let {
-            kkUri = it
-            nameKkUri = getNameFile(kkUri!!)
-            binding.btnUploadKk.text = nameKkUri
-        }
-    }
-
-    private val getPhotoContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        uri?.let {
-            photoUri = it
-            namePhotoUri = getNameFile(photoUri!!)
-            binding.btnUploadPhoto.text = namePhotoUri
-        }
-    }
+    private var loading = LoadingAlertDialog()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        showFirstPage()
         setupViews()
         setupButton()
+        getRegister()
     }
 
     private fun setupViews() {
@@ -89,30 +62,9 @@ class RegisterActivity : AppCompatActivity() {
                 showDatePicker()
             }
 
-            btnUploadKtp.setOnClickListener {
-                getKtpContent.launch("application/pdf")
-            }
-
-            btnUploadKk.setOnClickListener {
-                getKkContent.launch("application/pdf")
-            }
-
-            btnUploadPhoto.setOnClickListener {
-                getPhotoContent.launch("image/*")
-            }
-
-            btnLanjutkan.setOnClickListener {
-                if (validateFirstPage()) {
-                    // Save first page data
-                    saveFirstPageData()
-                    // Show second page
-                    showSecondPage()
-                }
-            }
-
             btnRegistrasi.setOnClickListener {
-                if (validateSecondPage()) {
-                    // Complete registration
+                // Complete registration
+                if(validaeData()){
                     completeRegistration()
                 }
             }
@@ -134,7 +86,7 @@ class RegisterActivity : AppCompatActivity() {
         datePicker.show(supportFragmentManager, "DATE_PICKER")
     }
 
-    private fun validateFirstPage(): Boolean {
+    private fun validaeData(): Boolean {
         binding.apply {
             if (etNama.text.toString().isEmpty()) {
                 etNama.error = "Nama harus diisi"
@@ -172,129 +124,61 @@ class RegisterActivity : AppCompatActivity() {
         return true
     }
 
-    private fun validateSecondPage(): Boolean {
-        if (ktpUri == null) {
-            Toast.makeText(this, "Upload KTP terlebih dahulu", Toast.LENGTH_SHORT).show()
-            return false
-        }
-        if (kkUri == null) {
-            Toast.makeText(this, "Upload KK terlebih dahulu", Toast.LENGTH_SHORT).show()
-            return false
-        }
-        if (photoUri == null) {
-            Toast.makeText(this, "Upload foto terlebih dahulu", Toast.LENGTH_SHORT).show()
-            return false
-        }
-        return true
-    }
-
-    private fun saveFirstPageData() {
-        // Save first page data to shared preferences or temporary storage
-        // Implementation depends on your data storage strategy
-    }
-
-    private fun showFirstPage() {
-        binding.apply {
-            firstPageLayout.visibility = View.VISIBLE
-            secondPageLayout.visibility = View.GONE
-        }
-    }
-
-    private fun showSecondPage() {
-        binding.apply {
-            firstPageLayout.visibility = View.GONE
-            secondPageLayout.visibility = View.VISIBLE
-        }
-    }
-
     private fun completeRegistration() {
-        // Implement registration logic here
-        // Upload files and save user data
-        Log.d("RegisterTAG", "completeRegistration: $ktpUri")
-        Log.d("RegisterTAG", "completeRegistration: $kkUri")
-        Log.d("RegisterTAG", "completeRegistration: $photoUri")
 
-        Toast.makeText(this, "Registrasi berhasil", Toast.LENGTH_SHORT).show()
-//        finish()
-
-        val post = convertStringToMultipartBody("register_user")
-        var nama: RequestBody
-        var alamat: RequestBody
-        var nomorHp: RequestBody
-        var noKtp: RequestBody
-        var noKK: RequestBody
-        var tempatLahir: RequestBody
-        var tanggalLahir: RequestBody
-        var jenisKelamin: RequestBody
-        var password: RequestBody
-        var ktp: MultipartBody.Part?
-        var kk: MultipartBody.Part?
-        var photo: MultipartBody.Part?
         binding.apply {
-            nama = convertStringToMultipartBody(etNama.text.toString())
-            alamat = convertStringToMultipartBody(etAlamat.text.toString())
-            nomorHp = convertStringToMultipartBody(etNomorHp.text.toString())
-            noKtp = convertStringToMultipartBody(etNomorKtp.text.toString())
-            noKK = convertStringToMultipartBody(etNomorKk.text.toString())
-            tempatLahir = convertStringToMultipartBody(etTempatLahir.text.toString())
-            tanggalLahir = convertStringToMultipartBody(btnTanggalLahir.text.toString())
-            jenisKelamin = convertStringToMultipartBody(selectedGender!!)
-            password = convertStringToMultipartBody(etPassword.text.toString())
+            val nama = etNama.text.toString()
+            val alamat = etAlamat.text.toString()
+            val nomorHp = etNomorHp.text.toString()
+            val noKtp = etNomorKtp.text.toString()
+            val noKK = etNomorKk.text.toString()
+            val tempatLahir = etTempatLahir.text.toString()
+            val tanggalLahir = btnTanggalLahir.text.toString()
+            val jenisKelamin = selectedGender!!
+            val password = etPassword.text.toString()
 
-            ktp = uploadDataToStorage(ktpUri, nameKtpUri, "ktp")
-            kk = uploadDataToStorage(kkUri, nameKkUri, "kk")
-            photo = uploadDataToStorage(photoUri, namePhotoUri, "ktp")
+
+            postRegister(
+                nama, alamat, nomorHp, noKtp, noKK,
+                tempatLahir, tanggalLahir, jenisKelamin, password,
+            )
         }
-        postRegister(
-            post, nama, alamat, nomorHp, noKtp, noKK,
-            tempatLahir, tanggalLahir, jenisKelamin, password,
-            ktp!!, kk!!, photo!!    // file
-        )
     }
 
     private fun postRegister(
-        post: RequestBody, nama: RequestBody, alamat: RequestBody, nomorHp: RequestBody,
-        noKtp: RequestBody, noKK: RequestBody, tempatLahir: RequestBody,
-        tanggalLahir: RequestBody, jenisKelamin: RequestBody, password: RequestBody,
-        ktp: MultipartBody.Part, kk: MultipartBody.Part, fotoDiri: MultipartBody.Part
+        nama: String, alamat: String, nomorHp: String,
+        noKtp: String, noKK: String, tempatLahir: String,
+        tanggalLahir: String, jenisKelamin: String, password: String,
     ){
         viewModel.postRegister(
-            post, nama, alamat, nomorHp, noKtp, noKK, tempatLahir,
-            tanggalLahir, jenisKelamin, password, ktp, kk, fotoDiri
+            nama, alamat, nomorHp, noKtp, noKK, tempatLahir,
+            tanggalLahir, jenisKelamin, password
         )
     }
 
-    @SuppressLint("Recycle")
-    private fun uploadDataToStorage(fileUri: Uri?, fileFileName: String, nameAPI:String): MultipartBody.Part? {
-        var filePart : MultipartBody.Part? = null
-        fileUri?.let {
-            val file = contentResolver.openInputStream(fileUri)?.readBytes()
-
-            if (file != null) {
-                filePart = convertFileToMultipartBody(file, fileFileName, nameAPI)
+    private fun getRegister(){
+        viewModel.getRegister().observe(this@RegisterActivity){result->
+            when(result){
+                is UIState.Loading-> loading.alertDialogLoading(this@RegisterActivity)
+                is UIState.Success-> setSuccessRegister(result.data)
+                is UIState.Failure-> setFailureRegister(result.message)
             }
         }
-        return filePart
     }
 
-    private fun convertFileToMultipartBody(file: ByteArray, pdfFileName: String, nameAPI:String): MultipartBody.Part{
-        val requestFile = file.toRequestBody("application/pdf".toMediaTypeOrNull())
-        val filePart = MultipartBody.Part.createFormData(nameAPI, pdfFileName, requestFile)
-
-        return filePart
+    private fun setSuccessRegister(data: ResponseModel) {
+        loading.alertDialogCancel()
+        if(data.status=="0"){
+            Toast.makeText(this@RegisterActivity, "Berhasil Registrasi", Toast.LENGTH_SHORT).show()
+            finish()
+        } else{
+            Toast.makeText(this@RegisterActivity, data.message_response, Toast.LENGTH_SHORT).show()
+        }
     }
 
-    private fun getNameFile(uri: Uri): String {
-        val cursor = contentResolver.query(uri, null, null, null, null)
-        val nameIndex = cursor?.getColumnIndex(OpenableColumns.DISPLAY_NAME)
-        cursor?.moveToFirst()
-        val name = cursor?.getString(nameIndex!!)
-        cursor?.close()
-        return name!!
-    }
-
-    private fun convertStringToMultipartBody(data: String): RequestBody {
-        return RequestBody.create("multipart/form-data".toMediaTypeOrNull(), data)
+    private fun setFailureRegister(message: String) {
+        Toast.makeText(this@RegisterActivity, message, Toast.LENGTH_SHORT).show()
+        loading.alertDialogCancel()
     }
 
     companion object {
