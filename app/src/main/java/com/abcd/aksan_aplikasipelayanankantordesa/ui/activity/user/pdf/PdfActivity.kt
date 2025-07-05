@@ -1,4 +1,4 @@
-package com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.proses.pdf
+package com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.pdf
 
 import android.app.SearchManager
 import android.content.Intent
@@ -10,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.abcd.aksan_aplikasipelayanankantordesa.R
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.ActivityPdfBinding
+import com.abcd.aksan_aplikasipelayanankantordesa.utils.Constant
 import com.rajat.pdfviewer.PdfEngine
 import com.rajat.pdfviewer.PdfQuality
 
@@ -29,7 +30,7 @@ class PdfActivity : AppCompatActivity() {
                 val intent = Intent(Intent.ACTION_WEB_SEARCH)
                 intent.putExtra(
                     SearchManager.QUERY,
-                    "https://e-portofolio.web.id/pelayanan-kantor-desa/print.php?$link"
+                    "https://e-portofolio.web.id/pelayanan-kantor-desa/print.php?link=$link"
                 )
                 startActivity(intent)
             }
@@ -43,7 +44,7 @@ class PdfActivity : AppCompatActivity() {
             val check = i.getString("check")!!
             binding.apply {
                 pdfView.initWithUrl(
-                    url = link,
+                    url = "${Constant.LOCATION_FILE}$link",
                     PdfQuality.ENHANCED,
                     PdfEngine.GOOGLE,
                 )

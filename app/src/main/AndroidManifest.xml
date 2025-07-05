@@ -24,7 +24,7 @@
         android:theme="@style/Theme.AksanAplikasiPelayananKantorDesa"
         tools:targetApi="31">
         <activity
-            android:name=".ui.activity.user.proses.pdf.PdfActivity"
+            android:name=".ui.activity.user.pdf.PdfActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activity.user.layanan.LayananActivity"

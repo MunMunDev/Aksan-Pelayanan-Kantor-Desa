@@ -18,7 +18,7 @@ import com.abcd.aksan_aplikasipelayanankantordesa.data.model.BerkasModel
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.DokumenModel
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.ActivityProsesBerkasDetailBinding
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.AlertDialogImageBinding
-import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.proses.pdf.PdfActivity
+import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.pdf.PdfActivity
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.Constant
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.LoadingAlertDialog
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.OnClickItem
@@ -105,7 +105,7 @@ class ProsesBerkasDetailActivity : AppCompatActivity() {
                     } else if(dokumen.format == "pdf"){
                         // Show pdf
                         val i = Intent(this@ProsesBerkasDetailActivity, PdfActivity::class.java)
-                        val linkPdf = "${Constant.LOCATION_FILE}${sharedPreferences.getNoKtp()}/${dokumen.id_berkas}/${dokumen.file}"
+                        val linkPdf = "${sharedPreferences.getNoKtp()}/${dokumen.id_berkas}/${dokumen.file}"
                         Log.d("ProsesTAG", "clickGambarDokumen: $linkPdf")
                         i.putExtra("pdf", linkPdf)
                         i.putExtra("check", "proses")
