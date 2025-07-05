@@ -105,7 +105,7 @@ class ProsesBerkasDetailActivity : AppCompatActivity() {
                     } else if(dokumen.format == "pdf"){
                         // Show pdf
                         val i = Intent(this@ProsesBerkasDetailActivity, PdfActivity::class.java)
-                        val linkPdf = "${Constant.LOCATION_FILE}${sharedPreferences.getNoKtp()}/${dokumen.id_berkas}/${dokumen.file}"
+                        val linkPdf = "${sharedPreferences.getNoKtp()}/${dokumen.id_berkas}/${dokumen.file}"
                         Log.d("ProsesTAG", "clickGambarDokumen: $linkPdf")
                         i.putExtra("pdf", linkPdf)
                         i.putExtra("check", "proses")
