@@ -29,7 +29,7 @@ class PdfActivity : AppCompatActivity() {
                 val intent = Intent(Intent.ACTION_WEB_SEARCH)
                 intent.putExtra(
                     SearchManager.QUERY,
-                    "https://e-portofolio.web.id/pelayanan-kantor-desa/print.php?$link"
+                    "https://e-portofolio.web.id/pelayanan-kantor-desa/print.php?link=$link"
                 )
                 startActivity(intent)
             }
