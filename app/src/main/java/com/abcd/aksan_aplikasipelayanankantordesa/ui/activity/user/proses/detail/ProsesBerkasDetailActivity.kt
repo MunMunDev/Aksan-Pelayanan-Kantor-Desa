@@ -18,7 +18,7 @@ import com.abcd.aksan_aplikasipelayanankantordesa.data.model.BerkasModel
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.DokumenModel
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.ActivityProsesBerkasDetailBinding
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.AlertDialogImageBinding
-import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.proses.pdf.PdfActivity
+import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.pdf.PdfActivity
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.Constant
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.LoadingAlertDialog
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.OnClickItem

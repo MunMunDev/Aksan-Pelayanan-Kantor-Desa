@@ -1,4 +1,4 @@
-package com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.proses.pdf
+package com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.pdf
 
 import android.app.SearchManager
 import android.content.Intent
