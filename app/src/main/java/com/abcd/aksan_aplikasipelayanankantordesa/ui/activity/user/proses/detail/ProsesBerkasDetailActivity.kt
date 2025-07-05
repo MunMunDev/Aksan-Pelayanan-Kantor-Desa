@@ -1,5 +1,6 @@
 package com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.proses.detail
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -16,6 +17,7 @@ import com.abcd.aksan_aplikasipelayanankantordesa.data.model.BerkasModel
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.DokumenModel
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.ActivityProsesBerkasDetailBinding
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.AlertDialogImageBinding
+import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.proses.pdf.PdfActivity
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.Constant
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.LoadingAlertDialog
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.OnClickItem
@@ -87,7 +89,6 @@ class ProsesBerkasDetailActivity : AppCompatActivity() {
     private fun setSuccessFetchDokumen(data: ArrayList<DokumenModel>) {
         if(data.isNotEmpty()){
             setAdapter(data)
-            Toast.makeText(this@ProsesBerkasDetailActivity, "${data.size}", Toast.LENGTH_SHORT).show()
         } else{
             Toast.makeText(this@ProsesBerkasDetailActivity, "Tidak ada data", Toast.LENGTH_SHORT).show()
         }
@@ -102,7 +103,9 @@ class ProsesBerkasDetailActivity : AppCompatActivity() {
                         setShowImage(dokumen.dokumen!!, "${Constant.LOCATION_FILE}/${sharedPreferences.getNoKtp()}/${berkas?.id_berkas}/${dokumen.file}")
                     } else if(dokumen.format == "pdf"){
                         // Show pdf
-
+//                        val i = Intent(this@ProsesBerkasDetailActivity, PdfActivity::class.java)
+//                        i.putExtra("pdf", dokumen.dokumen)
+//                        startActivity(i)
                     }
                 }
 
