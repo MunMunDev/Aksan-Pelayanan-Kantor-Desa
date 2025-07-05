@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toTopOf="@id/llLayanan"
                 android:layout_marginBottom="26dp"
-                android:text="@string/sistem_informasi_pelayanan_kelurahan_digital"
+                android:text="@string/sistem_informasi_pelayanan_desa_digital"
                 android:textSize="18sp"
                 android:textColor="@color/textColorWhite"
                 android:textStyle="bold"

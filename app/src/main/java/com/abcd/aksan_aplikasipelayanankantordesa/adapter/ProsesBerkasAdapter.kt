@@ -4,16 +4,18 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.abcd.aksan_aplikasipelayanankantordesa.R
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.BerkasModel
-import com.abcd.aksan_aplikasipelayanankantordesa.databinding.ItemListBerkasTersimpanBinding
+import com.abcd.aksan_aplikasipelayanankantordesa.databinding.ItemListBerkasBinding
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.OnClickItem
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.TanggalDanWaktu
+import com.bumptech.glide.Glide
 import java.util.Locale
 
-class BerkasAdapter(
+class ProsesBerkasAdapter(
     private val listBerkas: List<BerkasModel>,
     private val click: OnClickItem.ClickBerkas,
-): RecyclerView.Adapter<BerkasAdapter.ViewHolder>() {
+): RecyclerView.Adapter<ProsesBerkasAdapter.ViewHolder>() {
     private var tanggalDanWaktu = TanggalDanWaktu()
     private var tempBerkas = listBerkas
 
@@ -31,10 +33,10 @@ class BerkasAdapter(
         notifyDataSetChanged()
     }
 
-    class ViewHolder(val binding: ItemListBerkasTersimpanBinding) : RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(val binding: ItemListBerkasBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemListBerkasTersimpanBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemListBerkasBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -44,16 +46,23 @@ class BerkasAdapter(
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val berita = tempBerkas[position]
+        val berkas = tempBerkas[position]
 
         holder.binding.apply {
-            tvDesa.text = "Desa ${berita.desa!!.desa}"
-            tvTanggal.text = tanggalDanWaktu.konversiBulanSingkatan(berita.tanggal!!)
+            tvJenisBerkas.text = "Surat Pengantar ${berkas.jenis_berkas!!.jenis_berkas}"
+            tvDesa.text = "Desa ${berkas.desa!!.desa}"
+            tvTanggal.text = tanggalDanWaktu.konversiBulanSingkatan(berkas.tanggal!!)
+
+            Glide.with(holder.itemView.context)
+                .asGif()
+                .load(R.drawable.gif_loading) // URL Gambar
+                .error(R.drawable.gif_loading)
+                .into(ivBerkas) // imageView mana yang akan diterapkan
 
         }
 
         holder.itemView.setOnClickListener{
-            click.clickBerkas(berita)
+            click.clickBerkas(berkas)
         }
     }
 }

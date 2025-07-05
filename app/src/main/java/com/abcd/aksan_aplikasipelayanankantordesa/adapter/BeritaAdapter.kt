@@ -63,7 +63,7 @@ class BeritaAdapter(
         holder.binding.apply {
             tvJudul.text = berita.judul
             tvIsiSingkat.text = berita.isi
-            tvKelurahan.text = "Kel. ${berita.desa!!.desa}"
+            tvDesa.text = "Desa ${berita.desa!!.desa}"
             tvTanggal.text = tanggalDanWaktu.konversiBulanSingkatan(berita.tanggal!!)
 
             Glide.with(holder.itemView.context)
