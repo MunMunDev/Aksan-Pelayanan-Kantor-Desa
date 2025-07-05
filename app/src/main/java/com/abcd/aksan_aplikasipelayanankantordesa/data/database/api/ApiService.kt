@@ -98,22 +98,19 @@ interface ApiService {
     ): ArrayList<BerkasModel>
 
     //Register
-    @Multipart
-    @POST("pelayanan-kantor-desa/api/post.php")
+    @FormUrlEncoded
+    @POST("pelayanan-kantor-kelurahan/api/post.php")
     suspend fun postRegister(
-        @Part("register_user") register_user: RequestBody,
-        @Part("nama") nama: RequestBody,
-        @Part("alamat") alamat: RequestBody,
-        @Part("nomor_hp") nomor_hp: RequestBody,
-        @Part("no_ktp") no_ktp: RequestBody,
-        @Part("no_kk") no_kk: RequestBody,
-        @Part("tempat_lahir") tempat_lahir: RequestBody,
-        @Part("tanggal_lahir") tanggal_lahir: RequestBody,
-        @Part("jenis_kelamin") jenis_kelamin: RequestBody,
-        @Part("password") password: RequestBody,
-        @Part ktp: MultipartBody.Part,
-        @Part kk: MultipartBody.Part,
-        @Part fotoDiri: MultipartBody.Part,
+        @Field("register_user") register_user: String,
+        @Field("nama") nama: String,
+        @Field("alamat") alamat: String,
+        @Field("nomor_hp") nomor_hp: String,
+        @Field("no_ktp") no_ktp: String,
+        @Field("no_kk") no_kk: String,
+        @Field("tempat_lahir") tempat_lahir: String,
+        @Field("tanggal_lahir") tanggal_lahir: String,
+        @Field("jenis_kelamin") jenis_kelamin: String,
+        @Field("password") password: String,
     ): ResponseModel
 
     @FormUrlEncoded
