@@ -108,6 +108,7 @@ class ProsesBerkasDetailActivity : AppCompatActivity() {
                         val linkPdf = "${Constant.LOCATION_FILE}${sharedPreferences.getNoKtp()}/${dokumen.id_berkas}/${dokumen.file}"
                         Log.d("ProsesTAG", "clickGambarDokumen: $linkPdf")
                         i.putExtra("pdf", linkPdf)
+                        i.putExtra("check", "proses")
                         startActivity(i)
                     }
                 }
