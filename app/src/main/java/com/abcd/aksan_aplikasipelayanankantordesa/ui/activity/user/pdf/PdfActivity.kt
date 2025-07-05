@@ -10,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.abcd.aksan_aplikasipelayanankantordesa.R
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.ActivityPdfBinding
+import com.abcd.aksan_aplikasipelayanankantordesa.utils.Constant
 import com.rajat.pdfviewer.PdfEngine
 import com.rajat.pdfviewer.PdfQuality
 
@@ -43,7 +44,7 @@ class PdfActivity : AppCompatActivity() {
             val check = i.getString("check")!!
             binding.apply {
                 pdfView.initWithUrl(
-                    url = link,
+                    url = "${Constant.LOCATION_FILE}$link",
                     PdfQuality.ENHANCED,
                     PdfEngine.GOOGLE,
                 )

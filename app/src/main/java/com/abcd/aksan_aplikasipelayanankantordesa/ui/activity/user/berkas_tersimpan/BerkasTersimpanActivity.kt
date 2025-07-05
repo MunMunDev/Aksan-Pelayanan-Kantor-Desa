@@ -1,5 +1,6 @@
 package com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.berkas_tersimpan
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.abcd.aksan_aplikasipelayanankantordesa.adapter.BerkasAdapter
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.BerkasModel
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.ActivityBerkasTersimpanBinding
+import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.pdf.PdfActivity
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.Constant
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.OnClickItem
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.SharedPreferencesLogin
@@ -326,9 +328,14 @@ class BerkasTersimpanActivity : AppCompatActivity() {
 
     private fun setRecyclerViewSuratKeterangan(data: ArrayList<BerkasModel>) {
         adapter = BerkasAdapter(data, object: OnClickItem.ClickBerkas{
-            override fun clickBerkas(berita: BerkasModel) {
+            override fun clickBerkas(berkas: BerkasModel) {
                 // Click data
-
+                val i = Intent(this@BerkasTersimpanActivity, PdfActivity::class.java)
+                val linkPdf = "${sharedPreferences.getNoKtp()}/${berkas.id_berkas}/${berkas.file}"
+                Log.d("ProsesTAG", "clickGambarDokumen: $linkPdf")
+                i.putExtra("pdf", linkPdf)
+                i.putExtra("check", "riwayat")
+                startActivity(i)
             }
         })
 
