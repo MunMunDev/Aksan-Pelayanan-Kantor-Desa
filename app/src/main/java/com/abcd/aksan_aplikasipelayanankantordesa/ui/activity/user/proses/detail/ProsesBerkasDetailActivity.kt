@@ -2,6 +2,7 @@ package com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.proses.detai
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -103,9 +104,11 @@ class ProsesBerkasDetailActivity : AppCompatActivity() {
                         setShowImage(dokumen.dokumen!!, "${Constant.LOCATION_FILE}/${sharedPreferences.getNoKtp()}/${berkas?.id_berkas}/${dokumen.file}")
                     } else if(dokumen.format == "pdf"){
                         // Show pdf
-//                        val i = Intent(this@ProsesBerkasDetailActivity, PdfActivity::class.java)
-//                        i.putExtra("pdf", dokumen.dokumen)
-//                        startActivity(i)
+                        val i = Intent(this@ProsesBerkasDetailActivity, PdfActivity::class.java)
+                        val linkPdf = "${Constant.LOCATION_FILE}${sharedPreferences.getNoKtp()}/${dokumen.id_berkas}/${dokumen.file}"
+                        Log.d("ProsesTAG", "clickGambarDokumen: $linkPdf")
+                        i.putExtra("pdf", linkPdf)
+                        startActivity(i)
                     }
                 }
 
