@@ -28,7 +28,7 @@ class BeritaAdapter(
             (
                 it.judul!!.lowercase().trim().contains(vKata)
                     or
-                it.kelurahan!!.kelurahan!!.lowercase().trim().contains(vKata)
+                it.desa!!.desa!!.lowercase().trim().contains(vKata)
                     or
                 (tanggalDanWaktu.konversiBulanSingkatan(it.tanggal!!.lowercase().trim())).contains(vKata)
             )
@@ -63,7 +63,7 @@ class BeritaAdapter(
         holder.binding.apply {
             tvJudul.text = berita.judul
             tvIsiSingkat.text = berita.isi
-            tvKelurahan.text = "Kel. ${berita.kelurahan!!.kelurahan}"
+            tvDesa.text = "Desa ${berita.desa!!.desa}"
             tvTanggal.text = tanggalDanWaktu.konversiBulanSingkatan(berita.tanggal!!)
 
             Glide.with(holder.itemView.context)

@@ -17,7 +17,9 @@ import com.abcd.aksan_aplikasipelayanankantordesa.adapter.BeritaAdapter
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.BeritaModel
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.FragmentHomeBinding
 import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.berita.BeritaActivity
+import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.layanan.LayananActivity
 import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.main.MainActivity
+import com.abcd.aksan_aplikasipelayanankantordesa.utils.Constant
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.OnClickItem
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.network.UIState
 import dagger.hilt.android.AndroidEntryPoint
@@ -66,28 +68,44 @@ class HomeFragment : Fragment() {
     private fun setButton() {
         binding.apply {
             btnKeteranganNikah.setOnClickListener {
-//                startActivity(Intent(context, KeteranganNikahActivity::class.java))
+                val i = Intent(context, LayananActivity::class.java)
+                i.putExtra("layanan", Constant.KETERANGAN_NIKAH)
+                startActivity(i)
             }
             btnKeteranganLahir.setOnClickListener {
-//                startActivity(Intent(context, KeteranganLahirActivity::class.java))
+                val i = Intent(context, LayananActivity::class.java)
+                i.putExtra("layanan", Constant.KETERANGAN_LAHIR)
+                startActivity(i)
             }
             btnKeteranganUsaha.setOnClickListener {
-//                startActivity(Intent(context, KeteranganUsahaActivity::class.java))
+                val i = Intent(context, LayananActivity::class.java)
+                i.putExtra("layanan", Constant.KETERANGAN_USAHA)
+                startActivity(i)
             }
             btnKeteranganTidakMampu.setOnClickListener {
-//                startActivity(Intent(context, KeteranganTidakMampuActivity::class.java))
+                val i = Intent(context, LayananActivity::class.java)
+                i.putExtra("layanan", Constant.KETERANGAN_TIDAK_MAMPU)
+                startActivity(i)
             }
             btnKeteranganAkteKematian.setOnClickListener {
-//                startActivity(Intent(context, KeteranganAkteKematianActivity::class.java))
+                val i = Intent(context, LayananActivity::class.java)
+                i.putExtra("layanan", Constant.KETERANGAN_AKTE_KEMATIAN)
+                startActivity(i)
             }
             btnKeteranganPindah.setOnClickListener {
-//                startActivity(Intent(context, KeteranganPindahActivity::class.java))
+                val i = Intent(context, LayananActivity::class.java)
+                i.putExtra("layanan", Constant.KETERANGAN_PINDAH)
+                startActivity(i)
             }
             btnKeteranganIzinKeramaian.setOnClickListener {
-//                startActivity(Intent(context, KeteranganIzinKeramaianActivity::class.java))
+                val i = Intent(context, LayananActivity::class.java)
+                i.putExtra("layanan", Constant.KETERANGAN_IZIN_KERAMAIAN)
+                startActivity(i)
             }
             btnKeteranganDomisili.setOnClickListener {
-//                startActivity(Intent(context, KeteranganDomisiliActivity::class.java))
+                val i = Intent(context, LayananActivity::class.java)
+                i.putExtra("layanan", Constant.KETERANGAN_DOMISILI)
+                startActivity(i)
             }
             btnBerita.setOnClickListener {
                 activityContext.clickBerita()
