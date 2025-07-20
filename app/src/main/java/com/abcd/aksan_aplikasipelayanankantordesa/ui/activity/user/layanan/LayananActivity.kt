@@ -122,59 +122,75 @@ class LayananActivity : AppCompatActivity() {
 
                 when(layanan){
                     Constant.KETERANGAN_NIKAH -> {
-                        val post = convertStringToMultipartBody(capitalizeWords(Constant.KETERANGAN_NIKAH))
-                        postKeteranganNikah(
-                            post, idUser!!, ktpUri!!, kkUri!!, suratPengantarRtRwUri!!,
-                            aktaKelahiranUri!!, pasFotoUri!!
-                        )
+                        if(checkFile(Constant.KETERANGAN_NIKAH)){
+                            val post = convertStringToMultipartBody(capitalizeWords(Constant.KETERANGAN_NIKAH))
+                            postKeteranganNikah(
+                                post, idUser!!, ktpUri!!, kkUri!!, suratPengantarRtRwUri!!,
+                                aktaKelahiranUri!!, pasFotoUri!!
+                            )
+                        }
                     }
                     Constant.KETERANGAN_LAHIR -> {
-                        val post = convertStringToMultipartBody(capitalizeWords(Constant.KETERANGAN_LAHIR))
-                        postKeteranganLahir(
-                            post, idUser!!, ktpOrangTuaUri!!, kkUri!!, keteranganLahirDariBidanUri!!
-                        )
+                        if(checkFile(Constant.KETERANGAN_LAHIR)){
+                            val post = convertStringToMultipartBody(capitalizeWords(Constant.KETERANGAN_LAHIR))
+                            postKeteranganLahir(
+                                post, idUser!!, ktpOrangTuaUri!!, kkUri!!, keteranganLahirDariBidanUri!!
+                            )
+                        }
                     }
                     Constant.KETERANGAN_USAHA -> {
-                        val post = convertStringToMultipartBody(capitalizeWords(Constant.KETERANGAN_USAHA))
-                        postKeteranganUsaha(
-                            post, idUser!!, ktpUri!!, kkUri!!, suratPengantarRtRwUri!!,
-                            buktiKepemilikanUsahaUri!!, pasFotoUri!!
-                        )
+                        if(checkFile(Constant.KETERANGAN_USAHA)){
+                            val post = convertStringToMultipartBody(capitalizeWords(Constant.KETERANGAN_USAHA))
+                            postKeteranganUsaha(
+                                post, idUser!!, ktpUri!!, kkUri!!, suratPengantarRtRwUri!!,
+                                buktiKepemilikanUsahaUri!!, pasFotoUri!!
+                            )
+                        }
                     }
                     Constant.KETERANGAN_TIDAK_MAMPU -> {
-                        val post = convertStringToMultipartBody(capitalizeWords(Constant.KETERANGAN_TIDAK_MAMPU))
-                        postKeteranganTidakMampu(
-                            post, idUser!!, ktpUri!!, kkUri!!, suratPengantarRtRwUri!!,
-                            keteranganPenghasilanUri!!, pasFotoUri!!
-                        )
+                        if(checkFile(Constant.KETERANGAN_TIDAK_MAMPU)){
+                            val post = convertStringToMultipartBody(capitalizeWords(Constant.KETERANGAN_TIDAK_MAMPU))
+                            postKeteranganTidakMampu(
+                                post, idUser!!, ktpUri!!, kkUri!!, suratPengantarRtRwUri!!,
+                                keteranganPenghasilanUri!!, pasFotoUri!!
+                            )
+                        }
                     }
                     Constant.KETERANGAN_AKTE_KEMATIAN -> {
-                        val post = convertStringToMultipartBody(capitalizeWords(Constant.KETERANGAN_AKTE_KEMATIAN))
-                        postKeteranganAkteKematian(
-                            post, idUser!!, ktpUri!!, kkUri!!, suratPengantarRtRwUri!!,
-                            keteranganKematianUri!!, fotoAlmarhumUri!!
-                        )
+                        if(checkFile(Constant.KETERANGAN_AKTE_KEMATIAN)){
+                            val post = convertStringToMultipartBody(capitalizeWords(Constant.KETERANGAN_AKTE_KEMATIAN))
+                            postKeteranganAkteKematian(
+                                post, idUser!!, ktpUri!!, kkUri!!, suratPengantarRtRwUri!!,
+                                keteranganKematianUri!!, fotoAlmarhumUri!!
+                            )
+                        }
                     }
                     Constant.KETERANGAN_PINDAH -> {
-                        val post = convertStringToMultipartBody(capitalizeWords(Constant.KETERANGAN_PINDAH))
-                        postKeteranganPindah(
-                            post, idUser!!, ktpUri!!, kkUri!!, buktiKeteranganPindahDariTempatAsalUri!!,
-                            pasFotoUri!!
-                        )
+                        if(checkFile(Constant.KETERANGAN_PINDAH)){
+                            val post = convertStringToMultipartBody(capitalizeWords(Constant.KETERANGAN_PINDAH))
+                            postKeteranganPindah(
+                                post, idUser!!, ktpUri!!, kkUri!!, buktiKeteranganPindahDariTempatAsalUri!!,
+                                pasFotoUri!!
+                            )
+                        }
                     }
                     Constant.KETERANGAN_IZIN_KERAMAIAN -> {
-                        val post = convertStringToMultipartBody(capitalizeWords(Constant.KETERANGAN_IZIN_KERAMAIAN))
-                        postKeteranganIzinKeramaian(
-                            post, idUser!!, ktpUri!!, kkUri!!, suratPengantarRtRwUri!!,
-                            rencanaKegiatan!!
-                        )
+                        if(checkFile(Constant.KETERANGAN_IZIN_KERAMAIAN)){
+                            val post = convertStringToMultipartBody(capitalizeWords(Constant.KETERANGAN_IZIN_KERAMAIAN))
+                            postKeteranganIzinKeramaian(
+                                post, idUser!!, ktpUri!!, kkUri!!, suratPengantarRtRwUri!!,
+                                rencanaKegiatan!!
+                            )
+                        }
                     }
                     Constant.KETERANGAN_DOMISILI -> {
-                        val post = convertStringToMultipartBody(capitalizeWords(Constant.KETERANGAN_DOMISILI))
-                        postKeteranganDomisili(
-                            post, idUser!!, ktpUri!!, kkUri!!, suratPengantarRtRwUri!!,
-                            buktiKepemilikanTempatTinggalUri!!, pasFotoUri!!
-                        )
+                        if(checkFile(Constant.KETERANGAN_DOMISILI)){
+                            val post = convertStringToMultipartBody(capitalizeWords(Constant.KETERANGAN_DOMISILI))
+                            postKeteranganDomisili(
+                                post, idUser!!, ktpUri!!, kkUri!!, suratPengantarRtRwUri!!,
+                                buktiKepemilikanTempatTinggalUri!!, pasFotoUri!!
+                            )
+                        }
                     }
                 }
             }
@@ -599,6 +615,204 @@ class LayananActivity : AppCompatActivity() {
         return RequestBody.create("multipart/form-data".toMediaTypeOrNull(), data)
     }
 
+    private fun checkFile(check: String): Boolean{
+        when(check){
+            Constant.KETERANGAN_NIKAH -> {
+                binding.apply {
+                    if (ktpUri == null) {
+                        tvKtp.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (kkUri == null) {
+                        tvKk.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (suratPengantarRtRwUri == null) {
+                        tvSuratPengantarRtRw.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (aktaKelahiranUri == null) {
+                        tvAktaKelahiran.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (pasFotoUri == null) {
+                        tvPasFoto.error = "File ini harus diisi"
+                        return false
+                    } else{
+                        return true
+                    }
+                }
+            }
+            Constant.KETERANGAN_LAHIR -> {
+                binding.apply {
+                    if (ktpOrangTuaUri == null) {
+                        tvKtpOrangTua.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (kkUri == null) {
+                        tvKk.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (keteranganLahirDariBidanUri == null) {
+                        tvKeteranganLahirDariBidan.error = "File ini harus diisi"
+                        return false
+                    } else{
+                        return true
+                    }
+                }
+            }
+            Constant.KETERANGAN_USAHA -> {
+                binding.apply {
+                    if (ktpUri == null) {
+                        tvKtp.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (kkUri == null) {
+                        tvKk.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (suratPengantarRtRwUri == null) {
+                        tvSuratPengantarRtRw.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (buktiKepemilikanUsahaUri == null) {
+                        tvBuktiKepemilikanUsaha.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (pasFotoUri == null) {
+                        tvPasFoto.error = "File ini harus diisi"
+                        return false
+                    } else{
+                        return true
+                    }
+                }
+            }
+            Constant.KETERANGAN_TIDAK_MAMPU -> {
+                binding.apply {
+                    if (ktpUri == null) {
+                        tvKtp.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (kkUri == null) {
+                        tvKk.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (suratPengantarRtRwUri == null) {
+                        tvSuratPengantarRtRw.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (keteranganPenghasilanUri == null) {
+                        tvKeteranganPenghasilan.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (pasFotoUri == null) {
+                        tvPasFoto.error = "File ini harus diisi"
+                        return false
+                    } else{
+                        return true
+                    }
+                }
+            }
+            Constant.KETERANGAN_AKTE_KEMATIAN -> {
+                binding.apply {
+                    if (ktpUri == null) {
+                        tvKtp.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (kkUri == null) {
+                        tvKk.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (suratPengantarRtRwUri == null) {
+                        tvSuratPengantarRtRw.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (keteranganKematianUri == null) {
+                        tvKeteranganKematian.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (fotoAlmarhumUri == null) {
+                        tvFotoAlmarhum.error = "File ini harus diisi"
+                        return false
+                    } else{
+                        return true
+                    }
+                }
+            }
+            Constant.KETERANGAN_PINDAH -> {
+                binding.apply {
+                    if (ktpUri == null) {
+                        tvKtp.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (kkUri == null) {
+                        tvKk.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (buktiKeteranganPindahDariTempatAsalUri == null) {
+                        tvBuktiKeteranganPindahDariTempatAsal.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (pasFotoUri == null) {
+                        tvPasFoto.error = "File ini harus diisi"
+                        return false
+                    } else{
+                        return true
+                    }
+                }
+            }
+            Constant.KETERANGAN_IZIN_KERAMAIAN -> {
+                binding.apply {
+                    if (ktpUri == null) {
+                        tvKtp.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (kkUri == null) {
+                        tvKk.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (suratPengantarRtRwUri == null) {
+                        tvSuratPengantarRtRw.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (tvRencanaKegiatan.text.toString().isEmpty()) {
+                        tvRencanaKegiatan.error = "Isi Rencana Kegiatan Anda"
+                        return false
+                    } else{
+                        return true
+                    }
+                }
+            }
+            Constant.KETERANGAN_DOMISILI -> {
+                binding.apply {
+                    if (ktpUri == null) {
+                        tvKtp.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (kkUri == null) {
+                        tvKk.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (suratPengantarRtRwUri == null) {
+                        tvSuratPengantarRtRw.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (buktiKepemilikanTempatTinggalUri == null) {
+                        tvBuktiKepemilikanTempatTinggal.error = "File ini harus diisi"
+                        return false
+                    }
+                    else if (pasFotoUri == null) {
+                        tvPasFoto.error = "File ini harus diisi"
+                        return false
+                    } else{
+                        return true
+                    }
+                }
+            }
+            else -> return false
+        }
+    }
+
     companion object {
         private const val ktp = 1
         private const val ktpOrangTua = 2
@@ -614,21 +828,4 @@ class LayananActivity : AppCompatActivity() {
         private const val buktiKepemilikanTempatTinggal = 12
         private const val pasFoto = 13
     }
-
-//    companion object {
-//        private const val ktp = "ktp"
-//        private const val ktpOrangTua = "ktpOrangTua"
-//        private const val kk = "kk"
-//        private const val suratPengantarRtRw = "suratPengantarRtRw"
-//        private const val aktaKelahiran = "aktaKelahiran"
-//        private const val keteranganLahirDariBidan = "keteranganLahirDariBidan"
-//        private const val buktiKepemilikanUsaha = "buktiKepemilikanUsaha"
-//        private const val keteranganPenghasilan = "keteranganPenghasilan"
-//        private const val keteranganKematian = "keteranganKematian"
-//        private const val fotoAlmarhum = "fotoAlmarhum"
-//        private const val buktiKeteranganPindahDariTempatAsal = "buktiKeteranganPindahDariTempatAsal"
-//        private const val buktiKepemilikanTempatTinggal = "buktiKepemilikanTempatTinggal"
-//        private const val pasFoto = "pasFoto"
-//    }
-
 }
