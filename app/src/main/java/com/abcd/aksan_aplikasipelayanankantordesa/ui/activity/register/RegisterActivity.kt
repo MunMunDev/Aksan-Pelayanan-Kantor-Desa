@@ -16,6 +16,7 @@ import com.abcd.aksan_aplikasipelayanankantordesa.databinding.ActivityRegisterBi
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.LoadingAlertDialog
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.network.UIState
 import com.google.android.material.datepicker.MaterialDatePicker
+import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -24,6 +25,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+@AndroidEntryPoint
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private val viewModel: RegisterViewModel by viewModels()
