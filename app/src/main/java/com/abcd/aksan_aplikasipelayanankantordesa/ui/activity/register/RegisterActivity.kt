@@ -6,11 +6,14 @@ import android.os.Bundle
 import android.provider.OpenableColumns
 import android.util.Log
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.abcd.aksan_aplikasipelayanankantordesa.R
+import com.abcd.aksan_aplikasipelayanankantordesa.data.model.DesaModel
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.ResponseModel
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.ActivityRegisterBinding
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.LoadingAlertDialog
@@ -31,6 +34,9 @@ class RegisterActivity : AppCompatActivity() {
     private val viewModel: RegisterViewModel by viewModels()
     private var selectedDate: Date? = null
     private var loading = LoadingAlertDialog()
+    private var listDesa : ArrayList<String> = arrayListOf()
+    private var listIdDesa : ArrayList<Int> = arrayListOf()
+    private var idDesa = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,10 +45,12 @@ class RegisterActivity : AppCompatActivity() {
 
         setupViews()
         setupButton()
+        getDesa()
         getRegister()
     }
 
     private fun setupViews() {
+        fetchDesa()
         binding.apply {
             // Setup gender radio buttons
             rgGender.setOnCheckedChangeListener { _, checkedId ->
@@ -81,7 +89,7 @@ class RegisterActivity : AppCompatActivity() {
 
         datePicker.addOnPositiveButtonClickListener { selection ->
             selectedDate = Date(selection)
-            val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
             binding.btnTanggalLahir.text = dateFormat.format(selectedDate!!)
         }
 
@@ -139,21 +147,20 @@ class RegisterActivity : AppCompatActivity() {
             val jenisKelamin = selectedGender!!
             val password = etPassword.text.toString()
 
-
             postRegister(
-                nama, alamat, nomorHp, noKtp, noKK,
+                idDesa, nama, alamat, nomorHp, noKtp, noKK,
                 tempatLahir, tanggalLahir, jenisKelamin, password,
             )
         }
     }
 
     private fun postRegister(
-        nama: String, alamat: String, nomorHp: String,
+        idDesa:Int, nama: String, alamat: String, nomorHp: String,
         noKtp: String, noKK: String, tempatLahir: String,
         tanggalLahir: String, jenisKelamin: String, password: String,
     ){
         viewModel.postRegister(
-            nama, alamat, nomorHp, noKtp, noKK, tempatLahir,
+            idDesa, nama, alamat, nomorHp, noKtp, noKK, tempatLahir,
             tanggalLahir, jenisKelamin, password
         )
     }
@@ -164,6 +171,7 @@ class RegisterActivity : AppCompatActivity() {
                 is UIState.Loading-> loading.alertDialogLoading(this@RegisterActivity)
                 is UIState.Success-> setSuccessRegister(result.data)
                 is UIState.Failure-> setFailureRegister(result.message)
+                else -> {}
             }
         }
     }
@@ -182,6 +190,53 @@ class RegisterActivity : AppCompatActivity() {
         Toast.makeText(this@RegisterActivity, message, Toast.LENGTH_SHORT).show()
         loading.alertDialogCancel()
     }
+
+    private fun fetchDesa(){
+        viewModel.fetchDesa()
+    }
+
+    private fun getDesa(){
+        viewModel.getDesa().observe(this@RegisterActivity){result->
+            when(result){
+                is UIState.Loading-> loading.alertDialogLoading(this@RegisterActivity)
+                is UIState.Success-> setSuccessDesa(result.data)
+                is UIState.Failure-> setFailureDesa(result.message)
+                else -> {}
+            }
+        }
+    }
+
+    private fun setSuccessDesa(data: ArrayList<DesaModel>) {
+        loading.alertDialogCancel()
+        listIdDesa = data.mapNotNull { it.id_desa } as ArrayList<Int>
+        listDesa = data.mapNotNull { it.desa } as ArrayList<String>
+
+        val arrayAdapterDesa = ArrayAdapter(
+            this@RegisterActivity,
+            android.R.layout.simple_spinner_item,
+            listDesa
+        )
+        arrayAdapterDesa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spDesa.adapter = arrayAdapterDesa
+        binding.spDesa.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                idDesa = listIdDesa[position]
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+        }
+    }
+
+    private fun setFailureDesa(message: String) {
+        Toast.makeText(this@RegisterActivity, message, Toast.LENGTH_SHORT).show()
+        loading.alertDialogCancel()
+    }
+
 
     companion object {
         private var selectedGender: String? = null

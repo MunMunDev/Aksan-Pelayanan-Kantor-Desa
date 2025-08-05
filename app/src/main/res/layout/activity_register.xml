@@ -75,6 +75,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
+                android:text="Desa"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+
+            <Spinner
+                android:id="@+id/spDesa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/black"
+                android:textStyle="normal"
+                android:textSize="16sp"
+                android:background="@drawable/bg_card"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
                 android:layout_marginBottom="6dp"
                 android:text="Alamat Lengkap (Sesuai KTP)"
                 android:textSize="14sp"
@@ -236,99 +255,15 @@
                 android:maxLength="20"/>
 
             <Button
-                android:id="@+id/btnLanjutkan"
+                android:id="@+id/btnRegistrasi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:text="LANJUTKAN"
+                android:text="REGISTRASI"
                 android:textStyle="bold"
-                android:textSize="14sp"
                 android:textColor="@color/white"
                 android:background="@drawable/bg_btn_action"/>
-        </LinearLayout>
 
-        <!-- Second Page Layout -->
-        <LinearLayout
-            android:id="@+id/secondPageLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:paddingBottom="22dp"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:orientation="vertical"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@id/ivBack">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="6dp"
-            android:text="Upload Dokumen"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:layout_marginBottom="6dp"
-            android:text="Scan/Foto KTP (PDF)"
-            android:textSize="14sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"/>
-        <Button
-            android:id="@+id/btnUploadKtp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Upload KTP"
-            android:textColor="@color/black"
-            android:background="@drawable/bg_card"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:layout_marginBottom="6dp"
-            android:text="Scan/Foto KK (PDF)"
-            android:textSize="14sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"/>
-        <Button
-            android:id="@+id/btnUploadKk"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Upload KK"
-            android:textColor="@color/black"
-            android:background="@drawable/bg_card"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:layout_marginBottom="6dp"
-            android:text="Foto Diri (JPG/JPEG)"
-            android:textSize="14sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"/>
-        <Button
-            android:id="@+id/btnUploadPhoto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Upload Foto"
-            android:textColor="@color/black"
-            android:background="@drawable/bg_card"/>
-
-        <Button
-            android:id="@+id/btnRegistrasi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:text="REGISTRASI"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:background="@drawable/bg_btn_action"/>
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
