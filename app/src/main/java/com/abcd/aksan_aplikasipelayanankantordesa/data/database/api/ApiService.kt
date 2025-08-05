@@ -2,6 +2,7 @@ package com.abcd.aksan_aplikasipelayanankantordesa.data.database.api
 
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.BeritaModel
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.BerkasModel
+import com.abcd.aksan_aplikasipelayanankantordesa.data.model.DesaModel
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.DokumenModel
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.UserModel
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.ResponseModel
@@ -22,6 +23,11 @@ interface ApiService {
         @Query("no_ktp") no_ktp: String,
         @Query("password") password: String
     ): UserModel
+
+    @GET("pelayanan-kantor-desa/api/get.php")
+    suspend fun getDesa(
+        @Query("get_desa") get_desa: String,
+    ): ArrayList<DesaModel>
 
     @GET("pelayanan-kantor-desa/api/get.php")
     suspend fun getBerita(
@@ -99,9 +105,10 @@ interface ApiService {
 
     //Register
     @FormUrlEncoded
-    @POST("pelayanan-kantor-kelurahan/api/post.php")
+    @POST("pelayanan-kantor-desa/api/post.php")
     suspend fun postRegister(
         @Field("register_user") register_user: String,
+        @Field("id_desa") id_desa: Int,
         @Field("nama") nama: String,
         @Field("alamat") alamat: String,
         @Field("nomor_hp") nomor_hp: String,
