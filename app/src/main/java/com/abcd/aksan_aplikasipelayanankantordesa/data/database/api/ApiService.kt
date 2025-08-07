@@ -239,4 +239,16 @@ interface ApiService {
         @Part pas_foto: MultipartBody.Part,
     ): ResponseModel
 
+    // UploadDokumen
+    @Multipart
+    @POST("pelayanan-kantor-desa/api/post.php")
+    suspend fun postUploadDokumen(
+        @Part("post_upload_dokumen") post_upload_dokumen: RequestBody,
+        @Part("id_dokumen") id_dokumen: RequestBody,
+        @Part("id_berkas") id_berkas: RequestBody,
+        @Part("no_ktp") no_ktp: RequestBody,
+        @Part("dokumen") dokumen: RequestBody,
+        @Part file: MultipartBody.Part,
+    ): ResponseModel
+
 }

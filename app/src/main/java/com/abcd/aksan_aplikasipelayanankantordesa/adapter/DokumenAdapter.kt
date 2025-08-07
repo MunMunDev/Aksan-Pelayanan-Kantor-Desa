@@ -3,6 +3,7 @@ package com.abcd.aksan_aplikasipelayanankantordesa.adapter
 import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -45,8 +46,16 @@ class DokumenAdapter(
                     .placeholder(R.drawable.loading)
                     .error(R.drawable.icon_dokumen)
                     .into(ivDokumen) // imageView mana yang akan diterapkan
+            }
 
-                Log.d("DokumenTAG", "onBindViewHolder: ${Constant.LOCATION_FILE}${sharedPreferences.getNoKtp()}/$idBerkas/${dokumen.file}")
+            val documentVerification = "Sudah Sesuai"
+            val documentUnVerification = "Tidak Sesuai"
+            if(dokumen.ket == 0) tvStatus.text=documentUnVerification else tvStatus.text=documentVerification
+            if(dokumen.pesan_desa.isNullOrEmpty()) {
+                llPesanDesa.visibility=View.GONE
+            }else{
+                llPesanDesa.visibility = View.VISIBLE
+                tvPesanDesa.text = dokumen.pesan_desa
             }
 
             // Button

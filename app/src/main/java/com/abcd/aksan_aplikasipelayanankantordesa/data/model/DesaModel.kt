@@ -41,11 +41,48 @@ class DesaModel (
     @SerializedName("sebagai")
     var sebagai: String? = null,
 ): Parcelable {
-    override fun describeContents(): Int {
-        TODO("Not yet implemented")
+    constructor(parcel: Parcel) : this(
+        parcel.readValue(Int::class.java.classLoader) as? Int,
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString()
+    ) {
     }
 
-    override fun writeToParcel(dest: Parcel, flags: Int) {
-        TODO("Not yet implemented")
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeValue(id_desa)
+        parcel.writeString(desa)
+        parcel.writeString(alamat)
+        parcel.writeString(nomor_hp)
+        parcel.writeString(kecamatan)
+        parcel.writeString(kode_pos)
+        parcel.writeString(nama_kades)
+        parcel.writeString(jumlah_penduduk)
+        parcel.writeString(kode_bps)
+        parcel.writeString(username)
+        parcel.writeString(password)
+        parcel.writeString(sebagai)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<DesaModel> {
+        override fun createFromParcel(parcel: Parcel): DesaModel {
+            return DesaModel(parcel)
+        }
+
+        override fun newArray(size: Int): Array<DesaModel?> {
+            return arrayOfNulls(size)
+        }
     }
 }
