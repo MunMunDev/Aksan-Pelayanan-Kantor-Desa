@@ -200,43 +200,43 @@ class LayananActivity : AppCompatActivity() {
     private fun setButtonLayanan() {
         binding.apply {
             tvKtp.setOnClickListener {
-                pickImageFile(ktp, "application/pdf")
+                pickImageFile(KTP)
             }
             tvKtpOrangTua.setOnClickListener {
-                pickImageFile(ktpOrangTua, "application/pdf")
+                pickImageFile(KTP_ORANG_TUA)
             }
             tvKk.setOnClickListener {
-                pickImageFile(kk, "application/pdf")
+                pickImageFile(KK)
             }
             tvSuratPengantarRtRw.setOnClickListener {
-                pickImageFile(suratPengantarRtRw,"application/pdf")
+                pickImageFile(SURAT_PENGANTAR_RT_RW)
             }
             tvAktaKelahiran.setOnClickListener {
-                pickImageFile(aktaKelahiran, "application/pdf")
+                pickImageFile(AKTE_KELAHIRAN)
             }
             tvKeteranganLahirDariBidan.setOnClickListener {
-                pickImageFile(keteranganLahirDariBidan, "application/pdf")
+                pickImageFile(KETERANGAN_LAHIR_DARI_BIDAN)
             }
             tvBuktiKepemilikanUsaha.setOnClickListener {
-                pickImageFile(buktiKepemilikanUsaha, "application/pdf")
+                pickImageFile(BUKTI_KEPEMILIKAN_USAHA)
             }
             tvKeteranganPenghasilan.setOnClickListener {
-                pickImageFile(keteranganPenghasilan, "application/pdf")
+                pickImageFile(KETERANGAN_PENGHASILAN)
             }
             tvKeteranganKematian.setOnClickListener {
-                pickImageFile(keteranganKematian, "application/pdf")
+                pickImageFile(KETERANGAN_KEMATIAN)
             }
             tvFotoAlmarhum.setOnClickListener {
-                pickImageFile(fotoAlmarhum, "image/*")
+                pickImageFile(FOTO_ALMARHUM)
             }
             tvBuktiKeteranganPindahDariTempatAsal.setOnClickListener {
-                pickImageFile(buktiKeteranganPindahDariTempatAsal, "application/pdf")
+                pickImageFile(BUKTI_KETERANGAN_PINDAH_DARI_TEMPAT_ASAL)
             }
             tvBuktiKepemilikanTempatTinggal.setOnClickListener {
-                pickImageFile(buktiKepemilikanTempatTinggal, "application/pdf")
+                pickImageFile(BUKTI_KEPEMILIKAN_TEMPAT_TINGGAL)
             }
             tvPasFoto.setOnClickListener {
-                pickImageFile(pasFoto, "image/*")
+                pickImageFile(PAS_FOTO)
             }
         }
     }
@@ -505,11 +505,12 @@ class LayananActivity : AppCompatActivity() {
     }
 
     @Suppress("DEPRECATION")
-    private fun pickImageFile(layanan: Int, typeBerkas:String) {
+    private fun pickImageFile(layanan: Int) {
         val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
-            type = typeBerkas
+            type = "*/*"
+            addCategory(Intent.CATEGORY_OPENABLE)
+            putExtra(Intent.EXTRA_MIME_TYPES, arrayOf("image/*", "application/pdf"))
         }
-
         startActivityForResult(intent, layanan)
     }
 
@@ -525,55 +526,55 @@ class LayananActivity : AppCompatActivity() {
             // Mendapatkan URI file PDF yang dipilih
             binding.apply {
                 when(requestCode){
-                    ktp -> {
+                    KTP -> {
                         ktpUri = uploadDataToStorage(uri, nameImage, "ktp")
                         tvKtp.text = nameImage
                     }
-                    ktpOrangTua -> {
+                    KTP_ORANG_TUA -> {
                         ktpOrangTuaUri = uploadDataToStorage(uri, nameImage, "ktp_orang_tua")
                         tvKtpOrangTua.text = nameImage
                     }
-                    kk -> {
+                    KK -> {
                         kkUri = uploadDataToStorage(uri, nameImage, "kk")
                         tvKk.text = nameImage
                     }
-                    suratPengantarRtRw -> {
+                    SURAT_PENGANTAR_RT_RW -> {
                         suratPengantarRtRwUri = uploadDataToStorage(uri, nameImage, "surat_pengantar_rt_rw")
                         tvSuratPengantarRtRw.text = nameImage
                     }
-                    aktaKelahiran -> {
+                    AKTE_KELAHIRAN -> {
                         aktaKelahiranUri = uploadDataToStorage(uri, nameImage, "akta_kelahiran")
                         tvAktaKelahiran.text = nameImage
                     }
-                    keteranganLahirDariBidan -> {
+                    KETERANGAN_LAHIR_DARI_BIDAN -> {
                         keteranganLahirDariBidanUri = uploadDataToStorage(uri, nameImage, "keterangan_lahir_dari_bidan")
                         tvKeteranganLahirDariBidan.text = nameImage
                     }
-                    buktiKepemilikanUsaha -> {
+                    BUKTI_KEPEMILIKAN_USAHA -> {
                         buktiKepemilikanUsahaUri = uploadDataToStorage(uri, nameImage, "bukti_kepemelikan_usaha")
                         tvBuktiKepemilikanUsaha.text = nameImage
                     }
-                    keteranganPenghasilan -> {
+                    KETERANGAN_PENGHASILAN -> {
                         keteranganPenghasilanUri = uploadDataToStorage(uri, nameImage, "keterangan_penghasilan")
                         tvKeteranganPenghasilan.text = nameImage
                     }
-                    keteranganKematian -> {
+                    KETERANGAN_KEMATIAN -> {
                         keteranganKematianUri = uploadDataToStorage(uri, nameImage, "keterangan_kematian")
                         tvKeteranganKematian.text = nameImage
                     }
-                    fotoAlmarhum -> {
+                    FOTO_ALMARHUM -> {
                         fotoAlmarhumUri = uploadDataToStorage(uri, nameImage, "foto_almarhum")
                         tvFotoAlmarhum.text = nameImage
                     }
-                    buktiKeteranganPindahDariTempatAsal -> {
+                    BUKTI_KETERANGAN_PINDAH_DARI_TEMPAT_ASAL -> {
                         buktiKeteranganPindahDariTempatAsalUri = uploadDataToStorage(uri, nameImage, "keterangan_pindah_dari_tempat_asal")
                         tvBuktiKeteranganPindahDariTempatAsal.text = nameImage
                     }
-                    buktiKepemilikanTempatTinggal -> {
+                    BUKTI_KEPEMILIKAN_TEMPAT_TINGGAL -> {
                         buktiKepemilikanTempatTinggalUri = uploadDataToStorage(uri, nameImage, "bukti_kepemilikan_tempat_tinggal")
                         tvBuktiKepemilikanTempatTinggal.text = nameImage
                     }
-                    pasFoto -> {
+                    PAS_FOTO -> {
                         pasFotoUri = uploadDataToStorage(uri, nameImage, "ktp_orang_tua")
                         tvPasFoto.text = nameImage
                     }
@@ -612,7 +613,7 @@ class LayananActivity : AppCompatActivity() {
     }
 
     private fun convertStringToMultipartBody(data: String): RequestBody {
-        return RequestBody.create("multipart/form-data".toMediaTypeOrNull(), data)
+        return data.toRequestBody("multipart/form-data".toMediaTypeOrNull())
     }
 
     private fun checkFile(check: String): Boolean{
@@ -814,18 +815,18 @@ class LayananActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val ktp = 1
-        private const val ktpOrangTua = 2
-        private const val kk = 3
-        private const val suratPengantarRtRw = 4
-        private const val aktaKelahiran = 5
-        private const val keteranganLahirDariBidan = 6
-        private const val buktiKepemilikanUsaha = 7
-        private const val keteranganPenghasilan = 8
-        private const val keteranganKematian = 9
-        private const val fotoAlmarhum = 10
-        private const val buktiKeteranganPindahDariTempatAsal = 11
-        private const val buktiKepemilikanTempatTinggal = 12
-        private const val pasFoto = 13
+        private const val KTP = 1
+        private const val KTP_ORANG_TUA = 2
+        private const val KK = 3
+        private const val SURAT_PENGANTAR_RT_RW = 4
+        private const val AKTE_KELAHIRAN = 5
+        private const val KETERANGAN_LAHIR_DARI_BIDAN = 6
+        private const val BUKTI_KEPEMILIKAN_USAHA = 7
+        private const val KETERANGAN_PENGHASILAN = 8
+        private const val KETERANGAN_KEMATIAN = 9
+        private const val FOTO_ALMARHUM = 10
+        private const val BUKTI_KETERANGAN_PINDAH_DARI_TEMPAT_ASAL = 11
+        private const val BUKTI_KEPEMILIKAN_TEMPAT_TINGGAL = 12
+        private const val PAS_FOTO = 13
     }
 }
