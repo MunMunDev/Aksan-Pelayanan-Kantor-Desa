@@ -51,11 +51,11 @@ class DokumenAdapter(
             val documentVerification = "Sudah Sesuai"
             val documentUnVerification = "Tidak Sesuai"
             if(dokumen.ket == 0) tvStatus.text=documentUnVerification else tvStatus.text=documentVerification
-            if(dokumen.pesan_desa.isNullOrEmpty()) {
+            if(dokumen.catatan.isNullOrEmpty()) {
                 llPesanDesa.visibility=View.GONE
             }else{
                 llPesanDesa.visibility = View.VISIBLE
-                tvPesanDesa.text = dokumen.pesan_desa
+                tvPesanDesa.text = dokumen.catatan
             }
 
             // Button

@@ -165,7 +165,7 @@ class ProsesBerkasDetailActivity : AppCompatActivity() {
         tempView = view
         view.apply {
             tvTitle.text = dokumen.dokumen
-            if(dokumen.pesan_desa!!.isNotEmpty()) tvPesanDesa.text = dokumen.pesan_desa
+            if(dokumen.catatan!!.isNotEmpty()) tvPesanDesa.text = dokumen.catatan
             tvDokumen.setOnClickListener {
                 if(checkPermission()){
                     pickFile()

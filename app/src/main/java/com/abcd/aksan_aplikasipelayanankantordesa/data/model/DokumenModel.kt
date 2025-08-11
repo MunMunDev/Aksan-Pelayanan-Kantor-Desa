@@ -30,8 +30,8 @@ class DokumenModel (
     @SerializedName("ket")
     var ket: Int? = null,
 
-    @SerializedName("pesan_desa")
-    var pesan_desa: String? = null,
+    @SerializedName("catatan")
+    var catatan: String? = null,
 
     @SerializedName("user")
     var user: UserModel? = null,
@@ -63,7 +63,7 @@ class DokumenModel (
         parcel.writeString(format)
         parcel.writeString(file)
         parcel.writeValue(ket)
-        parcel.writeString(pesan_desa)
+        parcel.writeString(catatan)
         parcel.writeParcelable(user, flags)
         parcel.writeParcelable(desa, flags)
     }
