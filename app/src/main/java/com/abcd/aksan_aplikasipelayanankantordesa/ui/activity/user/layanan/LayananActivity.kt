@@ -575,7 +575,7 @@ class LayananActivity : AppCompatActivity() {
                         tvBuktiKepemilikanTempatTinggal.text = nameImage
                     }
                     PAS_FOTO -> {
-                        pasFotoUri = uploadDataToStorage(uri, nameImage, "ktp_orang_tua")
+                        pasFotoUri = uploadDataToStorage(uri, nameImage, "pas_foto")
                         tvPasFoto.text = nameImage
                     }
                 }
