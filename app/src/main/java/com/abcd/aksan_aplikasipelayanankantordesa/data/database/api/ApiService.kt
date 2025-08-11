@@ -198,8 +198,8 @@ interface ApiService {
         @Part ktp: MultipartBody.Part,
         @Part kk: MultipartBody.Part,
         @Part surat_pengantar_rt_rw: MultipartBody.Part,
-        @Part("keterangan_kematian") keterangan_kematian: MultipartBody.Part,
-        @Part("foto_almarhum") foto_almarhum: MultipartBody.Part,
+        @Part keterangan_kematian: MultipartBody.Part,
+        @Part foto_almarhum: MultipartBody.Part,
     ): ResponseModel
 
     // Keterangan Pindah
