@@ -40,6 +40,8 @@ class LayananActivity : AppCompatActivity() {
     @Inject lateinit var loading: LoadingAlertDialog
 
     private var ktpUri: MultipartBody.Part? = null
+    private var ktpSuamiUri: MultipartBody.Part? = null
+    private var ktpIstriUri: MultipartBody.Part? = null
     private var ktpOrangTuaUri: MultipartBody.Part? = null
     private var kkUri: MultipartBody.Part? = null
     private var suratPengantarRtRwUri: MultipartBody.Part? = null
@@ -54,30 +56,8 @@ class LayananActivity : AppCompatActivity() {
     private var pasFotoUri: MultipartBody.Part? = null
 
     private var idUser : RequestBody? = null
+    private var alasanBantuan : RequestBody? = null
     private var rencanaKegiatan : RequestBody? = null
-
-//    private fun setResultActivityLauncher(layanan:Int, btn:TextView): ActivityResultLauncher<String>{
-//        return registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-//            uri?.let {
-//                when(layanan){
-//                    ktp -> ktpUri = it
-//                    ktpOrangTua -> ktpOrangTuaUri = it
-//                    kk -> kkUri = it
-//                    suratPengantarRtRw -> suratPengantarRtRwUri = it
-//                    aktaKelahiran -> aktaKelahiranUri = it
-//                    keteranganLahirDariBidan -> keteranganLahirDariBidanUri = it
-//                    buktiKepemilikanUsaha -> buktiKepemilikanUsahaUri = it
-//                    keteranganPenghasilan -> keteranganPenghasilanUri = it
-//                    keteranganKematian -> keteranganKematianUri = it
-//                    fotoAlmarhum -> fotoAlmarhumUri = it
-//                    buktiKeteranganPindahDariTempatAsal -> buktiKeteranganPindahDariTempatAsalUri = it
-//                    buktiKepemilikanTempatTinggal -> buktiKepemilikanTempatTinggalUri = it
-//                    pasFoto -> pasFotoUri = it
-//                }
-//                btn.text = getNameFile(it)
-//            }
-//        }
-//    }
 
     private fun capitalizeWords(words:String):String{
         return words.split(" ").joinToString(" ") {
@@ -118,6 +98,7 @@ class LayananActivity : AppCompatActivity() {
     private fun setButtonUpload() {
         binding.apply {
             btnUploadBerkas.setOnClickListener {
+                alasanBantuan = convertStringToMultipartBody(tvAlasanBantuan.text.toString())
                 rencanaKegiatan = convertStringToMultipartBody(tvRencanaKegiatan.text.toString())
 
                 when(layanan){
@@ -125,7 +106,7 @@ class LayananActivity : AppCompatActivity() {
                         if(checkFile(Constant.KETERANGAN_NIKAH)){
                             val post = convertStringToMultipartBody(capitalizeWords(Constant.KETERANGAN_NIKAH))
                             postKeteranganNikah(
-                                post, idUser!!, ktpUri!!, kkUri!!, suratPengantarRtRwUri!!,
+                                post, idUser!!, ktpSuamiUri!!, ktpIstriUri!!, kkUri!!, suratPengantarRtRwUri!!,
                                 aktaKelahiranUri!!, pasFotoUri!!
                             )
                         }
@@ -134,7 +115,7 @@ class LayananActivity : AppCompatActivity() {
                         if(checkFile(Constant.KETERANGAN_LAHIR)){
                             val post = convertStringToMultipartBody(capitalizeWords(Constant.KETERANGAN_LAHIR))
                             postKeteranganLahir(
-                                post, idUser!!, ktpOrangTuaUri!!, kkUri!!, keteranganLahirDariBidanUri!!
+                                post, idUser!!, ktpSuamiUri!!, ktpIstriUri!!, kkUri!!, keteranganLahirDariBidanUri!!
                             )
                         }
                     }
@@ -152,7 +133,7 @@ class LayananActivity : AppCompatActivity() {
                             val post = convertStringToMultipartBody(capitalizeWords(Constant.KETERANGAN_TIDAK_MAMPU))
                             postKeteranganTidakMampu(
                                 post, idUser!!, ktpUri!!, kkUri!!, suratPengantarRtRwUri!!,
-                                keteranganPenghasilanUri!!, pasFotoUri!!
+                                keteranganPenghasilanUri!!, pasFotoUri!!, rencanaKegiatan!!
                             )
                         }
                     }
@@ -201,6 +182,12 @@ class LayananActivity : AppCompatActivity() {
         binding.apply {
             tvKtp.setOnClickListener {
                 pickImageFile(KTP)
+            }
+            tvKtpSuami.setOnClickListener {
+                pickImageFile(KTP_SUAMI)
+            }
+            tvKtpIstri.setOnClickListener {
+                pickImageFile(KTP_ISTRI)
             }
             tvKtpOrangTua.setOnClickListener {
                 pickImageFile(KTP_ORANG_TUA)
@@ -284,7 +271,8 @@ class LayananActivity : AppCompatActivity() {
 
     private fun setKeteranganNikah() {
         binding.apply {
-            llBerkasKtp.visibility = View.VISIBLE
+            llBerkasKtpSuami.visibility = View.VISIBLE
+            llBerkasKtpIstri.visibility = View.VISIBLE
             llBerkasKk.visibility = View.VISIBLE
             llBerkasSuratPengantarRtRw.visibility = View.VISIBLE
             llBerkasAktaKelahiran.visibility = View.VISIBLE
@@ -294,7 +282,8 @@ class LayananActivity : AppCompatActivity() {
 
     private fun setKeteranganLahir() {
         binding.apply {
-            llBerkasKtpOrangTua.visibility = View.VISIBLE
+            llBerkasKtpSuami.visibility = View.VISIBLE
+            llBerkasKtpIstri.visibility = View.VISIBLE
             llBerkasKk.visibility = View.VISIBLE
             llBerkasKeteranganLahirDariBidan.visibility = View.VISIBLE
         }
@@ -317,6 +306,7 @@ class LayananActivity : AppCompatActivity() {
             llBerkasSuratPengantarRtRw.visibility = View.VISIBLE
             llBerkasKeteranganPenghasilan.visibility = View.VISIBLE
             llBerkasPasFoto.visibility = View.VISIBLE
+            llBerkasAlasanBantuan.visibility = View.VISIBLE
         }
     }
 
@@ -359,21 +349,21 @@ class LayananActivity : AppCompatActivity() {
     }
 
     private fun postKeteranganNikah(
-        post: RequestBody, idUser: RequestBody, ktp: MultipartBody.Part, kk: MultipartBody.Part,
+        post: RequestBody, idUser: RequestBody, ktpSuami: MultipartBody.Part, ktpIstri: MultipartBody.Part, kk: MultipartBody.Part,
         suratPengantarRtRw: MultipartBody.Part, aktaKelahiran: MultipartBody.Part,
         pasFoto: MultipartBody.Part,
     ){
         viewModel.postKeteranganNikah(
-            post, idUser, ktp, kk, suratPengantarRtRw, aktaKelahiran, pasFoto
+            post, idUser, ktpSuami, ktpIstri, kk, suratPengantarRtRw, aktaKelahiran, pasFoto
         )
     }
 
     private fun postKeteranganLahir(
-        post: RequestBody, idUser: RequestBody, ktpOrangTua: MultipartBody.Part, kk: MultipartBody.Part,
-        keteranganLahirDariBidan: MultipartBody.Part,
+        post: RequestBody, idUser: RequestBody, ktpSuami: MultipartBody.Part, ktpIstri: MultipartBody.Part,
+        kk: MultipartBody.Part, keteranganLahirDariBidan: MultipartBody.Part,
     ){
         viewModel.postKeteranganLahir(
-            post, idUser, ktpOrangTua, kk, keteranganLahirDariBidan
+            post, idUser, ktpSuami, ktpIstri, kk, keteranganLahirDariBidan
         )
     }
 
@@ -390,10 +380,10 @@ class LayananActivity : AppCompatActivity() {
     private fun postKeteranganTidakMampu(
         post: RequestBody, idUser: RequestBody, ktp: MultipartBody.Part, kk: MultipartBody.Part,
         suratPengantarRtRw: MultipartBody.Part, buktiKepemilikanUsaha: MultipartBody.Part,
-        pasFoto: MultipartBody.Part
+        pasFoto: MultipartBody.Part, rencanaKegiatan: RequestBody
     ){
         viewModel.postKeteranganTidakMampu(
-            post, idUser, ktp, kk, suratPengantarRtRw, buktiKepemilikanUsaha, pasFoto
+            post, idUser, ktp, kk, suratPengantarRtRw, buktiKepemilikanUsaha, pasFoto, rencanaKegiatan
         )
     }
 
@@ -530,6 +520,14 @@ class LayananActivity : AppCompatActivity() {
                         ktpUri = uploadDataToStorage(uri, nameImage, "ktp")
                         tvKtp.text = nameImage
                     }
+                    KTP_SUAMI -> {
+                        ktpSuamiUri = uploadDataToStorage(uri, nameImage, "ktp_suami")
+                        tvKtpSuami.text = nameImage
+                    }
+                    KTP_ISTRI -> {
+                        ktpIstriUri = uploadDataToStorage(uri, nameImage, "ktp_istri")
+                        tvKtpIstri.text = nameImage
+                    }
                     KTP_ORANG_TUA -> {
                         ktpOrangTuaUri = uploadDataToStorage(uri, nameImage, "ktp_orang_tua")
                         tvKtpOrangTua.text = nameImage
@@ -620,24 +618,28 @@ class LayananActivity : AppCompatActivity() {
         when(check){
             Constant.KETERANGAN_NIKAH -> {
                 binding.apply {
-                    if (ktpUri == null) {
-                        tvKtp.error = "File ini harus diisi"
+                    if (ktpSuamiUri == null) {
+                        tvKtpSuami.error = MESSAGE_ERROR_FILE
+                        return false
+                    }
+                    if (ktpIstriUri == null) {
+                        tvKtpIstri.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (kkUri == null) {
-                        tvKk.error = "File ini harus diisi"
+                        tvKk.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (suratPengantarRtRwUri == null) {
-                        tvSuratPengantarRtRw.error = "File ini harus diisi"
+                        tvSuratPengantarRtRw.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (aktaKelahiranUri == null) {
-                        tvAktaKelahiran.error = "File ini harus diisi"
+                        tvAktaKelahiran.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (pasFotoUri == null) {
-                        tvPasFoto.error = "File ini harus diisi"
+                        tvPasFoto.error = MESSAGE_ERROR_FILE
                         return false
                     } else{
                         return true
@@ -646,16 +648,20 @@ class LayananActivity : AppCompatActivity() {
             }
             Constant.KETERANGAN_LAHIR -> {
                 binding.apply {
-                    if (ktpOrangTuaUri == null) {
-                        tvKtpOrangTua.error = "File ini harus diisi"
+                    if (ktpSuamiUri == null) {
+                        tvKtp.error = MESSAGE_ERROR_FILE
+                        return false
+                    }
+                    if (ktpIstriUri == null) {
+                        tvKtp.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (kkUri == null) {
-                        tvKk.error = "File ini harus diisi"
+                        tvKk.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (keteranganLahirDariBidanUri == null) {
-                        tvKeteranganLahirDariBidan.error = "File ini harus diisi"
+                        tvKeteranganLahirDariBidan.error = MESSAGE_ERROR_FILE
                         return false
                     } else{
                         return true
@@ -665,23 +671,23 @@ class LayananActivity : AppCompatActivity() {
             Constant.KETERANGAN_USAHA -> {
                 binding.apply {
                     if (ktpUri == null) {
-                        tvKtp.error = "File ini harus diisi"
+                        tvKtp.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (kkUri == null) {
-                        tvKk.error = "File ini harus diisi"
+                        tvKk.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (suratPengantarRtRwUri == null) {
-                        tvSuratPengantarRtRw.error = "File ini harus diisi"
+                        tvSuratPengantarRtRw.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (buktiKepemilikanUsahaUri == null) {
-                        tvBuktiKepemilikanUsaha.error = "File ini harus diisi"
+                        tvBuktiKepemilikanUsaha.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (pasFotoUri == null) {
-                        tvPasFoto.error = "File ini harus diisi"
+                        tvPasFoto.error = MESSAGE_ERROR_FILE
                         return false
                     } else{
                         return true
@@ -691,23 +697,26 @@ class LayananActivity : AppCompatActivity() {
             Constant.KETERANGAN_TIDAK_MAMPU -> {
                 binding.apply {
                     if (ktpUri == null) {
-                        tvKtp.error = "File ini harus diisi"
+                        tvKtp.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (kkUri == null) {
-                        tvKk.error = "File ini harus diisi"
+                        tvKk.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (suratPengantarRtRwUri == null) {
-                        tvSuratPengantarRtRw.error = "File ini harus diisi"
+                        tvSuratPengantarRtRw.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (keteranganPenghasilanUri == null) {
-                        tvKeteranganPenghasilan.error = "File ini harus diisi"
+                        tvKeteranganPenghasilan.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (pasFotoUri == null) {
-                        tvPasFoto.error = "File ini harus diisi"
+                        tvPasFoto.error = MESSAGE_ERROR_FILE
+                        return false
+                    } else if (alasanBantuan == null) {
+                        tvAlasanBantuan.error = MESSAGE_ERROR_TEXT
                         return false
                     } else{
                         return true
@@ -717,23 +726,23 @@ class LayananActivity : AppCompatActivity() {
             Constant.KETERANGAN_AKTE_KEMATIAN -> {
                 binding.apply {
                     if (ktpUri == null) {
-                        tvKtp.error = "File ini harus diisi"
+                        tvKtp.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (kkUri == null) {
-                        tvKk.error = "File ini harus diisi"
+                        tvKk.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (suratPengantarRtRwUri == null) {
-                        tvSuratPengantarRtRw.error = "File ini harus diisi"
+                        tvSuratPengantarRtRw.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (keteranganKematianUri == null) {
-                        tvKeteranganKematian.error = "File ini harus diisi"
+                        tvKeteranganKematian.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (fotoAlmarhumUri == null) {
-                        tvFotoAlmarhum.error = "File ini harus diisi"
+                        tvFotoAlmarhum.error = MESSAGE_ERROR_FILE
                         return false
                     } else{
                         return true
@@ -743,19 +752,19 @@ class LayananActivity : AppCompatActivity() {
             Constant.KETERANGAN_PINDAH -> {
                 binding.apply {
                     if (ktpUri == null) {
-                        tvKtp.error = "File ini harus diisi"
+                        tvKtp.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (kkUri == null) {
-                        tvKk.error = "File ini harus diisi"
+                        tvKk.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (buktiKeteranganPindahDariTempatAsalUri == null) {
-                        tvBuktiKeteranganPindahDariTempatAsal.error = "File ini harus diisi"
+                        tvBuktiKeteranganPindahDariTempatAsal.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (pasFotoUri == null) {
-                        tvPasFoto.error = "File ini harus diisi"
+                        tvPasFoto.error = MESSAGE_ERROR_FILE
                         return false
                     } else{
                         return true
@@ -765,19 +774,19 @@ class LayananActivity : AppCompatActivity() {
             Constant.KETERANGAN_IZIN_KERAMAIAN -> {
                 binding.apply {
                     if (ktpUri == null) {
-                        tvKtp.error = "File ini harus diisi"
+                        tvKtp.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (kkUri == null) {
-                        tvKk.error = "File ini harus diisi"
+                        tvKk.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (suratPengantarRtRwUri == null) {
-                        tvSuratPengantarRtRw.error = "File ini harus diisi"
+                        tvSuratPengantarRtRw.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (tvRencanaKegiatan.text.toString().isEmpty()) {
-                        tvRencanaKegiatan.error = "Isi Rencana Kegiatan Anda"
+                        tvRencanaKegiatan.error = MESSAGE_ERROR_TEXT
                         return false
                     } else{
                         return true
@@ -787,23 +796,23 @@ class LayananActivity : AppCompatActivity() {
             Constant.KETERANGAN_DOMISILI -> {
                 binding.apply {
                     if (ktpUri == null) {
-                        tvKtp.error = "File ini harus diisi"
+                        tvKtp.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (kkUri == null) {
-                        tvKk.error = "File ini harus diisi"
+                        tvKk.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (suratPengantarRtRwUri == null) {
-                        tvSuratPengantarRtRw.error = "File ini harus diisi"
+                        tvSuratPengantarRtRw.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (buktiKepemilikanTempatTinggalUri == null) {
-                        tvBuktiKepemilikanTempatTinggal.error = "File ini harus diisi"
+                        tvBuktiKepemilikanTempatTinggal.error = MESSAGE_ERROR_FILE
                         return false
                     }
                     else if (pasFotoUri == null) {
-                        tvPasFoto.error = "File ini harus diisi"
+                        tvPasFoto.error = MESSAGE_ERROR_FILE
                         return false
                     } else{
                         return true
@@ -816,17 +825,22 @@ class LayananActivity : AppCompatActivity() {
 
     companion object {
         private const val KTP = 1
-        private const val KTP_ORANG_TUA = 2
-        private const val KK = 3
-        private const val SURAT_PENGANTAR_RT_RW = 4
-        private const val AKTE_KELAHIRAN = 5
-        private const val KETERANGAN_LAHIR_DARI_BIDAN = 6
-        private const val BUKTI_KEPEMILIKAN_USAHA = 7
-        private const val KETERANGAN_PENGHASILAN = 8
-        private const val KETERANGAN_KEMATIAN = 9
-        private const val FOTO_ALMARHUM = 10
-        private const val BUKTI_KETERANGAN_PINDAH_DARI_TEMPAT_ASAL = 11
-        private const val BUKTI_KEPEMILIKAN_TEMPAT_TINGGAL = 12
-        private const val PAS_FOTO = 13
+        private const val KTP_SUAMI = 2
+        private const val KTP_ISTRI = 3
+        private const val KTP_ORANG_TUA = 4
+        private const val KK = 5
+        private const val SURAT_PENGANTAR_RT_RW = 6
+        private const val AKTE_KELAHIRAN = 7
+        private const val KETERANGAN_LAHIR_DARI_BIDAN = 8
+        private const val BUKTI_KEPEMILIKAN_USAHA = 9
+        private const val KETERANGAN_PENGHASILAN = 10
+        private const val KETERANGAN_KEMATIAN = 11
+        private const val FOTO_ALMARHUM = 12
+        private const val BUKTI_KETERANGAN_PINDAH_DARI_TEMPAT_ASAL = 13
+        private const val BUKTI_KEPEMILIKAN_TEMPAT_TINGGAL = 14
+        private const val PAS_FOTO = 15
+
+        private const val MESSAGE_ERROR_FILE = "File ini harus diisi"
+        private const val MESSAGE_ERROR_TEXT = "Text ini harus diisi"
     }
 }

@@ -24,7 +24,7 @@ class LayananViewModel @Inject constructor(
     val getResponse : LiveData<UIState<ResponseModel>> = _response
 
     fun postKeteranganNikah(
-        post: RequestBody, idUser: RequestBody, ktp: MultipartBody.Part, kk: MultipartBody.Part,
+        post: RequestBody, idUser: RequestBody, ktpSuami: MultipartBody.Part, ktpIstri: MultipartBody.Part, kk: MultipartBody.Part,
         suratPengantarRtRw: MultipartBody.Part, aktaKelahiran: MultipartBody.Part, pasFoto: MultipartBody.Part,
     ){
         viewModelScope.launch {
@@ -32,7 +32,7 @@ class LayananViewModel @Inject constructor(
             delay(1_000)
             try {
                 val data = repository.postKeteranganNikah(
-                    post, idUser, ktp, kk, suratPengantarRtRw, aktaKelahiran, pasFoto
+                    post, idUser, ktpSuami, ktpIstri, kk, suratPengantarRtRw, aktaKelahiran, pasFoto
                 )
                 _response.postValue(UIState.Success(data))
             } catch (ex: Exception){
@@ -42,15 +42,15 @@ class LayananViewModel @Inject constructor(
     }
 
     fun postKeteranganLahir(
-        post: RequestBody, idUser: RequestBody, ktpOrangTua: MultipartBody.Part, kk: MultipartBody.Part,
-        keteranganLahirDariBidan: MultipartBody.Part,
+        post: RequestBody, idUser: RequestBody, ktpSuami: MultipartBody.Part, ktpIstri: MultipartBody.Part,
+        kk: MultipartBody.Part, keteranganLahirDariBidan: MultipartBody.Part,
     ){
         viewModelScope.launch {
             _response.postValue(UIState.Loading)
             delay(1_000)
             try {
                 val data = repository.postKeteranganLahir(
-                    post, idUser, ktpOrangTua, kk, keteranganLahirDariBidan
+                    post, idUser, ktpSuami, ktpIstri, kk, keteranganLahirDariBidan
                 )
                 _response.postValue(UIState.Success(data))
             } catch (ex: Exception){
@@ -81,14 +81,14 @@ class LayananViewModel @Inject constructor(
     fun postKeteranganTidakMampu(
         post: RequestBody, idUser: RequestBody, ktp: MultipartBody.Part, kk: MultipartBody.Part,
         suratPengantarRtRw: MultipartBody.Part, keteranganPenghasilan: MultipartBody.Part,
-        pasFoto: MultipartBody.Part,
+        pasFoto: MultipartBody.Part, rencanaKegiatan: RequestBody
     ){
         viewModelScope.launch {
             _response.postValue(UIState.Loading)
             delay(1_000)
             try {
                 val data = repository.postKeteranganTidakMampu(
-                    post, idUser, ktp, kk, suratPengantarRtRw, keteranganPenghasilan, pasFoto
+                    post, idUser, ktp, kk, suratPengantarRtRw, keteranganPenghasilan, pasFoto, rencanaKegiatan
                 )
                 _response.postValue(UIState.Success(data))
             } catch (ex: Exception){

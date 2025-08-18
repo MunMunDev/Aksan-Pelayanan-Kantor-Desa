@@ -57,6 +57,56 @@
                     android:textSize="14sp"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/llBerkasKtpSuami"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="12dp"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ktp_suami"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/tvKtpSuami"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:padding="14dp"
+                    android:background="@drawable/bg_card"
+                    android:text="@string/upload_dokumen"
+                    android:textColor="@color/abuabu_tua"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llBerkasKtpIstri"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="12dp"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ktp_istri"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/tvKtpIstri"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:padding="14dp"
+                    android:background="@drawable/bg_card"
+                    android:text="@string/upload_dokumen"
+                    android:textColor="@color/abuabu_tua"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+            <LinearLayout
                 android:id="@+id/llBerkasKtpOrangTua"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -314,6 +364,34 @@
                     android:text="@string/upload_dokumen"
                     android:textColor="@color/abuabu_tua"
                     android:textSize="14sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llBerkasAlasanBantuan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/alasan_bantuan"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+                <EditText
+                    android:id="@+id/tvAlasanBantuan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:padding="14dp"
+                    android:background="@drawable/bg_card"
+                    android:hint="@string/contoh_alasan_bantuan"
+                    android:textColor="@color/abuabu_tua"
+                    android:textSize="14sp"
+                    android:lines="2"
+                    android:inputType="textMultiLine"/>
             </LinearLayout>
 
             <LinearLayout

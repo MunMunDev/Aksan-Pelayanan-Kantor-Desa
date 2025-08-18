@@ -14,21 +14,21 @@ class LayananRepositoryValue @Inject constructor(
 ) {
     // Keterangan Nikah
     suspend fun postKeteranganNikah(
-        post: RequestBody, idUser: RequestBody, ktp: MultipartBody.Part, kk: MultipartBody.Part,
+        post: RequestBody, idUser: RequestBody, ktpSuami: MultipartBody.Part, ktpIstri: MultipartBody.Part, kk: MultipartBody.Part,
         suratPengantarRtRw: MultipartBody.Part, aktaKelahiran: MultipartBody.Part, pasFoto: MultipartBody.Part,
     ): ResponseModel {
         return api.postKeteranganNikah(
-            post, idUser, ktp, kk, suratPengantarRtRw, aktaKelahiran, pasFoto
+            post, idUser, ktpSuami, ktpIstri, kk, suratPengantarRtRw, aktaKelahiran, pasFoto
         )
     }
 
     // Keterangan Lahir
     suspend fun postKeteranganLahir(
-        post: RequestBody, idUser: RequestBody, ktpOrangTua: MultipartBody.Part, kk: MultipartBody.Part,
-        keteranganLahirDariBidan: MultipartBody.Part,
+        post: RequestBody, idUser: RequestBody, ktpSuami: MultipartBody.Part, ktpIstri: MultipartBody.Part,
+        kk: MultipartBody.Part, keteranganLahirDariBidan: MultipartBody.Part,
     ): ResponseModel {
         return api.postKeteranganLahir(
-            post, idUser, ktpOrangTua, kk, keteranganLahirDariBidan
+            post, idUser, ktpSuami, ktpIstri, kk, keteranganLahirDariBidan
         )
     }
 
@@ -45,10 +45,12 @@ class LayananRepositoryValue @Inject constructor(
     // Keterangan TidakMampu
     suspend fun postKeteranganTidakMampu(
         post: RequestBody, idUser: RequestBody, ktp: MultipartBody.Part, kk: MultipartBody.Part,
-        suratPengantarRtRw: MultipartBody.Part, keteranganPenghasilan: MultipartBody.Part, pasFoto: MultipartBody.Part,
+        suratPengantarRtRw: MultipartBody.Part, keteranganPenghasilan: MultipartBody.Part,
+        pasFoto: MultipartBody.Part, rencanaKegiatan: RequestBody
+
     ): ResponseModel {
         return api.postKeteranganTidakMampu(
-            post, idUser, ktp, kk, suratPengantarRtRw, keteranganPenghasilan, pasFoto
+            post, idUser, ktp, kk, suratPengantarRtRw, keteranganPenghasilan, pasFoto, rencanaKegiatan
         )
     }
 

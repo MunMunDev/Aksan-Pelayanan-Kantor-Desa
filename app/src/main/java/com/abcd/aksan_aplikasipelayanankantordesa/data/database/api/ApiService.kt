@@ -145,7 +145,8 @@ interface ApiService {
     suspend fun postKeteranganNikah(
         @Part("post_keterangan_nikah") post_keterangan_nikah: RequestBody,
         @Part("id_user") id_user: RequestBody,
-        @Part ktp: MultipartBody.Part,
+        @Part ktpSuami: MultipartBody.Part,
+        @Part ktpIstri: MultipartBody.Part,
         @Part kk: MultipartBody.Part,
         @Part surat_pengantar_rt_rw: MultipartBody.Part,
         @Part akta_kelahiran: MultipartBody.Part,
@@ -158,7 +159,8 @@ interface ApiService {
     suspend fun postKeteranganLahir(
         @Part("post_keterangan_lahir") post_keterangan_lahir: RequestBody,
         @Part("id_user") id_user: RequestBody,
-        @Part ktp_orang_tua: MultipartBody.Part,
+        @Part ktpSuami: MultipartBody.Part,
+        @Part ktpIstri: MultipartBody.Part,
         @Part kk: MultipartBody.Part,
         @Part keterangan_lahir_dari_bidan: MultipartBody.Part,
     ): ResponseModel
@@ -187,6 +189,7 @@ interface ApiService {
         @Part surat_pengantar_rt_rw: MultipartBody.Part,
         @Part keterangan_penghasilan: MultipartBody.Part,
         @Part pas_foto: MultipartBody.Part,
+        @Part("alasan_bantuan") alasan_bantuan: RequestBody,
     ): ResponseModel
 
     // Keterangan Nikah
