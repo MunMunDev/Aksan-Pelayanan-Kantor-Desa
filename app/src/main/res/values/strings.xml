@@ -8,6 +8,8 @@
     <string name="upload_foto">Upload Foto..</string>
 
     <string name="ktp">Kartu Tanda Penduduk</string>
+    <string name="ktp_suami">Kartu Tanda Penduduk Suami</string>
+    <string name="ktp_istri">Kartu Tanda Penduduk Istri</string>
     <string name="kk">Kartu Keluarga</string>
     <string name="surat_pengantar_rt_rw">Surat Pengantar Dari Rt/Rw</string>
     <string name="akta_kelahiran">Akta Kelahiran</string>
@@ -19,6 +21,8 @@
     <string name="keterangan_kematian">Keterangan Kematian</string>
     <string name="foto_almarhum">Foto Almarhum</string>
     <string name="keterangan_pindah_dari_tempat_asal">Keterangan Pindah Dari Tempat Asal</string>
+    <string name="alasan_bantuan">Alasan Bantuan</string>
+    <string name="contoh_alasan_bantuan">Contoh: Persyaratan Pendaftaran BPJS Ketenagakerjaan</string>
     <string name="rencana_kegiatan">Rencana Kegiatan</string>
     <string name="bukti_kepemilikan_tempat_tinggal">Bukti Kepemilikan Tempat Tinggal</string>
 
