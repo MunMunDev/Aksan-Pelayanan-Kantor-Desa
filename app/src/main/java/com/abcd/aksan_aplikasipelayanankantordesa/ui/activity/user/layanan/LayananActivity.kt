@@ -18,11 +18,13 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.abcd.aksan_aplikasipelayanankantordesa.R
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.ResponseModel
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.ActivityLayananBinding
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.Constant
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.LoadingAlertDialog
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.SharedPreferencesLogin
+import com.abcd.aksan_aplikasipelayanankantordesa.utils.TanggalDanWaktu
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.network.UIState
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -38,6 +40,8 @@ class LayananActivity : AppCompatActivity() {
     private lateinit var sharedPreferences: SharedPreferencesLogin
     private var layanan: String? = null
     @Inject lateinit var loading: LoadingAlertDialog
+
+    private val tanggalDanWaktu = TanggalDanWaktu()
 
     private var ktpUri: MultipartBody.Part? = null
     private var ktpSuamiUri: MultipartBody.Part? = null
@@ -230,6 +234,10 @@ class LayananActivity : AppCompatActivity() {
             }
             tvPasFoto.setOnClickListener {
                 pickImageFile(PAS_FOTO)
+            }
+            tvTanggalKematian.setOnClickListener {
+                val tempTanggalDanWaktu = tanggalDanWaktu.tanggalSekarangZonaMakassar()
+                tanggalDanWaktu.selectedDateTime(tempTanggalDanWaktu, tvTanggalKematian, this@LayananActivity)
             }
         }
     }
@@ -753,6 +761,18 @@ class LayananActivity : AppCompatActivity() {
                     }
                     else if (fotoAlmarhumUri == null) {
                         tvFotoAlmarhum.error = MESSAGE_ERROR_FILE
+                        return false
+                    }
+                    else if (tvTanggalKematian.text == resources.getString(R.string.tanggal_kematian)) {
+                        tvTanggalKematian.error = MESSAGE_ERROR_TEXT
+                        return false
+                    }
+                    else if (tvSebabKematian.text.isEmpty()) {
+                        tvSebabKematian.error = MESSAGE_ERROR_TEXT
+                        return false
+                    }
+                    else if (tvYangMenerankanKematian.text.isEmpty()) {
+                        tvYangMenerankanKematian.error = MESSAGE_ERROR_TEXT
                         return false
                     } else{
                         return true
