@@ -469,6 +469,7 @@ class LayananActivity : AppCompatActivity() {
                     "Berhasil. Silahkan Tunggu Dokumen Anda Dari Kantor Desa. Pantau Terus pada halaman progress",
                     Toast.LENGTH_SHORT
                 ).show()
+                finish()
             } else{
                 Toast.makeText(this@LayananActivity, data.message_response, Toast.LENGTH_SHORT).show()
                 Log.d("LayananTAG", "setSuccessPostSuratPengantar: ${data.message_response}")
