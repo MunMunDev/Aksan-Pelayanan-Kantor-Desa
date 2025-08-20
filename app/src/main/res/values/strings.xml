@@ -24,6 +24,10 @@
     <string name="keterangan_pindah_dari_tempat_asal">Keterangan Pindah Dari Tempat Asal</string>
     <string name="alasan_bantuan">Alasan Bantuan</string>
     <string name="contoh_alasan_bantuan">Contoh: Persyaratan Pendaftaran BPJS Ketenagakerjaan</string>
+    <string name="tanggal_kematian">Tanggal dan Waktu Kematian</string>
+    <string name="contoh_tanggal_kematian">Klik Untuk Tanggal dan Waktu Kematian</string>
+    <string name="sebab_kematian">Sebab Kematian</string>
+    <string name="yang_menerankan_kematian">Nama Yang Menerankan Kematian</string>
     <string name="rencana_kegiatan">Rencana Kegiatan</string>
     <string name="bukti_kepemilikan_tempat_tinggal">Bukti Kepemilikan Tempat Tinggal</string>
 

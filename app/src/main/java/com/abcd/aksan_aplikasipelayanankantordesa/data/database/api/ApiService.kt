@@ -203,6 +203,9 @@ interface ApiService {
         @Part surat_pengantar_rt_rw: MultipartBody.Part,
         @Part keterangan_kematian: MultipartBody.Part,
         @Part foto_almarhum: MultipartBody.Part,
+        @Part("tanggal_kematian") tanggal_kematian: RequestBody,
+        @Part("sebab_kematian") sebab_kematian: RequestBody,
+        @Part("yang_menerankanKematian") yang_menerankanKematian: RequestBody
     ): ResponseModel
 
     // Keterangan Pindah

@@ -1,6 +1,5 @@
 package com.abcd.aksan_aplikasipelayanankantordesa.data.repository.layanan
 
-import androidx.lifecycle.ViewModel
 import com.abcd.aksan_aplikasipelayanankantordesa.data.database.api.ApiService
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.ResponseModel
 import okhttp3.MultipartBody
@@ -56,11 +55,20 @@ class LayananRepositoryValue @Inject constructor(
 
     // Keterangan AkteKematian
     suspend fun postKeteranganAkteKematian(
-        post: RequestBody, idUser: RequestBody, ktp: MultipartBody.Part, kk: MultipartBody.Part,
-        keteranganKematian: MultipartBody.Part, keteranganRtRw: MultipartBody.Part, fotoAlmarhum: MultipartBody.Part,
+        post: RequestBody,
+        idUser: RequestBody,
+        ktp: MultipartBody.Part,
+        kk: MultipartBody.Part,
+        keteranganKematian: MultipartBody.Part,
+        keteranganRtRw: MultipartBody.Part,
+        fotoAlmarhum: MultipartBody.Part,
+        tanggalKematian: RequestBody,
+        sebabKematian: RequestBody,
+        yangMenerankanKematian: RequestBody,
     ): ResponseModel {
         return api.postKeteranganAkteKematian(
-            post, idUser, ktp, kk, keteranganKematian, keteranganRtRw, fotoAlmarhum
+            post, idUser, ktp, kk, keteranganKematian, keteranganRtRw, fotoAlmarhum,
+            tanggalKematian, sebabKematian, yangMenerankanKematian
         )
     }
 

@@ -4,9 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.abcd.aksan_aplikasipelayanankantordesa.data.model.BerkasModel
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.ResponseModel
-import com.abcd.aksan_aplikasipelayanankantordesa.data.repository.layanan.LayananRepository
 import com.abcd.aksan_aplikasipelayanankantordesa.data.repository.layanan.LayananRepositoryValue
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.network.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -100,14 +98,16 @@ class LayananViewModel @Inject constructor(
     fun postKeteranganAkteKematian(
         post: RequestBody, idUser: RequestBody, ktp: MultipartBody.Part, kk: MultipartBody.Part,
         keteranganRtRw: MultipartBody.Part, keteranganKematian: MultipartBody.Part,
-        fotoAlmarhum: MultipartBody.Part,
+        fotoAlmarhum: MultipartBody.Part, tanggalKematian: RequestBody,
+        sebabKematian: RequestBody, yangMenerankanKematian: RequestBody,
     ){
         viewModelScope.launch {
             _response.postValue(UIState.Loading)
             delay(1_000)
             try {
                 val data = repository.postKeteranganAkteKematian(
-                    post, idUser, ktp, kk, keteranganRtRw, keteranganKematian, fotoAlmarhum
+                    post, idUser, ktp, kk, keteranganRtRw, keteranganKematian, fotoAlmarhum,
+                    tanggalKematian, sebabKematian, yangMenerankanKematian
                 )
                 _response.postValue(UIState.Success(data))
             } catch (ex: Exception){

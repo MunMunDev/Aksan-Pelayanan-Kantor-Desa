@@ -57,6 +57,9 @@ class LayananActivity : AppCompatActivity() {
 
     private var idUser : RequestBody? = null
     private var alasanBantuan : RequestBody? = null
+    private var tanggalKematian : RequestBody? = null
+    private var sebabKematian : RequestBody? = null
+    private var yangMenerankanKematian : RequestBody? = null
     private var rencanaKegiatan : RequestBody? = null
 
     private fun capitalizeWords(words:String):String{
@@ -84,7 +87,7 @@ class LayananActivity : AppCompatActivity() {
 
     private fun permissionDocument() {
         if(checkPermission()){
-            Toast.makeText(this@LayananActivity, "Granted", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this@LayananActivity, "Granted", Toast.LENGTH_SHORT).show()
         } else{
             requestPermission()
         }
@@ -99,6 +102,9 @@ class LayananActivity : AppCompatActivity() {
         binding.apply {
             btnUploadBerkas.setOnClickListener {
                 alasanBantuan = convertStringToMultipartBody(tvAlasanBantuan.text.toString())
+                tanggalKematian = convertStringToMultipartBody(tvTanggalKematian.text.toString())
+                sebabKematian = convertStringToMultipartBody(tvSebabKematian.text.toString())
+                yangMenerankanKematian = convertStringToMultipartBody(tvYangMenerankanKematian.text.toString())
                 rencanaKegiatan = convertStringToMultipartBody(tvRencanaKegiatan.text.toString())
 
                 when(layanan){
@@ -142,7 +148,7 @@ class LayananActivity : AppCompatActivity() {
                             val post = convertStringToMultipartBody(capitalizeWords(Constant.KETERANGAN_AKTE_KEMATIAN))
                             postKeteranganAkteKematian(
                                 post, idUser!!, ktpUri!!, kkUri!!, suratPengantarRtRwUri!!,
-                                keteranganKematianUri!!, fotoAlmarhumUri!!
+                                keteranganKematianUri!!, fotoAlmarhumUri!!, tanggalKematian!!, sebabKematian!!, yangMenerankanKematian!!
                             )
                         }
                     }
@@ -317,6 +323,9 @@ class LayananActivity : AppCompatActivity() {
             llBerkasSuratPengantarRtRw.visibility = View.VISIBLE
             llBerkasKeteranganKematian.visibility = View.VISIBLE
             llBerkasFotoAlmarhum.visibility = View.VISIBLE
+            llBerkasTanggalKematian.visibility = View.VISIBLE
+            llBerkasSebabKematian.visibility = View.VISIBLE
+            llBerkasYangMenerankanKematian.visibility = View.VISIBLE
         }
     }
 
@@ -390,10 +399,12 @@ class LayananActivity : AppCompatActivity() {
     private fun postKeteranganAkteKematian(
         post: RequestBody, idUser: RequestBody, ktp: MultipartBody.Part, kk: MultipartBody.Part,
         keteranganRtRw: MultipartBody.Part, keteranganKematian: MultipartBody.Part,
-        fotoAlmarhum: MultipartBody.Part,
+        fotoAlmarhum: MultipartBody.Part, tanggalKematian: RequestBody,
+        sebabKematian: RequestBody, yangMenerankanKematian: RequestBody,
     ){
         viewModel.postKeteranganAkteKematian(
-            post, idUser, ktp, kk, keteranganRtRw, keteranganKematian, fotoAlmarhum
+            post, idUser, ktp, kk, keteranganRtRw, keteranganKematian, fotoAlmarhum,
+            tanggalKematian, sebabKematian, yangMenerankanKematian
         )
     }
 
@@ -460,7 +471,6 @@ class LayananActivity : AppCompatActivity() {
         }
         loading.alertDialogCancel()
     }
-
 
     // Storage
     //Permission
