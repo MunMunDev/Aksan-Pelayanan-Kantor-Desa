@@ -263,4 +263,12 @@ interface ApiService {
         @Part file: MultipartBody.Part,
     ): ResponseModel
 
+    @FormUrlEncoded
+    @POST("pelayanan-kantor-desa/api/post.php")
+    suspend fun postUpdateText(
+        @Field("post_update_text") post_update_text:String,
+        @Field("id_dokumen") id_dokumen: Int,
+        @Field("text") text: String,
+    ): ResponseModel
+
 }

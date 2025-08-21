@@ -59,4 +59,24 @@ class ProsesBerkasDetailViewModel @Inject constructor(
             }
         }
     }
+
+    fun postUpdateText(
+        idDokumen: Int,
+        text: String,
+    ) {
+        viewModelScope.launch {
+            _uploadDokumen.postValue(UIState.Loading)
+            delay(1_000)
+            try {
+                _uploadDokumen.postValue(
+                    UIState.Success(
+                        repository.postUpdateText(idDokumen, text)
+                    )
+                )
+            } catch (ex: Exception){
+                _uploadDokumen.postValue(UIState.Failure(ex.message.toString()))
+            }
+        }
+    }
+
 }

@@ -56,6 +56,7 @@ class DokumenAdapter(
                 ivDokumen.visibility = View.GONE
                 tvText.visibility = View.VISIBLE
                 btnUploadDokumen.text = holder.itemView.context.getString(R.string.update_text)
+                tvText.text = dokumen.text
             }
 
             val documentVerification = "Sudah Sesuai"
