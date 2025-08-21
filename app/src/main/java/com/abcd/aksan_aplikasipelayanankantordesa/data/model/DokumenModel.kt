@@ -21,6 +21,9 @@ class DokumenModel (
     @SerializedName("dokumen")
     var dokumen: String? = null,
 
+    @SerializedName("text")
+    var text: String? = null,
+
     @SerializedName("format")
     var format: String? = null,
 
@@ -47,6 +50,7 @@ class DokumenModel (
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
+        parcel.readString(),
         parcel.readValue(Int::class.java.classLoader) as? Int,
         parcel.readString(),
         parcel.readParcelable(UserModel::class.java.classLoader),
@@ -60,6 +64,7 @@ class DokumenModel (
         parcel.writeString(id_desa)
         parcel.writeString(id_berkas)
         parcel.writeString(dokumen)
+        parcel.writeString(text)
         parcel.writeString(format)
         parcel.writeString(file)
         parcel.writeValue(ket)

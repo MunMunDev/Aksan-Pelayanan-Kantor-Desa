@@ -203,6 +203,9 @@ interface ApiService {
         @Part surat_pengantar_rt_rw: MultipartBody.Part,
         @Part keterangan_kematian: MultipartBody.Part,
         @Part foto_almarhum: MultipartBody.Part,
+        @Part("tanggal_kematian") tanggal_kematian: RequestBody,
+        @Part("sebab_kematian") sebab_kematian: RequestBody,
+        @Part("yang_menerankan_kematian") yang_menerankan_kematian: RequestBody
     ): ResponseModel
 
     // Keterangan Pindah
@@ -215,6 +218,8 @@ interface ApiService {
         @Part kk: MultipartBody.Part,
         @Part keterangan_pindah_dari_tempat_asal: MultipartBody.Part,
         @Part pas_foto: MultipartBody.Part,
+        @Part("pindah_ke") pindah_ke: RequestBody,
+        @Part("alasan_pindah") alasan_pindah: RequestBody,
     ): ResponseModel
 
     // Keterangan IzinKeramaian
@@ -226,6 +231,10 @@ interface ApiService {
         @Part ktp: MultipartBody.Part,
         @Part kk: MultipartBody.Part,
         @Part surat_pengantar_rt_rw: MultipartBody.Part,
+        @Part("mulai_tanggal_pelaksanaan") mulai_tanggal_pelaksanaan: RequestBody, //Text
+        @Part("sampai_tanggal_pelaksanaan") sampai_tanggal_pelaksanaan: RequestBody, //Text
+        @Part("mulai_waktu_pelaksanaan") mulai_waktu_pelaksanaan: RequestBody, //Text
+        @Part("sampai_waktu_pelaksanaan") sampai_waktu_pelaksanaan: RequestBody, //Text
         @Part("rencana_kegiatan") rencana_kegiatan: RequestBody, //Text
     ): ResponseModel
 

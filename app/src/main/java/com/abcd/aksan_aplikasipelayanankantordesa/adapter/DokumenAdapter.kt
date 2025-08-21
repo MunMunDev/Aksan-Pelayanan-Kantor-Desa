@@ -40,12 +40,22 @@ class DokumenAdapter(
         holder.binding.apply {
             tvDokumen.text = dokumen.dokumen
 
-            if(dokumen.format == "jpg" || dokumen.format=="jpeg" || dokumen.format=="png"){
-                Glide.with(holder.itemView.context)
-                    .load("${Constant.LOCATION_FILE}/${sharedPreferences.getNoKtp()}/$idBerkas/${dokumen.file}") // URL Gambar
-                    .placeholder(R.drawable.loading)
-                    .error(R.drawable.icon_dokumen)
-                    .into(ivDokumen) // imageView mana yang akan diterapkan
+            if(dokumen.text.isNullOrEmpty()){
+                ivDokumen.visibility = View.VISIBLE
+                tvText.visibility = View.GONE
+                btnUploadDokumen.text = holder.itemView.context.getString(R.string.upload_dokumen)
+
+                if(dokumen.format == "jpg" || dokumen.format=="jpeg" || dokumen.format=="png"){
+                    Glide.with(holder.itemView.context)
+                        .load("${Constant.LOCATION_FILE}/${sharedPreferences.getNoKtp()}/$idBerkas/${dokumen.file}") // URL Gambar
+                        .placeholder(R.drawable.loading)
+                        .error(R.drawable.icon_dokumen)
+                        .into(ivDokumen) // imageView mana yang akan diterapkan
+                }
+            } else{
+                ivDokumen.visibility = View.GONE
+                tvText.visibility = View.VISIBLE
+                btnUploadDokumen.text = holder.itemView.context.getString(R.string.update_text)
             }
 
             val documentVerification = "Sudah Sesuai"

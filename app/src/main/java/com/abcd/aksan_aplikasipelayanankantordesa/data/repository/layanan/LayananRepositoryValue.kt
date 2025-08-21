@@ -1,6 +1,5 @@
 package com.abcd.aksan_aplikasipelayanankantordesa.data.repository.layanan
 
-import androidx.lifecycle.ViewModel
 import com.abcd.aksan_aplikasipelayanankantordesa.data.database.api.ApiService
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.ResponseModel
 import okhttp3.MultipartBody
@@ -56,31 +55,56 @@ class LayananRepositoryValue @Inject constructor(
 
     // Keterangan AkteKematian
     suspend fun postKeteranganAkteKematian(
-        post: RequestBody, idUser: RequestBody, ktp: MultipartBody.Part, kk: MultipartBody.Part,
-        keteranganKematian: MultipartBody.Part, keteranganRtRw: MultipartBody.Part, fotoAlmarhum: MultipartBody.Part,
+        post: RequestBody,
+        idUser: RequestBody,
+        ktp: MultipartBody.Part,
+        kk: MultipartBody.Part,
+        keteranganKematian: MultipartBody.Part,
+        keteranganRtRw: MultipartBody.Part,
+        fotoAlmarhum: MultipartBody.Part,
+        tanggalKematian: RequestBody,
+        sebabKematian: RequestBody,
+        yangMenerankanKematian: RequestBody,
     ): ResponseModel {
         return api.postKeteranganAkteKematian(
-            post, idUser, ktp, kk, keteranganKematian, keteranganRtRw, fotoAlmarhum
+            post, idUser, ktp, kk, keteranganKematian, keteranganRtRw, fotoAlmarhum,
+            tanggalKematian, sebabKematian, yangMenerankanKematian
         )
     }
 
     // Keterangan Pindah
     suspend fun postKeteranganPindah(
-        post: RequestBody, idUser: RequestBody, ktp: MultipartBody.Part, kk: MultipartBody.Part,
-        keteranganPindahDariTempatAsal: MultipartBody.Part, pasFoto: MultipartBody.Part,
+        post: RequestBody,
+        idUser: RequestBody,
+        ktp: MultipartBody.Part,
+        kk: MultipartBody.Part,
+        keteranganPindahDariTempatAsal: MultipartBody.Part,
+        pasFoto: MultipartBody.Part,
+        pindahKe: RequestBody,
+        alasanPindah: RequestBody,
     ): ResponseModel {
         return api.postKeteranganPindah(
-            post, idUser, ktp, kk, keteranganPindahDariTempatAsal, pasFoto
+            post, idUser, ktp, kk, keteranganPindahDariTempatAsal, pasFoto,
+            pindahKe, alasanPindah
         )
     }
 
     // Keterangan IzinKeramaian
     suspend fun postKeteranganIzinKeramaian(
-        post: RequestBody, idUser: RequestBody, ktp: MultipartBody.Part,
-        kk: MultipartBody.Part, suratPengantarRtRw: MultipartBody.Part, rencanaKegiatan: RequestBody
+        post: RequestBody,
+        idUser: RequestBody,
+        ktp: MultipartBody.Part,
+        kk: MultipartBody.Part,
+        suratPengantarRtRw: MultipartBody.Part,
+        mulaiTanggalPelaksanaan: RequestBody,
+        sampaiTanggalPelaksanaan: RequestBody,
+        mulaiWaktuPelaksanaan: RequestBody,
+        sampaiWaktuPelaksanaan: RequestBody,
+        rencanaKegiatan: RequestBody
     ): ResponseModel {
         return api.postKeteranganIzinKeramaian(
-            post, idUser, ktp, kk, suratPengantarRtRw, rencanaKegiatan
+            post, idUser, ktp, kk, suratPengantarRtRw, mulaiTanggalPelaksanaan, sampaiTanggalPelaksanaan,
+            mulaiWaktuPelaksanaan, sampaiWaktuPelaksanaan, rencanaKegiatan
         )
     }
 

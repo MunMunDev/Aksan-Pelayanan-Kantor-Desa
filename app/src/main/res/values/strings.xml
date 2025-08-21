@@ -5,6 +5,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="ket_klik_tanggal">Klik Untuk Tanggal Lahir</string>
     <string name="upload_dokumen">Upload Dokumen..</string>
+    <string name="update_text">Update Text..</string>
     <string name="upload_foto">Upload Foto..</string>
 
     <string name="ktp">Kartu Tanda Penduduk</string>
@@ -23,6 +24,19 @@
     <string name="keterangan_pindah_dari_tempat_asal">Keterangan Pindah Dari Tempat Asal</string>
     <string name="alasan_bantuan">Alasan Bantuan</string>
     <string name="contoh_alasan_bantuan">Contoh: Persyaratan Pendaftaran BPJS Ketenagakerjaan</string>
+    <string name="tanggal_kematian">Tanggal dan Waktu Kematian</string>
+    <string name="contoh_tanggal_kematian">Klik Untuk Tanggal dan Waktu Kematian</string>
+    <string name="sebab_kematian">Sebab Kematian</string>
+    <string name="yang_menerankan_kematian">Nama Yang Menerankan Kematian</string>
+    <string name="pindah_ke">Ingin Berpindah Ke-</string>
+    <string name="alasan_pindah">Alasan Pindah</string>
+    <string name="tanggal_pelaksanaan">Tanggal Pelaksanaan</string>
+    <string name="mulai_tanggal_pelaksanaan">Mulai Tanggal</string>
+    <string name="sampai_tanggal_pelaksanaan">Sampai Tanggal</string>
+    <string name="waktu_pelaksanaan">Waktu Pelaksanaan</string>
+    <string name="mulai_waktu_pelaksanaan">Mulai Waktu</string>
+    <string name="sampai_waktu_pelaksanaan">Sampai Waktu</string>
+    <string name="tempat_pelaksanaan">Tempat Pelaksanaan</string>
     <string name="rencana_kegiatan">Rencana Kegiatan</string>
     <string name="bukti_kepemilikan_tempat_tinggal">Bukti Kepemilikan Tempat Tinggal</string>
 
