@@ -30,4 +30,13 @@ class ProsesBerkasDetailRepository @Inject constructor(
         val data = api.postUploadDokumen(post, idDokumen, idBerkas, noKtp, dokumen, file)
         return data
     }
+
+    suspend fun postUpdateText(
+        idDokumen: Int,
+        text: String,
+    ): ResponseModel{
+        val data = api.postUpdateText("", idDokumen, text)
+        return data
+    }
+
 }

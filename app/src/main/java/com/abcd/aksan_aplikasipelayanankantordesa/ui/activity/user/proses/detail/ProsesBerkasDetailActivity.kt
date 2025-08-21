@@ -27,6 +27,7 @@ import com.abcd.aksan_aplikasipelayanankantordesa.data.model.DokumenModel
 import com.abcd.aksan_aplikasipelayanankantordesa.data.model.ResponseModel
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.ActivityProsesBerkasDetailBinding
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.AlertDialogImageBinding
+import com.abcd.aksan_aplikasipelayanankantordesa.databinding.AlertDialogUpdateTextBinding
 import com.abcd.aksan_aplikasipelayanankantordesa.databinding.AlertDialogUploadDokumenBinding
 import com.abcd.aksan_aplikasipelayanankantordesa.ui.activity.user.pdf.PdfActivity
 import com.abcd.aksan_aplikasipelayanankantordesa.utils.Constant
@@ -143,7 +144,11 @@ class ProsesBerkasDetailActivity : AppCompatActivity() {
                 }
 
                 override fun clickUploadDokumen(dokumen: DokumenModel) {
-                    setShowUploadDokumen(dokumen)
+                    if(dokumen.text!!.isNotEmpty()){
+                        setShowUpdateText(dokumen)
+                    } else{
+                        setShowUploadDokumen(dokumen)
+                    }
                 }
             }, berkas?.id_berkas!!)
             rvDokumen.apply {
@@ -198,6 +203,39 @@ class ProsesBerkasDetailActivity : AppCompatActivity() {
         }
     }
 
+    private fun setShowUpdateText(dokumen: DokumenModel) {
+        val view = AlertDialogUpdateTextBinding.inflate(layoutInflater)
+
+        val alertDialog = AlertDialog.Builder(this@ProsesBerkasDetailActivity)
+        alertDialog.setView(view.root)
+            .setCancelable(false)
+        val dialogInputan = alertDialog.create()
+        dialogInputan.show()
+
+        view.apply {
+            tvTitle.text = dokumen.dokumen
+            if(dokumen.catatan!!.isNotEmpty()) tvPesanDesa.text = dokumen.catatan
+            tvText.setText(dokumen.text)
+            btnSimpan.setOnClickListener {
+                var cek = false
+                if (tvText.text.toString().isEmpty()) {
+                    tvText.error = "Tidak Boleh Kosong"
+                    cek = true
+                }
+                if(!cek){
+                    val idDokumen = dokumen.id_dokumen!!
+                    val text = tvText.text.toString()
+
+                    postUpdateText(idDokumen, text)
+                    dialogInputan.dismiss()
+                }
+            }
+            btnBatal.setOnClickListener {
+                dialogInputan.dismiss()
+            }
+        }
+    }
+
     private fun postUpdateDokumen(
         post: RequestBody,
         idDokumen: RequestBody,
@@ -207,6 +245,13 @@ class ProsesBerkasDetailActivity : AppCompatActivity() {
         file: MultipartBody.Part
     ) {
         viewModel.postUploadDokumen(post, idDokumen, idBerkas, noKtp, dokumen, file)
+    }
+
+    private fun postUpdateText(
+        idDokumen: Int,
+        text: String,
+    ) {
+        viewModel.postUpdateText(idDokumen, text)
     }
 
     private fun getUpdateDokumen(){
