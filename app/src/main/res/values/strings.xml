@@ -30,6 +30,13 @@
     <string name="yang_menerankan_kematian">Nama Yang Menerankan Kematian</string>
     <string name="pindah_ke">Ingin Berpindah Ke-</string>
     <string name="alasan_pindah">Alasan Pindah</string>
+    <string name="tanggal_pelaksanaan">Tanggal Pelaksanaan</string>
+    <string name="mulai_tanggal_pelaksanaan">Mulai Tanggal</string>
+    <string name="sampai_tanggal_pelaksanaan">Sampai Tanggal</string>
+    <string name="waktu_pelaksanaan">Waktu Pelaksanaan</string>
+    <string name="mulai_waktu_pelaksanaan">Mulai Waktu</string>
+    <string name="sampai_waktu_pelaksanaan">Sampai Waktu</string>
+    <string name="tempat_pelaksanaan">Tempat Pelaksanaan</string>
     <string name="rencana_kegiatan">Rencana Kegiatan</string>
     <string name="bukti_kepemilikan_tempat_tinggal">Bukti Kepemilikan Tempat Tinggal</string>
 

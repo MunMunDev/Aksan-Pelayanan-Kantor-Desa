@@ -525,6 +525,7 @@
                     android:inputType="textMultiLine"/>
             </LinearLayout>
 
+            <!-- Surat Keterangan Pindah -->
             <LinearLayout
                 android:id="@+id/llBerkasPindahKe"
                 android:layout_width="match_parent"
@@ -567,6 +568,137 @@
                     android:textStyle="bold"/>
                 <EditText
                     android:id="@+id/tvAlasanPindah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:padding="14dp"
+                    android:background="@drawable/bg_card"
+                    android:textColor="@color/abuabu_tua"
+                    android:textSize="14sp"
+                    android:inputType="textMultiLine"/>
+            </LinearLayout>
+
+            <!-- Surat Keterangan Izin Keramaian -->
+            <LinearLayout
+                android:id="@+id/llBerkasTanggalPelaksanaan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tanggal_pelaksanaan"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tvMulaiTanggalPelaksanaan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:layout_marginTop="6dp"
+                        android:padding="14dp"
+                        android:background="@drawable/bg_card"
+                        android:text="@string/mulai_tanggal_pelaksanaan"
+                        android:textColor="@color/abuabu_tua"
+                        android:textSize="14sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="6dp"
+                        android:text=" - "
+                        android:textColor="@color/abuabu_tua"
+                        android:textSize="14sp"
+                        android:gravity="center"/>
+                    <TextView
+                        android:id="@+id/tvSampaiTanggalPelaksanaan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:layout_marginTop="6dp"
+                        android:padding="14dp"
+                        android:background="@drawable/bg_card"
+                        android:text="@string/sampai_tanggal_pelaksanaan"
+                        android:textColor="@color/abuabu_tua"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llBerkasWaktuPelaksanaan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/waktu_pelaksanaan"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tvMulaiWaktuPelaksanaan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:layout_marginTop="6dp"
+                        android:padding="14dp"
+                        android:background="@drawable/bg_card"
+                        android:text="@string/mulai_waktu_pelaksanaan"
+                        android:textColor="@color/abuabu_tua"
+                        android:textSize="14sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="6dp"
+                        android:text=" - "
+                        android:textColor="@color/abuabu_tua"
+                        android:textSize="14sp"
+                        android:gravity="center"/>
+                    <TextView
+                        android:id="@+id/tvSampaiWaktuPelaksanaan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:layout_marginTop="6dp"
+                        android:padding="14dp"
+                        android:background="@drawable/bg_card"
+                        android:text="@string/sampai_waktu_pelaksanaan"
+                        android:textColor="@color/abuabu_tua"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llBerkasTempatPelaksanaan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tempat_pelaksanaan"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+                <EditText
+                    android:id="@+id/tvTempatPelaksanaan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"

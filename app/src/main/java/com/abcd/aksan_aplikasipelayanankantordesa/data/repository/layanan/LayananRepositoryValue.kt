@@ -91,11 +91,20 @@ class LayananRepositoryValue @Inject constructor(
 
     // Keterangan IzinKeramaian
     suspend fun postKeteranganIzinKeramaian(
-        post: RequestBody, idUser: RequestBody, ktp: MultipartBody.Part,
-        kk: MultipartBody.Part, suratPengantarRtRw: MultipartBody.Part, rencanaKegiatan: RequestBody
+        post: RequestBody,
+        idUser: RequestBody,
+        ktp: MultipartBody.Part,
+        kk: MultipartBody.Part,
+        suratPengantarRtRw: MultipartBody.Part,
+        mulaiTanggalPelaksanaan: RequestBody,
+        sampaiTanggalPelaksanaan: RequestBody,
+        mulaiWaktuPelaksanaan: RequestBody,
+        sampaiWaktuPelaksanaan: RequestBody,
+        rencanaKegiatan: RequestBody
     ): ResponseModel {
         return api.postKeteranganIzinKeramaian(
-            post, idUser, ktp, kk, suratPengantarRtRw, rencanaKegiatan
+            post, idUser, ktp, kk, suratPengantarRtRw, mulaiTanggalPelaksanaan, sampaiTanggalPelaksanaan,
+            mulaiWaktuPelaksanaan, sampaiWaktuPelaksanaan, rencanaKegiatan
         )
     }
 

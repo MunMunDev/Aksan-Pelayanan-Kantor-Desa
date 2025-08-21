@@ -231,6 +231,10 @@ interface ApiService {
         @Part ktp: MultipartBody.Part,
         @Part kk: MultipartBody.Part,
         @Part surat_pengantar_rt_rw: MultipartBody.Part,
+        @Part("mulai_tanggal_pelaksanaan") mulai_tanggal_pelaksanaan: RequestBody, //Text
+        @Part("sampai_tanggal_pelaksanaan") sampai_tanggal_pelaksanaan: RequestBody, //Text
+        @Part("mulai_waktu_pelaksanaan") mulai_waktu_pelaksanaan: RequestBody, //Text
+        @Part("sampai_waktu_pelaksanaan") sampai_waktu_pelaksanaan: RequestBody, //Text
         @Part("rencana_kegiatan") rencana_kegiatan: RequestBody, //Text
     ): ResponseModel
 

@@ -66,6 +66,11 @@ class LayananActivity : AppCompatActivity() {
     private var yangMenerankanKematian : RequestBody? = null
     private var pindahKe : RequestBody? = null
     private var alasanPindah : RequestBody? = null
+    private var mulaiTanggalPelaksanaan : RequestBody? = null
+    private var sampaiTanggalPelaksanaan : RequestBody? = null
+    private var mulaiWaktuPelaksanaan : RequestBody? = null
+    private var sampaiWaktuPelaksanaan : RequestBody? = null
+    private var tempatPelaksanaan : RequestBody? = null
     private var rencanaKegiatan : RequestBody? = null
 
     private fun capitalizeWords(words:String):String{
@@ -113,6 +118,11 @@ class LayananActivity : AppCompatActivity() {
                 yangMenerankanKematian = convertStringToMultipartBody(tvYangMenerankanKematian.text.toString())
                 pindahKe = convertStringToMultipartBody(tvPindahKe.text.toString())
                 alasanPindah = convertStringToMultipartBody(tvAlasanPindah.text.toString())
+                mulaiTanggalPelaksanaan = convertStringToMultipartBody(tvMulaiTanggalPelaksanaan.text.toString())
+                sampaiTanggalPelaksanaan = convertStringToMultipartBody(tvSampaiTanggalPelaksanaan.text.toString())
+                mulaiWaktuPelaksanaan = convertStringToMultipartBody(tvMulaiWaktuPelaksanaan.text.toString())
+                sampaiWaktuPelaksanaan = convertStringToMultipartBody(tvSampaiWaktuPelaksanaan.text.toString())
+                tempatPelaksanaan = convertStringToMultipartBody(tvTempatPelaksanaan.text.toString())
                 rencanaKegiatan = convertStringToMultipartBody(tvRencanaKegiatan.text.toString())
 
                 when(layanan){
@@ -174,7 +184,8 @@ class LayananActivity : AppCompatActivity() {
                             val post = convertStringToMultipartBody(capitalizeWords(Constant.KETERANGAN_IZIN_KERAMAIAN))
                             postKeteranganIzinKeramaian(
                                 post, idUser!!, ktpUri!!, kkUri!!, suratPengantarRtRwUri!!,
-                                rencanaKegiatan!!
+                                mulaiTanggalPelaksanaan!!, sampaiTanggalPelaksanaan!!,
+                                mulaiWaktuPelaksanaan!!, sampaiWaktuPelaksanaan!!, rencanaKegiatan!!
                             )
                         }
                     }
@@ -242,6 +253,22 @@ class LayananActivity : AppCompatActivity() {
             tvTanggalKematian.setOnClickListener {
                 val tempTanggalDanWaktu = tanggalDanWaktu.tanggalSekarangZonaMakassar()
                 tanggalDanWaktu.selectedDateTime(tempTanggalDanWaktu, tvTanggalKematian, this@LayananActivity)
+            }
+            tvMulaiTanggalPelaksanaan.setOnClickListener {
+                val tempTanggal = tanggalDanWaktu.tanggalSekarangZonaMakassar()
+                tanggalDanWaktu.selectedDate(tempTanggal, tvMulaiTanggalPelaksanaan, this@LayananActivity)
+            }
+            tvSampaiTanggalPelaksanaan.setOnClickListener {
+                val tempTanggal = tanggalDanWaktu.tanggalSekarangZonaMakassar()
+                tanggalDanWaktu.selectedDate(tempTanggal, tvSampaiTanggalPelaksanaan, this@LayananActivity)
+            }
+            tvMulaiWaktuPelaksanaan.setOnClickListener {
+                val tempWaktu = tanggalDanWaktu.waktuSekarangZonaMakassar()
+                tanggalDanWaktu.selectedTime(tempWaktu, tvMulaiWaktuPelaksanaan, this@LayananActivity)
+            }
+            tvSampaiWaktuPelaksanaan.setOnClickListener {
+                val tempWaktu = tanggalDanWaktu.waktuSekarangZonaMakassar()
+                tanggalDanWaktu.selectedTime(tempWaktu, tvSampaiWaktuPelaksanaan, this@LayananActivity)
             }
         }
     }
@@ -348,6 +375,8 @@ class LayananActivity : AppCompatActivity() {
             llBerkasBuktiKeteranganPindahDariTempatAsal.visibility = View.VISIBLE
             llBerkasPasFoto.visibility = View.VISIBLE
             llBerkasPindahKe.visibility = View.VISIBLE
+            llBerkasTanggalPelaksanaan.visibility = View.VISIBLE
+            llBerkasTempatPelaksanaan.visibility = View.VISIBLE
             llBerkasAlasanPindah.visibility = View.VISIBLE
         }
     }
@@ -357,6 +386,9 @@ class LayananActivity : AppCompatActivity() {
             llBerkasKtp.visibility = View.VISIBLE
             llBerkasKk.visibility = View.VISIBLE
             llBerkasSuratPengantarRtRw.visibility = View.VISIBLE
+            llBerkasTanggalPelaksanaan.visibility = View.VISIBLE
+            llBerkasWaktuPelaksanaan.visibility = View.VISIBLE
+            llBerkasTempatPelaksanaan.visibility = View.VISIBLE
             llBerkasRencanaKegiatan.visibility = View.VISIBLE
         }
     }
@@ -430,7 +462,7 @@ class LayananActivity : AppCompatActivity() {
         keteranganPindahDariTempatAsal: MultipartBody.Part,
         pasFoto: MultipartBody.Part,
         pindahKe: RequestBody,
-        alasanPindah: RequestBody
+        alasanPindah: RequestBody,
     ){
         viewModel.postKeteranganPindah(
             post, idUser, ktp, kk, keteranganPindahDariTempatAsal, pasFoto,
@@ -440,10 +472,12 @@ class LayananActivity : AppCompatActivity() {
 
     private fun postKeteranganIzinKeramaian(
         post: RequestBody, idUser: RequestBody, ktp: MultipartBody.Part,kk: MultipartBody.Part,
-        suratPengantarRtRw: MultipartBody.Part, rencanaKegiatan: RequestBody
+        suratPengantarRtRw: MultipartBody.Part, mulaiTanggalPelaksanaan: RequestBody, sampaiTanggalPelaksanaan: RequestBody,
+        mulaiWaktuPelaksanaan: RequestBody, sampaiWaktuPelaksanaan: RequestBody, rencanaKegiatan: RequestBody,
     ){
         viewModel.postKeteranganIzinKeramaian(
-            post, idUser, ktp, kk, suratPengantarRtRw, rencanaKegiatan
+            post, idUser, ktp, kk, suratPengantarRtRw, mulaiTanggalPelaksanaan, sampaiTanggalPelaksanaan,
+            mulaiWaktuPelaksanaan, sampaiWaktuPelaksanaan, rencanaKegiatan
         )
     }
 
@@ -829,8 +863,22 @@ class LayananActivity : AppCompatActivity() {
                     else if (suratPengantarRtRwUri == null) {
                         tvSuratPengantarRtRw.error = MESSAGE_ERROR_FILE
                         return false
-                    }
-                    else if (tvRencanaKegiatan.text.toString().isEmpty()) {
+                    } else if (tvMulaiTanggalPelaksanaan.text.toString() == resources.getString(R.string.mulai_tanggal_pelaksanaan)) {
+                        tvMulaiTanggalPelaksanaan.error = MESSAGE_ERROR_TEXT
+                        return false
+                    }  else if (tvSampaiTanggalPelaksanaan.text.toString() == resources.getString(R.string.sampai_tanggal_pelaksanaan)) {
+                        tvSampaiTanggalPelaksanaan.error = MESSAGE_ERROR_TEXT
+                        return false
+                    } else if (tvMulaiWaktuPelaksanaan.text.toString() == resources.getString(R.string.mulai_waktu_pelaksanaan)) {
+                        tvMulaiWaktuPelaksanaan.error = MESSAGE_ERROR_TEXT
+                        return false
+                    } else if (tvSampaiWaktuPelaksanaan.text.toString() == resources.getString(R.string.sampai_waktu_pelaksanaan)) {
+                        tvSampaiWaktuPelaksanaan.error = MESSAGE_ERROR_TEXT
+                        return false
+                    } else if (tvTempatPelaksanaan.text.toString().isEmpty()) {
+                        tvTempatPelaksanaan.error = MESSAGE_ERROR_TEXT
+                        return false
+                    } else if (tvRencanaKegiatan.text.toString().isEmpty()) {
                         tvRencanaKegiatan.error = MESSAGE_ERROR_TEXT
                         return false
                     } else{

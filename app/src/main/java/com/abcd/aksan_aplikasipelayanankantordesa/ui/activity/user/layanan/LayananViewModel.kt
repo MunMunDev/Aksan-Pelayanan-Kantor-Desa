@@ -142,15 +142,24 @@ class LayananViewModel @Inject constructor(
     }
 
     fun postKeteranganIzinKeramaian(
-        post: RequestBody, idUser: RequestBody, ktp: MultipartBody.Part,kk: MultipartBody.Part,
-        suratPengantarRtRw: MultipartBody.Part, rencanaKegiatan: RequestBody
+        post: RequestBody,
+        idUser: RequestBody,
+        ktp: MultipartBody.Part,
+        kk: MultipartBody.Part,
+        suratPengantarRtRw: MultipartBody.Part,
+        mulaiTanggalPelaksanaan: RequestBody,
+        sampaiTanggalPelaksanaan: RequestBody,
+        mulaiWaktuPelaksanaan: RequestBody,
+        sampaiWaktuPelaksanaan: RequestBody,
+        rencanaKegiatan: RequestBody
     ){
         viewModelScope.launch {
             _response.postValue(UIState.Loading)
             delay(1_000)
             try {
                 val data = repository.postKeteranganIzinKeramaian(
-                    post, idUser, ktp, kk, suratPengantarRtRw, rencanaKegiatan
+                    post, idUser, ktp, kk, suratPengantarRtRw, mulaiTanggalPelaksanaan, sampaiTanggalPelaksanaan,
+                    mulaiWaktuPelaksanaan, sampaiWaktuPelaksanaan, rencanaKegiatan
                 )
                 _response.postValue(UIState.Success(data))
             } catch (ex: Exception){
