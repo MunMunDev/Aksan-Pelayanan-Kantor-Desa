@@ -74,11 +74,18 @@ class LayananRepositoryValue @Inject constructor(
 
     // Keterangan Pindah
     suspend fun postKeteranganPindah(
-        post: RequestBody, idUser: RequestBody, ktp: MultipartBody.Part, kk: MultipartBody.Part,
-        keteranganPindahDariTempatAsal: MultipartBody.Part, pasFoto: MultipartBody.Part,
+        post: RequestBody,
+        idUser: RequestBody,
+        ktp: MultipartBody.Part,
+        kk: MultipartBody.Part,
+        keteranganPindahDariTempatAsal: MultipartBody.Part,
+        pasFoto: MultipartBody.Part,
+        pindahKe: RequestBody,
+        alasanPindah: RequestBody,
     ): ResponseModel {
         return api.postKeteranganPindah(
-            post, idUser, ktp, kk, keteranganPindahDariTempatAsal, pasFoto
+            post, idUser, ktp, kk, keteranganPindahDariTempatAsal, pasFoto,
+            pindahKe, alasanPindah
         )
     }
 

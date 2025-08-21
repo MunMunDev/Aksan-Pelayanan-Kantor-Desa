@@ -28,6 +28,8 @@
     <string name="contoh_tanggal_kematian">Klik Untuk Tanggal dan Waktu Kematian</string>
     <string name="sebab_kematian">Sebab Kematian</string>
     <string name="yang_menerankan_kematian">Nama Yang Menerankan Kematian</string>
+    <string name="pindah_ke">Ingin Berpindah Ke-</string>
+    <string name="alasan_pindah">Alasan Pindah</string>
     <string name="rencana_kegiatan">Rencana Kegiatan</string>
     <string name="bukti_kepemilikan_tempat_tinggal">Bukti Kepemilikan Tempat Tinggal</string>
 

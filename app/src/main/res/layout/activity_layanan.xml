@@ -367,6 +367,58 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llBerkasBuktiKepemilikanTempatTinggal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bukti_kepemilikan_tempat_tinggal"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/tvBuktiKepemilikanTempatTinggal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:padding="14dp"
+                    android:background="@drawable/bg_card"
+                    android:text="@string/upload_dokumen"
+                    android:textColor="@color/abuabu_tua"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llBerkasPasFoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Masukkan Pas Foto"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/tvPasFoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:padding="14dp"
+                    android:background="@drawable/bg_card"
+                    android:text="@string/upload_foto"
+                    android:textColor="@color/abuabu_tua"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/llBerkasAlasanBantuan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -474,6 +526,58 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/llBerkasPindahKe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pindah_ke"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+                <EditText
+                    android:id="@+id/tvPindahKe"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:padding="14dp"
+                    android:background="@drawable/bg_card"
+                    android:textColor="@color/abuabu_tua"
+                    android:textSize="14sp"
+                    android:inputType="textMultiLine"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llBerkasAlasanPindah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/alasan_pindah"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+                <EditText
+                    android:id="@+id/tvAlasanPindah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:padding="14dp"
+                    android:background="@drawable/bg_card"
+                    android:textColor="@color/abuabu_tua"
+                    android:textSize="14sp"
+                    android:inputType="textMultiLine"/>
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/llBerkasRencanaKegiatan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -499,58 +603,6 @@
                     android:textSize="14sp"
                     android:lines="2"
                     android:inputType="textMultiLine"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llBerkasBuktiKepemilikanTempatTinggal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp"
-                android:visibility="gone">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/bukti_kepemilikan_tempat_tinggal"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:id="@+id/tvBuktiKepemilikanTempatTinggal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:padding="14dp"
-                    android:background="@drawable/bg_card"
-                    android:text="@string/upload_dokumen"
-                    android:textColor="@color/abuabu_tua"
-                    android:textSize="14sp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llBerkasPasFoto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp"
-                android:visibility="gone">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Masukkan Pas Foto"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"/>
-                <TextView
-                    android:id="@+id/tvPasFoto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:padding="14dp"
-                    android:background="@drawable/bg_card"
-                    android:text="@string/upload_foto"
-                    android:textColor="@color/abuabu_tua"
-                    android:textSize="14sp"/>
             </LinearLayout>
 
             <Button

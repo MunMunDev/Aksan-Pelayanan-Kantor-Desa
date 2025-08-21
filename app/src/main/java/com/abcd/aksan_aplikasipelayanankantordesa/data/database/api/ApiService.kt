@@ -218,6 +218,8 @@ interface ApiService {
         @Part kk: MultipartBody.Part,
         @Part keterangan_pindah_dari_tempat_asal: MultipartBody.Part,
         @Part pas_foto: MultipartBody.Part,
+        @Part("pindah_ke") pindah_ke: RequestBody,
+        @Part("alasan_pindah") alasan_pindah: RequestBody,
     ): ResponseModel
 
     // Keterangan IzinKeramaian

@@ -117,15 +117,22 @@ class LayananViewModel @Inject constructor(
     }
 
     fun postKeteranganPindah(
-        post: RequestBody, idUser: RequestBody, ktp: MultipartBody.Part, kk: MultipartBody.Part,
-        keteranganPindahDariTempatAsal: MultipartBody.Part, pasFoto: MultipartBody.Part
+        post: RequestBody,
+        idUser: RequestBody,
+        ktp: MultipartBody.Part,
+        kk: MultipartBody.Part,
+        keteranganPindahDariTempatAsal: MultipartBody.Part,
+        pasFoto: MultipartBody.Part,
+        pindahKe: RequestBody,
+        alasanPindah: RequestBody
     ){
         viewModelScope.launch {
             _response.postValue(UIState.Loading)
             delay(1_000)
             try {
                 val data = repository.postKeteranganPindah(
-                    post, idUser, ktp, kk, keteranganPindahDariTempatAsal, pasFoto
+                    post, idUser, ktp, kk, keteranganPindahDariTempatAsal, pasFoto,
+                    pindahKe, alasanPindah
                 )
                 _response.postValue(UIState.Success(data))
             } catch (ex: Exception){

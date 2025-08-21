@@ -64,6 +64,8 @@ class LayananActivity : AppCompatActivity() {
     private var tanggalKematian : RequestBody? = null
     private var sebabKematian : RequestBody? = null
     private var yangMenerankanKematian : RequestBody? = null
+    private var pindahKe : RequestBody? = null
+    private var alasanPindah : RequestBody? = null
     private var rencanaKegiatan : RequestBody? = null
 
     private fun capitalizeWords(words:String):String{
@@ -109,6 +111,8 @@ class LayananActivity : AppCompatActivity() {
                 tanggalKematian = convertStringToMultipartBody(tvTanggalKematian.text.toString())
                 sebabKematian = convertStringToMultipartBody(tvSebabKematian.text.toString())
                 yangMenerankanKematian = convertStringToMultipartBody(tvYangMenerankanKematian.text.toString())
+                pindahKe = convertStringToMultipartBody(tvPindahKe.text.toString())
+                alasanPindah = convertStringToMultipartBody(tvAlasanPindah.text.toString())
                 rencanaKegiatan = convertStringToMultipartBody(tvRencanaKegiatan.text.toString())
 
                 when(layanan){
@@ -161,7 +165,7 @@ class LayananActivity : AppCompatActivity() {
                             val post = convertStringToMultipartBody(capitalizeWords(Constant.KETERANGAN_PINDAH))
                             postKeteranganPindah(
                                 post, idUser!!, ktpUri!!, kkUri!!, buktiKeteranganPindahDariTempatAsalUri!!,
-                                pasFotoUri!!
+                                pasFotoUri!!, pindahKe!!, alasanPindah!!
                             )
                         }
                     }
@@ -343,6 +347,8 @@ class LayananActivity : AppCompatActivity() {
             llBerkasKk.visibility = View.VISIBLE
             llBerkasBuktiKeteranganPindahDariTempatAsal.visibility = View.VISIBLE
             llBerkasPasFoto.visibility = View.VISIBLE
+            llBerkasPindahKe.visibility = View.VISIBLE
+            llBerkasAlasanPindah.visibility = View.VISIBLE
         }
     }
 
@@ -417,11 +423,18 @@ class LayananActivity : AppCompatActivity() {
     }
 
     private fun postKeteranganPindah(
-        post: RequestBody, idUser: RequestBody, ktp: MultipartBody.Part, kk: MultipartBody.Part,
-        keteranganPindahDariTempatAsal: MultipartBody.Part, pasFoto: MultipartBody.Part
+        post: RequestBody,
+        idUser: RequestBody,
+        ktp: MultipartBody.Part,
+        kk: MultipartBody.Part,
+        keteranganPindahDariTempatAsal: MultipartBody.Part,
+        pasFoto: MultipartBody.Part,
+        pindahKe: RequestBody,
+        alasanPindah: RequestBody
     ){
         viewModel.postKeteranganPindah(
-            post, idUser, ktp, kk, keteranganPindahDariTempatAsal, pasFoto
+            post, idUser, ktp, kk, keteranganPindahDariTempatAsal, pasFoto,
+            pindahKe, alasanPindah
         )
     }
 
@@ -755,24 +768,19 @@ class LayananActivity : AppCompatActivity() {
                     else if (suratPengantarRtRwUri == null) {
                         tvSuratPengantarRtRw.error = MESSAGE_ERROR_FILE
                         return false
-                    }
-                    else if (keteranganKematianUri == null) {
+                    } else if (keteranganKematianUri == null) {
                         tvKeteranganKematian.error = MESSAGE_ERROR_FILE
                         return false
-                    }
-                    else if (fotoAlmarhumUri == null) {
+                    } else if (fotoAlmarhumUri == null) {
                         tvFotoAlmarhum.error = MESSAGE_ERROR_FILE
                         return false
-                    }
-                    else if (tvTanggalKematian.text == resources.getString(R.string.tanggal_kematian)) {
+                    } else if (tvTanggalKematian.text == resources.getString(R.string.tanggal_kematian)) {
                         tvTanggalKematian.error = MESSAGE_ERROR_TEXT
                         return false
-                    }
-                    else if (tvSebabKematian.text.isEmpty()) {
+                    } else if (tvSebabKematian.text.isEmpty()) {
                         tvSebabKematian.error = MESSAGE_ERROR_TEXT
                         return false
-                    }
-                    else if (tvYangMenerankanKematian.text.isEmpty()) {
+                    } else if (tvYangMenerankanKematian.text.isEmpty()) {
                         tvYangMenerankanKematian.error = MESSAGE_ERROR_TEXT
                         return false
                     } else{
@@ -796,6 +804,12 @@ class LayananActivity : AppCompatActivity() {
                     }
                     else if (pasFotoUri == null) {
                         tvPasFoto.error = MESSAGE_ERROR_FILE
+                        return false
+                    } else if (tvPindahKe.text.isEmpty()) {
+                        tvPindahKe.error = MESSAGE_ERROR_TEXT
+                        return false
+                    } else if (tvAlasanPindah.text.isEmpty()) {
+                        tvAlasanPindah.error = MESSAGE_ERROR_TEXT
                         return false
                     } else{
                         return true
